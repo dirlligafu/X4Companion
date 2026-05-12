@@ -1,0 +1,5459 @@
+<component class="ship_xl" macro="ship_tel_xl_carrier_01_a_macro" connection="space" code="TPY-771" owner="player" knownto="player" variation="0" spawntime="0" thruster="thruster_gen_xl_allround_01_mk3_macro" id="[0xae425]">
+<listeners>
+<listener listener="[0xae47a]" event="killed" />
+<listener listener="[0xae45d]" event="boostdisabled" />
+<listener listener="[0xae45f]" event="boostdisabled" />
+<listener listener="[0xae45e]" event="boostdisabled" />
+<listener listener="[0xae462]" event="killed" />
+<listener listener="[0xae476]" event="killed" />
+<listener listener="[0xae473]" event="killed" />
+</listeners>
+<events>
+<event event="updateengineparameters" time="14.6047" />
+<event event="updatebuild" time="65.1816" />
+</events>
+<movement forcerotation="1" forceposition="0" class="navigation">
+<position>
+<read space="[0xa5fb8]" numpathpoints="1" avoidbigobjects="1" avoidsmallobjects="1">
+<offset>
+<position x="4913.774" z="-2773.043" />
+</offset>
+<velocity>
+<linear z="4.18795" />
+</velocity>
+<acceleration />
+</read>
+<write space="[0xa5fb8]" numpathpoints="1" avoidbigobjects="1" avoidsmallobjects="1">
+<offset>
+<position x="4913.774" z="-2773.246" />
+</offset>
+<velocity>
+<linear z="2.38604" />
+</velocity>
+<acceleration />
+</write>
+</position>
+<targetpoints>
+<targetpoint refobject="[0xa5fb8]" behavior="default" direction="forward" forcerotation="1" avoidbigobjects="1" avoidsmallobjects="1" resetroll="1">
+<offset>
+<position x="4913.774" z="-2769.563" />
+</offset>
+</targetpoint>
+</targetpoints>
+<flightcontrolmodel type="spline" />
+<transition />
+</movement>
+<offset>
+<position x="4913.774" z="-2773.043" />
+</offset>
+<animations>
+<animation part="anim_hatch">
+<part sequence="dockingbay_closed" />
+</animation>
+</animations>
+<render>
+<parameter value="4279439128" name="letter_color" type="color" />
+<parameter value="4280361243" name="number_color" type="color" />
+<parameter value="assets\textures\ui\factions\faction_player_diffhq" name="diffuse_map" type="texture" />
+</render>
+<modification>
+<paint ware="paintmod_0006" generated="1" />
+</modification>
+<gravidar />
+<orders>
+<order id="[0x45df]" default="1" order="Wait" state="started">
+<syncpoint state="reached" />
+<param name="timeout" type="time" />
+<param name="allowdocked" type="integer" />
+<param name="holdfire" type="integer" />
+<param name="noattackresponse" type="integer" />
+<param name="attacker" />
+<param name="skipalignment" />
+<param name="fidget" type="integer" />
+<param name="debugchance" type="integer" />
+</order>
+</orders>
+<software wares="software_dockmk2 software_scannerobjectmk2 software_targetmk1 software_trademk1" />
+<control>
+<post id="shiptrader" component="[0xae476]" />
+<post id="defence" component="[0xae462]" />
+<post id="tradecomputer" />
+<post id="aipilot" component="[0xae47a]" />
+<post id="playerpilot" />
+<post id="engineer" component="[0xae473]" />
+</control>
+<people>
+<person macro="character_argon_female_afr_crew_01_macro" role="service">
+<npcseed seed="2638272747896985935" />
+<skills boarding="2" engineering="12" management="2" morale="12" piloting="5" />
+</person>
+<person macro="character_argon_female_afr_crew_01_macro" role="service">
+<npcseed seed="4438742497005727003" />
+<skills boarding="3" engineering="10" management="1" morale="11" piloting="4" />
+</person>
+<person macro="character_argon_female_afr_crew_01_macro" role="service">
+<npcseed seed="8444900463299900502" />
+<skills boarding="1" engineering="11" management="2" morale="10" piloting="3" />
+</person>
+<person macro="character_argon_female_afr_pilot_01_macro" role="marine">
+<npcseed seed="9057717099604458542" />
+<skills boarding="10" engineering="3" management="3" morale="10" piloting="4" />
+</person>
+<person macro="character_argon_male_afr_crew_01_macro" role="service">
+<npcseed seed="15641456248554533880" />
+<skills boarding="3" engineering="10" management="2" morale="12" piloting="3" />
+</person>
+<person macro="character_argon_male_asi_crew_01_macro" role="service">
+<npcseed seed="7305594644062337494" />
+<skills boarding="3" engineering="10" management="2" morale="11" piloting="5" />
+</person>
+<person macro="character_argon_female_cau_crew_01_macro" role="service">
+<npcseed seed="9176743625893586585" />
+<skills boarding="1" engineering="11" management="1" morale="12" piloting="6" />
+</person>
+<person macro="character_argon_male_cau_crew_01_macro" role="service">
+<npcseed seed="4578688373679403123" />
+<skills boarding="1" engineering="12" management="1" morale="10" piloting="5" />
+</person>
+<person macro="character_argon_female_asi_crew_01_macro" role="service">
+<npcseed seed="5218627541347918142" />
+<skills boarding="3" engineering="10" management="1" morale="10" piloting="5" />
+</person>
+<person macro="character_argon_female_afr_pilot_01_macro" role="marine">
+<npcseed seed="13347381581893133986" />
+<skills boarding="11" engineering="3" management="3" morale="12" piloting="4" />
+</person>
+<person macro="character_argon_male_afr_crew_01_macro" role="service">
+<npcseed seed="13556300134849820286" />
+<skills boarding="1" engineering="11" management="2" morale="12" piloting="5" />
+</person>
+<person macro="character_argon_female_asi_crew_01_macro" role="service">
+<npcseed seed="13816020936042295209" />
+<skills boarding="2" engineering="10" management="2" morale="11" piloting="5" />
+</person>
+<person macro="character_argon_male_cau_crew_01_macro" role="service">
+<npcseed seed="10564006642243677154" />
+<skills boarding="2" engineering="10" management="2" morale="10" piloting="5" />
+</person>
+<person macro="character_argon_female_asi_crew_01_macro" role="service">
+<npcseed seed="8583113383472292523" />
+<skills boarding="3" engineering="10" management="1" morale="11" piloting="4" />
+</person>
+<person macro="character_argon_female_cau_crew_01_macro" role="service">
+<npcseed seed="7033137701542126099" />
+<skills boarding="1" engineering="10" management="2" morale="12" piloting="3" />
+</person>
+<person macro="character_argon_male_afr_crew_01_macro" role="service">
+<npcseed seed="6708303616688308098" />
+<skills boarding="2" engineering="12" management="2" morale="10" piloting="3" />
+</person>
+<person macro="character_argon_male_cau_crew_01_macro" role="service">
+<npcseed seed="13529557256455284030" />
+<skills boarding="1" engineering="12" management="1" morale="12" piloting="3" />
+</person>
+<person macro="character_argon_male_cau_crew_01_macro" role="service">
+<npcseed seed="13078520213855560881" />
+<skills boarding="1" engineering="12" management="1" morale="10" piloting="4" />
+</person>
+<person macro="character_argon_female_afr_crew_01_macro" role="service">
+<npcseed seed="9964229242178098796" />
+<skills boarding="3" engineering="10" management="2" morale="11" piloting="3" />
+</person>
+<person macro="character_argon_male_afr_pilot_01_macro" role="marine">
+<npcseed seed="8063441334862078263" />
+<skills boarding="11" engineering="3" management="3" morale="10" piloting="6" />
+</person>
+<person macro="character_argon_male_afr_crew_01_macro" role="service">
+<npcseed seed="12005897215034452221" />
+<skills boarding="2" engineering="10" management="2" morale="10" piloting="4" />
+</person>
+<person macro="character_argon_male_asi_crew_01_macro" role="service">
+<npcseed seed="18258687056313591567" />
+<skills boarding="2" engineering="11" management="1" morale="11" piloting="5" />
+</person>
+<person macro="character_argon_female_afr_crew_01_macro" role="service">
+<npcseed seed="15350307988309073145" />
+<skills boarding="1" engineering="11" management="2" morale="10" piloting="3" />
+</person>
+<person macro="character_argon_male_asi_pilot_01_macro" role="marine">
+<npcseed seed="5218405682111631908" />
+<skills boarding="12" engineering="2" management="3" morale="11" piloting="6" />
+</person>
+<person macro="character_argon_female_afr_crew_01_macro" role="service">
+<npcseed seed="4922775853966807327" />
+<skills boarding="3" engineering="12" management="2" morale="12" piloting="3" />
+</person>
+<person macro="character_argon_male_afr_crew_01_macro" role="service">
+<npcseed seed="11665047652622825928" />
+<skills boarding="1" engineering="12" management="2" morale="10" piloting="3" />
+</person>
+<person macro="character_argon_female_asi_crew_01_macro" role="service">
+<npcseed seed="16047598561640677465" />
+<skills boarding="3" engineering="11" management="2" morale="11" piloting="5" />
+</person>
+<person macro="character_argon_female_asi_crew_01_macro" role="service">
+<npcseed seed="13740728559258464341" />
+<skills boarding="3" engineering="11" management="2" morale="12" piloting="4" />
+</person>
+<person macro="character_argon_female_cau_pilot_01_macro" role="marine">
+<npcseed seed="1603753158224062603" />
+<skills boarding="11" engineering="2" management="1" morale="10" piloting="5" />
+</person>
+<person macro="character_argon_female_cau_pilot_01_macro" role="marine">
+<npcseed seed="11657104721995944576" />
+<skills boarding="12" engineering="2" management="1" morale="11" piloting="4" />
+</person>
+<person macro="character_argon_female_asi_crew_01_macro" role="service">
+<npcseed seed="9423790177083330192" />
+<skills boarding="3" engineering="11" management="2" morale="12" piloting="5" />
+</person>
+<person macro="character_argon_male_asi_pilot_01_macro" role="marine">
+<npcseed seed="9071941244291476347" />
+<skills boarding="12" engineering="2" management="3" morale="10" piloting="5" />
+</person>
+<person macro="character_argon_female_afr_crew_01_macro" role="service">
+<npcseed seed="16344033331808733147" />
+<skills boarding="1" engineering="11" management="1" morale="10" piloting="3" />
+</person>
+<person macro="character_argon_female_afr_crew_01_macro" role="service">
+<npcseed seed="412113704897207257" />
+<skills boarding="3" engineering="11" management="2" morale="11" piloting="4" />
+</person>
+<person macro="character_argon_male_afr_crew_01_macro" role="service">
+<npcseed seed="14653364983572380297" />
+<skills boarding="2" engineering="11" management="1" morale="10" piloting="5" />
+</person>
+<person macro="character_argon_female_cau_pilot_01_macro" role="marine">
+<npcseed seed="217590677777561358" />
+<skills boarding="10" engineering="2" management="2" morale="11" piloting="5" />
+</person>
+<person macro="character_argon_female_afr_crew_01_macro" role="service">
+<npcseed seed="7905087369971973988" />
+<skills boarding="1" engineering="11" management="1" morale="11" piloting="4" />
+</person>
+<person macro="character_argon_male_asi_crew_01_macro" role="service">
+<npcseed seed="10763892895512616106" />
+<skills boarding="2" engineering="12" management="2" morale="12" piloting="3" />
+</person>
+<person macro="character_argon_female_asi_crew_01_macro" role="service">
+<npcseed seed="13095487805221886273" />
+<skills boarding="3" engineering="12" management="1" morale="11" piloting="3" />
+</person>
+<person macro="character_argon_female_afr_crew_01_macro" role="service">
+<npcseed seed="16999895563329216392" />
+<skills boarding="2" engineering="11" management="1" morale="11" piloting="3" />
+</person>
+<person macro="character_argon_male_afr_pilot_01_macro" role="marine">
+<npcseed seed="11866440615417603401" />
+<skills boarding="12" engineering="3" management="3" morale="11" piloting="6" />
+</person>
+<person macro="character_argon_female_asi_crew_01_macro" role="service">
+<npcseed seed="8695351995994019937" />
+<skills boarding="2" engineering="12" management="1" morale="10" piloting="3" />
+</person>
+<person macro="character_argon_male_cau_crew_01_macro" role="service">
+<npcseed seed="9883049808988040637" />
+<skills boarding="3" engineering="10" management="1" morale="11" piloting="4" />
+</person>
+<person macro="character_argon_female_asi_pilot_01_macro" role="marine">
+<npcseed seed="17277560946004839713" />
+<skills boarding="11" engineering="3" management="3" morale="11" piloting="5" />
+</person>
+<person macro="character_argon_male_cau_pilot_01_macro" role="marine">
+<npcseed seed="142915018756342626" />
+<skills boarding="10" engineering="2" management="3" morale="10" piloting="6" />
+</person>
+<person macro="character_argon_male_cau_crew_01_macro" role="service">
+<npcseed seed="6535811737046293782" />
+<skills boarding="3" engineering="12" management="1" morale="12" piloting="3" />
+</person>
+<person macro="character_argon_female_afr_crew_01_macro" role="service">
+<npcseed seed="12949573737055310118" />
+<skills boarding="3" engineering="10" management="2" morale="10" piloting="6" />
+</person>
+<person macro="character_argon_male_cau_crew_01_macro" role="service">
+<npcseed seed="8129133625428615341" />
+<skills boarding="2" engineering="12" management="1" morale="11" piloting="6" />
+</person>
+<person macro="character_argon_male_asi_crew_01_macro" role="service">
+<npcseed seed="8163982556393202966" />
+<skills boarding="3" engineering="10" management="1" morale="10" piloting="4" />
+</person>
+<person macro="character_argon_female_afr_crew_01_macro" role="service">
+<npcseed seed="565413648523955000" />
+<skills boarding="2" engineering="10" management="2" morale="10" piloting="5" />
+</person>
+<person macro="character_argon_female_afr_crew_01_macro" role="service">
+<npcseed seed="15368261730658321120" />
+<skills boarding="1" engineering="11" management="1" morale="10" piloting="6" />
+</person>
+<person macro="character_argon_male_cau_crew_01_macro" role="service">
+<npcseed seed="6649154456421713233" />
+<skills boarding="3" engineering="10" management="1" morale="12" piloting="5" />
+</person>
+<person macro="character_argon_male_asi_crew_01_macro" role="service">
+<npcseed seed="14098938858393919073" />
+<skills boarding="2" engineering="10" management="1" morale="11" piloting="3" />
+</person>
+<person macro="character_argon_male_afr_crew_01_macro" role="service">
+<npcseed seed="18194785977691000697" />
+<skills boarding="3" engineering="11" management="1" morale="11" piloting="6" />
+</person>
+<person macro="character_argon_female_asi_crew_01_macro" role="service">
+<npcseed seed="9404644477635511743" />
+<skills boarding="2" engineering="11" management="2" morale="10" piloting="3" />
+</person>
+<person macro="character_argon_male_asi_pilot_01_macro" role="marine">
+<npcseed seed="15663540991524466412" />
+<skills boarding="10" engineering="2" management="3" morale="12" piloting="5" />
+</person>
+<person macro="character_argon_female_asi_crew_01_macro" role="service">
+<npcseed seed="15750868198630531009" />
+<skills boarding="2" engineering="11" management="1" morale="10" piloting="4" />
+</person>
+<person macro="character_argon_female_cau_crew_01_macro" role="service">
+<npcseed seed="13726220639608194751" />
+<skills boarding="1" engineering="10" management="2" morale="10" piloting="3" />
+</person>
+<person macro="character_argon_male_cau_crew_01_macro" role="service">
+<npcseed seed="16814971548651899113" />
+<skills boarding="2" engineering="12" management="1" morale="11" piloting="5" />
+</person>
+<person macro="character_argon_male_cau_crew_01_macro" role="service">
+<npcseed seed="440126879745603633" />
+<skills boarding="3" engineering="12" management="2" morale="10" piloting="3" />
+</person>
+<person macro="character_argon_female_afr_crew_01_macro" role="service">
+<npcseed seed="10304169645341845527" />
+<skills boarding="1" engineering="12" management="2" morale="10" piloting="4" />
+</person>
+<person macro="character_argon_male_asi_pilot_01_macro" role="marine">
+<npcseed seed="15142748366971600463" />
+<skills boarding="11" engineering="3" management="3" morale="10" piloting="4" />
+</person>
+<person macro="character_argon_male_cau_crew_01_macro" role="service">
+<npcseed seed="10272034312672513470" />
+<skills boarding="2" engineering="12" management="1" morale="10" piloting="5" />
+</person>
+<person macro="character_argon_female_afr_crew_01_macro" role="service">
+<npcseed seed="8621216615223919821" />
+<skills boarding="1" engineering="10" management="2" morale="10" piloting="6" />
+</person>
+<person macro="character_argon_female_cau_crew_01_macro" role="service">
+<npcseed seed="7603256365164903866" />
+<skills boarding="2" engineering="11" management="1" morale="11" piloting="6" />
+</person>
+<person macro="character_argon_female_afr_crew_01_macro" role="service">
+<npcseed seed="7628117029872404064" />
+<skills boarding="2" engineering="10" management="2" morale="11" piloting="4" />
+</person>
+<person macro="character_argon_female_asi_crew_01_macro" role="service">
+<npcseed seed="17524914347025037223" />
+<skills boarding="1" engineering="10" management="1" morale="10" piloting="6" />
+</person>
+<person macro="character_argon_male_asi_pilot_01_macro" role="marine">
+<npcseed seed="14785188557180638153" />
+<skills boarding="11" engineering="3" management="1" morale="12" piloting="6" />
+</person>
+<person macro="character_argon_male_cau_crew_01_macro" role="service">
+<npcseed seed="5103364061601205597" />
+<skills boarding="3" engineering="12" management="1" morale="10" piloting="4" />
+</person>
+<person macro="character_argon_female_cau_crew_01_macro" role="service">
+<npcseed seed="15771595603904586755" />
+<skills boarding="3" engineering="10" management="2" morale="12" piloting="4" />
+</person>
+<person macro="character_argon_female_asi_crew_01_macro" role="service">
+<npcseed seed="12625361456123287028" />
+<skills boarding="2" engineering="10" management="1" morale="12" piloting="3" />
+</person>
+<person macro="character_argon_male_asi_crew_01_macro" role="service">
+<npcseed seed="16566953906266677816" />
+<skills boarding="3" engineering="12" management="2" morale="11" piloting="5" />
+</person>
+<person macro="character_argon_male_afr_crew_01_macro" role="service">
+<npcseed seed="9733181065364324238" />
+<skills boarding="3" engineering="10" management="1" morale="11" piloting="3" />
+</person>
+<person macro="character_argon_female_cau_crew_01_macro" role="service">
+<npcseed seed="5049798616018654757" />
+<skills boarding="2" engineering="10" management="1" morale="11" piloting="3" />
+</person>
+<person macro="character_argon_female_afr_crew_01_macro" role="service">
+<npcseed seed="9864857085176942089" />
+<skills boarding="3" engineering="11" management="1" morale="10" piloting="5" />
+</person>
+<person macro="character_argon_female_cau_crew_01_macro" role="service">
+<npcseed seed="11131701531150324725" />
+<skills boarding="2" engineering="11" management="1" morale="10" piloting="5" />
+</person>
+<person macro="character_argon_female_asi_crew_01_macro" role="service">
+<npcseed seed="14070997319652703774" />
+<skills boarding="3" engineering="10" management="2" morale="10" piloting="3" />
+</person>
+<person macro="character_argon_female_cau_crew_01_macro" role="service">
+<npcseed seed="3521316094073842360" />
+<skills boarding="2" engineering="10" management="2" morale="10" piloting="4" />
+</person>
+<person macro="character_argon_female_asi_crew_01_macro" role="service">
+<npcseed seed="2845481794501128964" />
+<skills boarding="2" engineering="10" management="1" morale="11" piloting="3" />
+</person>
+<person macro="character_argon_female_afr_crew_01_macro" role="service">
+<npcseed seed="16480874512485839295" />
+<skills boarding="1" engineering="10" management="2" morale="11" piloting="4" />
+</person>
+<person macro="character_argon_male_asi_pilot_01_macro" role="marine">
+<npcseed seed="1539953482073263349" />
+<skills boarding="11" engineering="3" management="3" morale="11" piloting="5" />
+</person>
+<person macro="character_argon_male_afr_crew_01_macro" role="service">
+<npcseed seed="4122567728465032777" />
+<skills boarding="2" engineering="11" management="1" morale="10" piloting="3" />
+</person>
+<person macro="character_argon_female_afr_crew_01_macro" role="service">
+<npcseed seed="5606713874493035310" />
+<skills boarding="1" engineering="10" management="2" morale="10" piloting="4" />
+</person>
+<person macro="character_argon_male_asi_crew_01_macro" role="service">
+<npcseed seed="14399074075668896713" />
+<skills boarding="3" engineering="11" management="1" morale="10" piloting="6" />
+</person>
+<person macro="character_argon_male_afr_crew_01_macro" role="service">
+<npcseed seed="4196064654372375485" />
+<skills boarding="1" engineering="10" management="1" morale="10" piloting="3" />
+</person>
+<person macro="character_argon_male_cau_crew_01_macro" role="service">
+<npcseed seed="5743587211082617918" />
+<skills boarding="3" engineering="12" management="2" morale="10" piloting="6" />
+</person>
+<person macro="character_argon_male_afr_pilot_01_macro" role="marine">
+<npcseed seed="18101172889135112424" />
+<skills boarding="10" engineering="2" management="1" morale="11" piloting="5" />
+</person>
+<person macro="character_argon_male_cau_pilot_01_macro" role="marine">
+<npcseed seed="9754383774408092814" />
+<skills boarding="10" engineering="2" management="3" morale="11" piloting="5" />
+</person>
+<person macro="character_argon_female_asi_crew_01_macro" role="service">
+<npcseed seed="8628088839263053183" />
+<skills boarding="1" engineering="10" management="2" morale="10" piloting="3" />
+</person>
+<person macro="character_argon_female_asi_crew_01_macro" role="service">
+<npcseed seed="6074624208899191269" />
+<skills boarding="3" engineering="10" management="2" morale="10" piloting="5" />
+</person>
+<person macro="character_argon_female_asi_crew_01_macro" role="service">
+<npcseed seed="1166861391464111126" />
+<skills boarding="2" engineering="10" management="2" morale="11" piloting="6" />
+</person>
+<person macro="character_argon_male_afr_pilot_01_macro" role="marine">
+<npcseed seed="10168403066502328887" />
+<skills boarding="12" engineering="3" management="3" morale="10" piloting="5" />
+</person>
+<person macro="character_argon_male_afr_crew_01_macro" role="service">
+<npcseed seed="925058619274218488" />
+<skills boarding="1" engineering="10" management="2" morale="12" piloting="6" />
+</person>
+<person macro="character_argon_male_asi_pilot_01_macro" role="marine">
+<npcseed seed="10758413000605097807" />
+<skills boarding="11" engineering="2" management="2" morale="10" piloting="4" />
+</person>
+<person macro="character_argon_male_afr_crew_01_macro" role="service">
+<npcseed seed="14316886907695517479" />
+<skills boarding="2" engineering="10" management="2" morale="11" piloting="4" />
+</person>
+<person macro="character_argon_female_cau_crew_01_macro" role="service">
+<npcseed seed="8449052693686689776" />
+<skills boarding="1" engineering="10" management="1" morale="12" piloting="5" />
+</person>
+<person macro="character_argon_male_afr_crew_01_macro" role="service">
+<npcseed seed="661670698625482664" />
+<skills boarding="3" engineering="11" management="2" morale="11" piloting="3" />
+</person>
+<person macro="character_argon_male_asi_pilot_01_macro" role="marine">
+<npcseed seed="4699549500024145487" />
+<skills boarding="10" engineering="2" management="3" morale="11" piloting="4" />
+</person>
+<person macro="character_argon_female_afr_crew_01_macro" role="service">
+<npcseed seed="18284113975082973076" />
+<skills boarding="3" engineering="11" management="2" morale="12" piloting="4" />
+</person>
+<person macro="character_argon_male_asi_crew_01_macro" role="service">
+<npcseed seed="5703748795805650517" />
+<skills boarding="2" engineering="10" management="2" morale="12" piloting="4" />
+</person>
+<person macro="character_argon_female_afr_crew_01_macro" role="service">
+<npcseed seed="12635909793788373936" />
+<skills boarding="2" engineering="12" management="1" morale="12" piloting="3" />
+</person>
+<person macro="character_argon_female_asi_crew_01_macro" role="service">
+<npcseed seed="10551930619580672398" />
+<skills boarding="3" engineering="11" management="2" morale="11" piloting="6" />
+</person>
+<person macro="character_argon_male_cau_crew_01_macro" role="service">
+<npcseed seed="18367373717419396270" />
+<skills boarding="1" engineering="11" management="1" morale="11" piloting="3" />
+</person>
+<person macro="character_argon_male_afr_crew_01_macro" role="service">
+<npcseed seed="368230379658789074" />
+<skills boarding="1" engineering="12" management="1" morale="10" piloting="4" />
+</person>
+<person macro="character_argon_male_afr_crew_01_macro" role="service">
+<npcseed seed="17988028808208887072" />
+<skills boarding="2" engineering="12" management="2" morale="11" piloting="4" />
+</person>
+<person macro="character_argon_female_asi_crew_01_macro" role="service">
+<npcseed seed="8701868987273843269" />
+<skills boarding="2" engineering="10" management="1" morale="12" piloting="6" />
+</person>
+<person macro="character_argon_female_afr_crew_01_macro" role="service">
+<npcseed seed="8266297469689117328" />
+<skills boarding="1" engineering="10" management="2" morale="12" piloting="5" />
+</person>
+<person macro="character_argon_male_cau_crew_01_macro" role="service">
+<npcseed seed="16898335374549081900" />
+<skills boarding="2" engineering="12" management="2" morale="10" piloting="3" />
+</person>
+<person macro="character_argon_male_cau_crew_01_macro" role="service">
+<npcseed seed="1996291101080466745" />
+<skills boarding="1" engineering="10" management="2" morale="10" piloting="6" />
+</person>
+<person macro="character_argon_female_cau_crew_01_macro" role="service">
+<npcseed seed="9033813281569978903" />
+<skills boarding="2" engineering="11" management="1" morale="10" piloting="6" />
+</person>
+<person macro="character_argon_female_asi_crew_01_macro" role="service">
+<npcseed seed="10350540135440890987" />
+<skills boarding="2" engineering="10" management="2" morale="12" piloting="4" />
+</person>
+<person macro="character_argon_male_cau_crew_01_macro" role="service">
+<npcseed seed="9845665360910923211" />
+<skills boarding="2" engineering="10" management="1" morale="11" piloting="5" />
+</person>
+<person macro="character_argon_male_asi_crew_01_macro" role="service">
+<npcseed seed="7381588883443985352" />
+<skills boarding="1" engineering="12" management="1" morale="10" piloting="6" />
+</person>
+<person macro="character_argon_male_afr_crew_01_macro" role="service">
+<npcseed seed="13353082596986362541" />
+<skills boarding="1" engineering="11" management="2" morale="11" piloting="5" />
+</person>
+<person macro="character_argon_male_cau_crew_01_macro" role="service">
+<npcseed seed="15809344309844458330" />
+<skills boarding="1" engineering="12" management="1" morale="10" piloting="5" />
+</person>
+<person macro="character_argon_female_cau_pilot_01_macro" role="marine">
+<npcseed seed="1937208123556025080" />
+<skills boarding="11" engineering="2" management="1" morale="12" piloting="5" />
+</person>
+<person macro="character_argon_female_afr_pilot_01_macro" role="marine">
+<npcseed seed="14271480180422236606" />
+<skills boarding="12" engineering="3" management="2" morale="11" piloting="4" />
+</person>
+<person macro="character_argon_female_asi_crew_01_macro" role="service">
+<npcseed seed="17521860007559881144" />
+<skills boarding="1" engineering="12" management="2" morale="10" piloting="6" />
+</person>
+<person macro="character_argon_male_asi_crew_01_macro" role="service">
+<npcseed seed="16234872611123806521" />
+<skills boarding="2" engineering="11" management="1" morale="11" piloting="4" />
+</person>
+<person macro="character_argon_male_asi_crew_01_macro" role="service">
+<npcseed seed="8738950652190246223" />
+<skills boarding="3" engineering="12" management="1" morale="10" piloting="6" />
+</person>
+<person macro="character_argon_male_asi_pilot_01_macro" role="marine">
+<npcseed seed="5569128413944074720" />
+<skills boarding="10" engineering="2" management="3" morale="11" piloting="4" />
+</person>
+<person macro="character_argon_male_asi_crew_01_macro" role="service">
+<npcseed seed="3199269595087708341" />
+<skills boarding="2" engineering="11" management="1" morale="12" piloting="6" />
+</person>
+<person macro="character_argon_male_afr_pilot_01_macro" role="marine">
+<npcseed seed="17281491002374138061" />
+<skills boarding="11" engineering="2" management="2" morale="10" piloting="6" />
+</person>
+<person macro="character_argon_female_asi_crew_01_macro" role="service">
+<npcseed seed="14224480204322813091" />
+<skills boarding="3" engineering="10" management="2" morale="12" piloting="3" />
+</person>
+<person macro="character_argon_female_cau_crew_01_macro" role="service">
+<npcseed seed="18319653553510888724" />
+<skills boarding="1" engineering="11" management="2" morale="11" piloting="4" />
+</person>
+<person macro="character_argon_male_asi_crew_01_macro" role="service">
+<npcseed seed="327363424240469677" />
+<skills boarding="3" engineering="10" management="1" morale="11" piloting="5" />
+</person>
+<person macro="character_argon_male_afr_crew_01_macro" role="service">
+<npcseed seed="1815516772062147337" />
+<skills boarding="3" engineering="11" management="1" morale="11" piloting="4" />
+</person>
+<person macro="character_argon_female_asi_crew_01_macro" role="service">
+<npcseed seed="5685728087032996262" />
+<skills boarding="3" engineering="10" management="1" morale="12" piloting="6" />
+</person>
+<person macro="character_argon_male_afr_crew_01_macro" role="service">
+<npcseed seed="7364253966099246213" />
+<skills boarding="3" engineering="10" management="1" morale="12" piloting="6" />
+</person>
+<person macro="character_argon_male_asi_crew_01_macro" role="service">
+<npcseed seed="3882734836237074493" />
+<skills boarding="1" engineering="11" management="1" morale="11" piloting="5" />
+</person>
+<person macro="character_argon_female_afr_crew_01_macro" role="service">
+<npcseed seed="10827564046792263519" />
+<skills boarding="1" engineering="12" management="1" morale="10" piloting="4" />
+</person>
+<person macro="character_argon_female_asi_crew_01_macro" role="service">
+<npcseed seed="14506015281511794521" />
+<skills boarding="1" engineering="11" management="1" morale="11" piloting="3" />
+</person>
+<person macro="character_argon_male_afr_crew_01_macro" role="service">
+<npcseed seed="11611348369553716955" />
+<skills boarding="2" engineering="11" management="1" morale="10" piloting="3" />
+</person>
+<person macro="character_argon_male_afr_crew_01_macro" role="service">
+<npcseed seed="6932213257913314816" />
+<skills boarding="2" engineering="10" management="2" morale="12" piloting="3" />
+</person>
+<person macro="character_argon_female_afr_pilot_01_macro" role="marine">
+<npcseed seed="1200874770870261334" />
+<skills boarding="11" engineering="3" management="2" morale="11" piloting="6" />
+</person>
+</people>
+<quantity variation="0" />
+<quality variation="0" />
+<shields>
+<group group="group_back_top_center" />
+<group group="group_center_top_center" />
+<group group="group_back_bottom" />
+<group group="group_back_bottom_left" />
+<group group="group_back_bottom_right" />
+<group group="group_center_bottom_right" />
+<group group="group_center_bottom_left" />
+<group group="group_front_top_left" />
+<group group="group_front_top_right" />
+<group group="group_front_down_center" />
+<group group="group_center_bottom" />
+</shields>
+<ammunition>
+<available>
+<item macro="countermeasure_flares_01_macro" amount="40" />
+<item macro="ship_gen_xs_repairdrone_01_a_macro" amount="4" />
+<item macro="ship_gen_s_fightingdrone_01_a_macro" amount="8" />
+</available>
+</ammunition>
+<weapongroups>
+<primary active="0" />
+<secondary active="0" />
+</weapongroups>
+<locked nextchecktime="5.04622" />
+<trade>
+<offers settings="buyintermediates|sellintermediates|blockoffers" />
+</trade>
+<account id="[0x88]" amount="10000" />
+<boost />
+<stance unlocktime="0" />
+<connections>
+<connection connection="con_storage01" macro="con_storage01">
+<component class="storage" macro="storage_tel_xl_carrier_01_a_macro" connection="shipconnection" id="[0xae426]">
+<offset default="1" />
+<render>
+<parameter value="assets\textures\ui\factions\faction_player_diffhq" name="diffuse_map" type="texture" />
+</render>
+</component>
+</connection>
+<connection connection="con_shieldgen_xl_003">
+<component class="shieldgenerator" macro="shield_ter_xl_standard_01_mk2_macro" connection="con_shieldgen_01" id="[0xae460]">
+<offset>
+<position x="-95.868" y="55.275" z="104.72" />
+<rotation yaw="90.00002" pitch="60" />
+</offset>
+</component>
+</connection>
+<connection connection="con_turret_027">
+<component class="turret" macro="turret_ter_m_beam_02_mk1_macro" connection="con_beam_turret_01" id="[0xae45b]">
+<offset>
+<position x="-58.957" y="-394.323" z="560.216" />
+<rotation yaw="10.92031" pitch="47.48469" roll="-166.25937" />
+</offset>
+<animations>
+<animation part="part_socket">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="detail_xl_rotator">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="anim_lights">
+<part sequence="turret_inactive" />
+<texture>
+<channel channel="1">
+<value sequence="turret_inactive" property="u_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="detail_xl_gun">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="fx_gun_decals">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="detail_xl_barrel">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="fx_barrel_decal">
+<part sequence="turret_inactive" />
+</animation>
+<animation light="xu arealight01">
+<float sequence="turret_inactive" property="intensity" />
+</animation>
+<animation light="xu arealight002">
+<float sequence="turret_inactive" property="intensity" />
+</animation>
+</animations>
+<render>
+<parameter flags="override" owner="[0xae45b]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+</component>
+</connection>
+<connection connection="con_turret_026">
+<component class="turret" macro="turret_ter_m_beam_02_mk1_macro" connection="con_beam_turret_01" id="[0xae45a]">
+<offset>
+<position x="312.658" y="248.285" z="559.733" />
+<rotation yaw="-41.96146" pitch="-26.82822" roll="62.45034" />
+</offset>
+<animations>
+<animation part="part_socket">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="detail_xl_rotator">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="anim_lights">
+<part sequence="turret_inactive" />
+<texture>
+<channel channel="1">
+<value sequence="turret_inactive" property="u_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="detail_xl_gun">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="fx_gun_decals">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="detail_xl_barrel">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="fx_barrel_decal">
+<part sequence="turret_inactive" />
+</animation>
+<animation light="xu arealight01">
+<float sequence="turret_inactive" property="intensity" />
+</animation>
+<animation light="xu arealight002">
+<float sequence="turret_inactive" property="intensity" />
+</animation>
+</animations>
+<render>
+<parameter flags="override" owner="[0xae45a]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+</component>
+</connection>
+<connection connection="con_turret_025">
+<component class="turret" macro="turret_ter_m_beam_02_mk1_macro" connection="con_beam_turret_01" id="[0xae459]">
+<offset>
+<position x="-311.929" y="248.961" z="559.867" />
+<rotation yaw="41.8066" pitch="-27.09235" roll="-62.38015" />
+</offset>
+<animations>
+<animation part="part_socket">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="detail_xl_rotator">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="anim_lights">
+<part sequence="turret_inactive" />
+<texture>
+<channel channel="1">
+<value sequence="turret_inactive" property="u_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="detail_xl_gun">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="fx_gun_decals">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="detail_xl_barrel">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="fx_barrel_decal">
+<part sequence="turret_inactive" />
+</animation>
+<animation light="xu arealight01">
+<float sequence="turret_inactive" property="intensity" />
+</animation>
+<animation light="xu arealight002">
+<float sequence="turret_inactive" property="intensity" />
+</animation>
+</animations>
+<render>
+<parameter flags="override" owner="[0xae459]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+</component>
+</connection>
+<connection connection="con_turret_024">
+<component class="turret" macro="turret_ter_m_beam_02_mk1_macro" connection="con_beam_turret_01" id="[0xae457]">
+<offset>
+<position x="-116.889" y="-67.503" z="143.227" />
+<rotation roll="-120" />
+</offset>
+<animations>
+<animation part="part_socket">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="detail_xl_rotator">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="anim_lights">
+<part sequence="turret_inactive" />
+<texture>
+<channel channel="1">
+<value sequence="turret_inactive" property="u_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="detail_xl_gun">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="fx_gun_decals">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="detail_xl_barrel">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="fx_barrel_decal">
+<part sequence="turret_inactive" />
+</animation>
+<animation light="xu arealight01">
+<float sequence="turret_inactive" property="intensity" />
+</animation>
+<animation light="xu arealight002">
+<float sequence="turret_inactive" property="intensity" />
+</animation>
+</animations>
+<render>
+<parameter flags="override" owner="[0xae457]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+</component>
+</connection>
+<connection connection="con_turret_023">
+<component class="turret" macro="turret_ter_m_beam_02_mk1_macro" connection="con_beam_turret_01" id="[0xae458]">
+<offset>
+<position x="-116.889" y="-67.5" z="66.972" />
+<rotation yaw="-179.99998" roll="120" />
+</offset>
+<animations>
+<animation part="part_socket">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="detail_xl_rotator">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="anim_lights">
+<part sequence="turret_inactive" />
+<texture>
+<channel channel="1">
+<value sequence="turret_inactive" property="u_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="detail_xl_gun">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="fx_gun_decals">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="detail_xl_barrel">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="fx_barrel_decal">
+<part sequence="turret_inactive" />
+</animation>
+<animation light="xu arealight01">
+<float sequence="turret_inactive" property="intensity" />
+</animation>
+<animation light="xu arealight002">
+<float sequence="turret_inactive" property="intensity" />
+</animation>
+</animations>
+<render>
+<parameter flags="override" owner="[0xae458]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+</component>
+</connection>
+<connection connection="con_turret_022">
+<component class="turret" macro="turret_ter_m_beam_02_mk1_macro" connection="con_beam_turret_01" id="[0xae455]">
+<offset>
+<position x="117.385" y="-67.778" z="66.972" />
+<rotation yaw="179.99998" roll="-120" />
+</offset>
+<animations>
+<animation part="part_socket">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="detail_xl_rotator">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="anim_lights">
+<part sequence="turret_inactive" />
+<texture>
+<channel channel="1">
+<value sequence="turret_inactive" property="u_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="detail_xl_gun">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="fx_gun_decals">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="detail_xl_barrel">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="fx_barrel_decal">
+<part sequence="turret_inactive" />
+</animation>
+<animation light="xu arealight01">
+<float sequence="turret_inactive" property="intensity" />
+</animation>
+<animation light="xu arealight002">
+<float sequence="turret_inactive" property="intensity" />
+</animation>
+</animations>
+<render>
+<parameter flags="override" owner="[0xae455]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+</component>
+</connection>
+<connection connection="con_turret_021">
+<component class="turret" macro="turret_ter_m_beam_02_mk1_macro" connection="con_beam_turret_01" id="[0xae456]">
+<offset>
+<position x="117.385" y="-67.781" z="143.227" />
+<rotation roll="120" />
+</offset>
+<animations>
+<animation part="part_socket">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="detail_xl_rotator">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="anim_lights">
+<part sequence="turret_inactive" />
+<texture>
+<channel channel="1">
+<value sequence="turret_inactive" property="u_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="detail_xl_gun">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="fx_gun_decals">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="detail_xl_barrel">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="fx_barrel_decal">
+<part sequence="turret_inactive" />
+</animation>
+<animation light="xu arealight01">
+<float sequence="turret_inactive" property="intensity" />
+</animation>
+<animation light="xu arealight002">
+<float sequence="turret_inactive" property="intensity" />
+</animation>
+</animations>
+<render>
+<parameter flags="override" owner="[0xae456]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+</component>
+</connection>
+<connection connection="con_turret_020">
+<component class="turret" macro="turret_ter_m_beam_02_mk1_macro" connection="con_beam_turret_01" id="[0xae454]">
+<offset>
+<position x="117.514" y="-67.844" z="-663.378" />
+<rotation roll="120" />
+</offset>
+<animations>
+<animation part="part_socket">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="detail_xl_rotator">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="anim_lights">
+<part sequence="turret_inactive" />
+<texture>
+<channel channel="1">
+<value sequence="turret_inactive" property="u_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="detail_xl_gun">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="fx_gun_decals">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="detail_xl_barrel">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="fx_barrel_decal">
+<part sequence="turret_inactive" />
+</animation>
+<animation light="xu arealight01">
+<float sequence="turret_inactive" property="intensity" />
+</animation>
+<animation light="xu arealight002">
+<float sequence="turret_inactive" property="intensity" />
+</animation>
+</animations>
+<render>
+<parameter flags="override" owner="[0xae454]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+</component>
+</connection>
+<connection connection="con_turret_013">
+<component class="turret" macro="turret_ter_m_beam_02_mk1_macro" connection="con_beam_turret_01" id="[0xae451]">
+<offset>
+<position x="0.01032" y="135.567" z="67.03" />
+<rotation yaw="179.99995" />
+</offset>
+<animations>
+<animation part="part_socket">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="detail_xl_rotator">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="anim_lights">
+<part sequence="turret_inactive" />
+<texture>
+<channel channel="1">
+<value sequence="turret_inactive" property="u_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="detail_xl_gun">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="fx_gun_decals">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="detail_xl_barrel">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="fx_barrel_decal">
+<part sequence="turret_inactive" />
+</animation>
+<animation light="xu arealight01">
+<float sequence="turret_inactive" property="intensity" />
+</animation>
+<animation light="xu arealight002">
+<float sequence="turret_inactive" property="intensity" />
+</animation>
+</animations>
+<render>
+<parameter flags="override" owner="[0xae451]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+</component>
+</connection>
+<connection connection="con_turret_014">
+<component class="turret" macro="turret_ter_m_beam_02_mk1_macro" connection="con_beam_turret_01" id="[0xae452]">
+<offset>
+<position x="0.01032" y="135.564" z="143.13" />
+</offset>
+<animations>
+<animation part="part_socket">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="detail_xl_rotator">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="anim_lights">
+<part sequence="turret_inactive" />
+<texture>
+<channel channel="1">
+<value sequence="turret_inactive" property="u_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="detail_xl_gun">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="fx_gun_decals">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="detail_xl_barrel">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="fx_barrel_decal">
+<part sequence="turret_inactive" />
+</animation>
+<animation light="xu arealight01">
+<float sequence="turret_inactive" property="intensity" />
+</animation>
+<animation light="xu arealight002">
+<float sequence="turret_inactive" property="intensity" />
+</animation>
+</animations>
+<render>
+<parameter flags="override" owner="[0xae452]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+</component>
+</connection>
+<connection connection="con_turret_019">
+<component class="turret" macro="turret_ter_m_beam_02_mk1_macro" connection="con_beam_turret_01" id="[0xae453]">
+<offset>
+<position x="-117.511" y="-67.851" z="-666.017" />
+<rotation roll="-120" />
+</offset>
+<animations>
+<animation part="part_socket">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="detail_xl_rotator">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="anim_lights">
+<part sequence="turret_inactive" />
+<texture>
+<channel channel="1">
+<value sequence="turret_inactive" property="u_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="detail_xl_gun">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="fx_gun_decals">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="detail_xl_barrel">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="fx_barrel_decal">
+<part sequence="turret_inactive" />
+</animation>
+<animation light="xu arealight01">
+<float sequence="turret_inactive" property="intensity" />
+</animation>
+<animation light="xu arealight002">
+<float sequence="turret_inactive" property="intensity" />
+</animation>
+</animations>
+<render>
+<parameter flags="override" owner="[0xae453]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+</component>
+</connection>
+<connection connection="con_turret_005">
+<component class="turret" macro="turret_ter_m_beam_02_mk1_macro" connection="con_beam_turret_01" id="[0xae450]">
+<offset>
+<position x="-0.03755" y="135.708" z="-663.649" />
+</offset>
+<animations>
+<animation part="part_socket">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="detail_xl_rotator">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="anim_lights">
+<part sequence="turret_inactive" />
+<texture>
+<channel channel="1">
+<value sequence="turret_inactive" property="u_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="detail_xl_gun">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="fx_gun_decals">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="detail_xl_barrel">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="fx_barrel_decal">
+<part sequence="turret_inactive" />
+</animation>
+<animation light="xu arealight01">
+<float sequence="turret_inactive" property="intensity" />
+</animation>
+<animation light="xu arealight002">
+<float sequence="turret_inactive" property="intensity" />
+</animation>
+</animations>
+<render>
+<parameter flags="override" owner="[0xae450]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+</component>
+</connection>
+<connection connection="con_shieldgen_m_004">
+<component class="shieldgenerator" macro="shield_ter_m_standard_02_mk3_macro" connection="con_shieldgen_01" id="[0xae442]">
+<offset>
+<position x="-0.03755" y="135.708" z="-645.475" />
+</offset>
+</component>
+</connection>
+<connection connection="con_shieldgen_m_006">
+<component class="shieldgenerator" macro="shield_ter_m_standard_02_mk3_macro" connection="con_shieldgen_01" id="[0xae443]">
+<offset>
+<position x="0.01032" y="135.565" z="104.974" />
+</offset>
+</component>
+</connection>
+<connection connection="con_shieldgen_m_009">
+<component class="shieldgenerator" macro="shield_ter_m_standard_02_mk3_macro" connection="con_shieldgen_01" id="[0xae447]">
+<offset>
+<position x="-117.511" y="-67.851" z="-647.844" />
+<rotation roll="-120" />
+</offset>
+</component>
+</connection>
+<connection connection="con_shieldgen_m_013">
+<component class="shieldgenerator" macro="shield_ter_m_standard_02_mk3_macro" connection="con_shieldgen_01" id="[0xae44b]">
+<offset>
+<position x="-371.322" y="146.008" z="559.958" />
+<rotation yaw="46.14115" pitch="-16.71855" roll="-75.25783" />
+</offset>
+</component>
+</connection>
+<connection connection="con_shieldgen_m_012">
+<component class="shieldgenerator" macro="shield_ter_m_standard_02_mk3_macro" connection="con_shieldgen_01" id="[0xae44a]">
+<offset>
+<position x="-116.889" y="-67.502" z="104.901" />
+<rotation roll="-120" />
+</offset>
+</component>
+</connection>
+<connection connection="con_shieldgen_m_011">
+<component class="shieldgenerator" macro="shield_ter_m_standard_02_mk3_macro" connection="con_shieldgen_01" id="[0xae449]">
+<offset>
+<position x="117.385" y="-67.78" z="104.901" />
+<rotation roll="119.99998" />
+</offset>
+</component>
+</connection>
+<connection connection="con_shieldgen_m_010">
+<component class="shieldgenerator" macro="shield_ter_m_standard_02_mk3_macro" connection="con_shieldgen_01" id="[0xae448]">
+<offset>
+<position x="117.514" y="-67.844" z="-645.205" />
+<rotation roll="119.99998" />
+</offset>
+</component>
+</connection>
+<connection connection="con_shieldgen_m_017">
+<component class="shieldgenerator" macro="shield_ter_m_standard_02_mk3_macro" connection="con_shieldgen_01" id="[0xae445]">
+<offset>
+<position x="-94.759" y="54.69" z="-665.307" />
+<rotation roll="-60" />
+</offset>
+</component>
+</connection>
+<connection connection="con_shieldgen_m_016">
+<component class="shieldgenerator" macro="shield_ter_m_standard_02_mk3_macro" connection="con_shieldgen_01" id="[0xae44f]">
+<offset>
+<position x="72.024" y="-110.651" z="104.856" />
+<rotation yaw="-179.99997" roll="179.99998" />
+</offset>
+</component>
+</connection>
+<connection connection="con_shieldgen_m_015">
+<component class="shieldgenerator" macro="shield_ter_m_standard_02_mk3_macro" connection="con_shieldgen_01" id="[0xae44d]">
+<offset>
+<position x="59.758" y="-393.78" z="560.587" />
+<rotation yaw="-10.72863" pitch="47.51617" roll="166.4007" />
+</offset>
+</component>
+</connection>
+<connection connection="con_shieldgen_m_014">
+<component class="shieldgenerator" macro="shield_ter_m_standard_02_mk3_macro" connection="con_shieldgen_01" id="[0xae44c]">
+<offset>
+<position x="371.133" y="146.402" z="559.986" />
+<rotation yaw="-46.32078" pitch="-16.06239" roll="75.30847" />
+</offset>
+</component>
+</connection>
+<connection connection="con_shieldgen_m_019">
+<component class="shieldgenerator" macro="shield_ter_m_standard_02_mk3_macro" connection="con_shieldgen_01" id="[0xae446]">
+<offset>
+<position x="94.732" y="54.734" z="-662.939" />
+<rotation roll="60" />
+</offset>
+</component>
+</connection>
+<connection connection="con_shieldgen_m_018">
+<component class="shieldgenerator" macro="shield_ter_m_standard_02_mk3_macro" connection="con_shieldgen_01" id="[0xae444]">
+<offset>
+<position x="-0.007401" y="-109.412" z="-662.668" />
+<rotation roll="179.99998" />
+</offset>
+</component>
+</connection>
+<connection connection="con_shieldgen_m_020">
+<component class="shieldgenerator" macro="shield_ter_m_standard_02_mk3_macro" connection="con_shieldgen_01" id="[0xae44e]">
+<offset>
+<position x="-70.974" y="-110.651" z="104.856" />
+<rotation yaw="-179.99997" roll="179.99998" />
+</offset>
+</component>
+</connection>
+<connection connection="con_cockpit" macro="con_cockpit">
+<component class="cockpit" macro="bridge_tel_xl_01_macro" connection="con_cockpit" id="[0xae427]">
+<offset default="1" />
+<animations>
+<animation part="dummy_battlestate">
+<part sequence="battlestate_green" />
+</animation>
+<animation part="part_console_displays_007">
+<part sequence="deactivated" />
+<texture>
+<channel channel="2">
+<value sequence="deactivated" property="u_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="part_console_displays_006">
+<part sequence="deactivated" />
+<texture>
+<channel channel="2">
+<value sequence="deactivated" property="u_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="part_console_displays_001">
+<part sequence="active">
+<control current="active" />
+</part>
+<texture>
+<channel channel="2">
+<value sequence="active" property="u_offset">
+<control current="active" />
+</value>
+</channel>
+</texture>
+</animation>
+<animation part="part_console_displays_002">
+<part sequence="deactivated" />
+<texture>
+<channel channel="2">
+<value sequence="deactivated" property="u_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="part_console_displays_003">
+<part sequence="deactivated" />
+<texture>
+<channel channel="2">
+<value sequence="deactivated" property="u_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="part_console_displays_004">
+<part sequence="deactivated" />
+<texture>
+<channel channel="2">
+<value sequence="deactivated" property="u_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="part_console_displays_005">
+<part sequence="deactivated" />
+<texture>
+<channel channel="2">
+<value sequence="deactivated" property="u_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="anim_door_right">
+<part sequence="deactivated" />
+</animation>
+<animation part="anim_door_left">
+<part sequence="deactivated" />
+</animation>
+<animation part="dummy_sound_animation">
+<part sequence="deactivated" />
+<texture>
+<channel channel="1">
+<value sequence="deactivated" property="v_offset" />
+<value sequence="deactivated" property="u_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="detail_m_light_left">
+<part sequence="deactivated" />
+</animation>
+<animation part="detail_m_decals_left">
+<part sequence="deactivated" />
+</animation>
+<animation part="detail_m_decals_right">
+<part sequence="deactivated" />
+</animation>
+<animation part="detail_m_light_right">
+<part sequence="deactivated" />
+</animation>
+<animation light="xu omni012">
+<color sequence="battlestate_green" property="color" />
+</animation>
+<animation light="xu omni013">
+<color sequence="battlestate_green" property="color" />
+</animation>
+<animation light="xu omni020">
+<color sequence="battlestate_green" property="color" />
+</animation>
+<animation light="xu omni014">
+<color sequence="battlestate_green" property="color" />
+</animation>
+<animation light="xu omni021">
+<color sequence="battlestate_green" property="color" />
+</animation>
+<animation light="xu omni01">
+<color sequence="battlestate_green" property="color" />
+</animation>
+<animation light="xu omni002">
+<color sequence="battlestate_green" property="color" />
+</animation>
+<animation light="xu omni005">
+<color sequence="battlestate_green" property="color" />
+</animation>
+<animation light="xu omni004">
+<color sequence="battlestate_green" property="color" />
+</animation>
+<animation light="xu omni003">
+<color sequence="battlestate_green" property="color" />
+</animation>
+<animation light="xu omni011">
+<color sequence="battlestate_green" property="color" />
+</animation>
+<animation light="xu omni010">
+<color sequence="battlestate_green" property="color" />
+</animation>
+<animation light="xu omni019">
+<color sequence="battlestate_green" property="color" />
+</animation>
+<animation light="xu omni006">
+<color sequence="battlestate_green" property="color" />
+</animation>
+<animation light="xu omni007">
+<color sequence="battlestate_green" property="color" />
+<color sequence="deactivated" property="color" />
+<float sequence="deactivated" property="intensity" />
+</animation>
+<animation light="xu omni009">
+<color sequence="battlestate_green" property="color" />
+<float sequence="battlestate_green" property="intensity" />
+</animation>
+<animation light="xu omni008">
+<color sequence="battlestate_green" property="color" />
+<float sequence="battlestate_green" property="intensity" />
+</animation>
+<animation light="xu arealight002">
+<color sequence="battlestate_green" property="color" />
+</animation>
+<animation light="xu arealight007">
+<color sequence="battlestate_green" property="color" />
+</animation>
+</animations>
+<render>
+<parameter value="assets\textures\ui\factions\faction_player_diffhq" name="diffuse_map" type="texture" />
+</render>
+<connections>
+<connection connection="entities">
+<component class="computer" macro="character_defence_computer_01_macro" connection="parentconnection" code="DKR-633" owner="player" known="1" read="0" id="[0xae462]">
+<listeners>
+<listener listener="[0xae425]" event="killed" />
+</listeners>
+<traits flags="remotecommable">
+<skills morale="6" />
+</traits>
+<entity type="officer" post="defence" />
+</component>
+</connection>
+<connection connection="entities">
+<component class="computer" macro="character_engineer_computer_01_macro" connection="parentconnection" code="SBE-112" owner="player" known="1" read="0" id="[0xae473]">
+<listeners>
+<listener listener="[0xae425]" event="killed" />
+</listeners>
+<traits flags="remotecommable">
+<skills engineering="6" morale="6" />
+</traits>
+<entity type="officer" post="engineer" />
+</component>
+</connection>
+<connection connection="entities">
+<component class="computer" macro="character_shiptrader_computer_01_macro" connection="parentconnection" code="OPJ-731" owner="player" known="1" read="0" id="[0xae476]">
+<listeners>
+<listener listener="[0xae425]" event="killed" />
+</listeners>
+<traits flags="remotecommable">
+<skills morale="6" />
+</traits>
+<entity type="trader" post="shiptrader" />
+</component>
+</connection>
+<connection connection="entities">
+<component class="npc" macro="character_teladi_male_generic_01_macro" connection="parentconnection" name="Uguras Hanirases Tissmaneos III" code="OLI-294" owner="player" known="1" read="0" page="10506" id="[0xae47a]">
+<listeners>
+<listener listener="[0xae425]" event="killed" />
+</listeners>
+<offset>
+<position x="-0.0201" y="-0.7772" z="9.205" />
+</offset>
+<render>
+<parameter flags="override" owner="[0xae47a]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+<traits flags="remotecommable" />
+<entity type="officer" post="aipilot" />
+<blackboard>
+<value name="$StateMachine" type="cue" value="481233" />
+</blackboard>
+<npcseed seed="17435902854528862686" />
+<connections>
+<connection connection="roomposition" id="[0xae47b]">
+<connected connection="[0xae47c]" />
+</connection>
+</connections>
+</component>
+</connection>
+<connection connection="entities">
+<component class="npc" macro="character_argon_male_cau_crew_01_macro" connection="parentconnection" name="Rand Halter" code="JZD-903" owner="player" known="1" read="0" page="10101" id="[0x11eae4]">
+<events>
+<event event="objectsignalled" time="91.4629">
+<param type="string" value="10278" />
+<param2 type="cue" value="686016" />
+<param3 />
+</event>
+</events>
+<offset>
+<position x="-4.817" y="-1.392" z="7.97" />
+</offset>
+<render>
+<parameter flags="override" owner="[0x11eae4]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+<traits flags="remotecommable|temporary" role="service">
+<skills boarding="1" engineering="12" management="1" morale="10" piloting="5" />
+</traits>
+<entity type="crowd" />
+<blackboard>
+<value name="$StateMachine" type="cue" value="499903" />
+<value name="$HiringFee" type="money" value="3357816000" />
+</blackboard>
+<npcseed seed="15809344309844458330" />
+<connections>
+<connection connection="roleobject" id="[0x11eae7]">
+<connected connection="[0x11eae8]" />
+</connection>
+<connection connection="roomposition" id="[0x11eae5]">
+<connected connection="[0x11eae6]" />
+</connection>
+</connections>
+</component>
+</connection>
+<connection connection="entities">
+<component class="npc" macro="character_argon_male_asi_pilot_01_macro" connection="parentconnection" name="Orlan Brano" code="VNM-276" owner="player" known="1" read="0" page="10103" id="[0x11eaf8]">
+<events>
+<event event="objectsignalled" time="121.165">
+<param type="string" value="10455" />
+<param2 />
+<param3 />
+</event>
+</events>
+<offset>
+<position x="-2.352" y="-1.307" z="4.902" />
+<rotation yaw="89.99995" />
+</offset>
+<render>
+<parameter flags="override" owner="[0x11eaf8]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+<traits flags="remotecommable|temporary" role="marine">
+<skills boarding="11" engineering="3" management="3" morale="11" piloting="5" />
+</traits>
+<entity type="crowd" />
+<blackboard>
+<value name="$StateMachine" type="cue" value="500063" />
+<value name="$HiringFee" type="money" value="2148601000" />
+</blackboard>
+<npcseed seed="1539953482073263349" />
+<connections>
+<connection connection="roleobject" id="[0x11eafb]">
+<connected connection="[0x11eafc]" />
+</connection>
+<connection connection="roomposition" id="[0x11eaf9]">
+<connected connection="[0x11eafa]" />
+</connection>
+</connections>
+</component>
+</connection>
+<connection connection="entities">
+<component class="npc" macro="character_argon_male_cau_crew_01_macro" connection="parentconnection" name="Mak Tarren" code="VTA-881" owner="player" known="1" read="0" page="10104" id="[0x11eb02]">
+<events>
+<event event="objectsignalled" time="102.544">
+<param type="string" value="10278" />
+<param2 type="cue" value="686035" />
+<param3 />
+</event>
+</events>
+<offset>
+<position x="5.978" y="-1.661" z="0.1772" />
+<rotation yaw="90.00002" />
+</offset>
+<render>
+<parameter flags="override" owner="[0x11eb02]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+<traits flags="remotecommable|temporary" role="service">
+<skills boarding="1" engineering="10" management="2" morale="10" piloting="6" />
+</traits>
+<entity type="crowd" />
+<blackboard>
+<value name="$StateMachine" type="cue" value="500143" />
+<value name="$HiringFee" type="money" value="752964000" />
+</blackboard>
+<npcseed seed="1996291101080466745" />
+<connections>
+<connection connection="roleobject" id="[0x11eb05]">
+<connected connection="[0x11eb06]" />
+</connection>
+<connection connection="roomposition" id="[0x11eb03]">
+<connected connection="[0x11eb04]" />
+</connection>
+</connections>
+</component>
+</connection>
+<connection connection="entities">
+<component class="npc" macro="character_argon_female_afr_crew_01_macro" connection="parentconnection" name="Hayla Motoli" code="VXS-573" owner="player" known="1" read="0" page="10107" id="[0x11eb1b]">
+<events>
+<event event="objectsignalled" time="122.298">
+<param type="string" value="10278" />
+<param2 type="cue" value="686050" />
+<param3 />
+</event>
+</events>
+<offset>
+<position x="8.649" y="-1.393" z="11.42" />
+</offset>
+<render>
+<parameter flags="override" owner="[0x11eb1b]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+<traits flags="remotecommable|temporary" role="service">
+<skills boarding="1" engineering="11" management="1" morale="11" piloting="4" />
+</traits>
+<entity type="crowd" />
+<blackboard>
+<value name="$StateMachine" type="cue" value="500343" />
+<value name="$HiringFee" type="money" value="2148627000" />
+</blackboard>
+<npcseed seed="7905087369971973988" />
+<connections>
+<connection connection="roleobject" id="[0x11eb1e]">
+<connected connection="[0x11eb1f]" />
+</connection>
+<connection connection="roomposition" id="[0x11eb1c]">
+<connected connection="[0x11eb1d]" />
+</connection>
+</connections>
+</component>
+</connection>
+<connection connection="entities">
+<component class="npc" macro="character_argon_male_afr_crew_01_macro" connection="parentconnection" name="Saman Noore" code="IFN-077" owner="player" known="1" read="0" page="10103" id="[0x11eb20]">
+<events>
+<event event="objectsignalled" time="78.1223">
+<param type="string" value="10278" />
+<param2 type="cue" value="686053" />
+<param3 />
+</event>
+</events>
+<offset>
+<position x="-5.953" y="-1.661" z="0.1766" />
+<rotation yaw="-89.99996" />
+</offset>
+<render>
+<parameter flags="override" owner="[0x11eb20]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+<traits flags="remotecommable|temporary" role="service">
+<skills boarding="3" engineering="11" management="2" morale="11" piloting="3" />
+</traits>
+<entity type="crowd" />
+<blackboard>
+<value name="$StateMachine" type="cue" value="500383" />
+<value name="$HiringFee" type="money" value="2148628000" />
+</blackboard>
+<npcseed seed="661670698625482664" />
+<connections>
+<connection connection="roleobject" id="[0x11eb23]">
+<connected connection="[0x11eb24]" />
+</connection>
+<connection connection="roomposition" id="[0x11eb21]">
+<connected connection="[0x11eb22]" />
+</connection>
+</connections>
+</component>
+</connection>
+<connection connection="con_commander" id="[0xae47c]">
+<connected connection="[0xae47b]" />
+</connection>
+<connection connection="con_npc_stand_007" id="[0x11eafa]">
+<connected connection="[0x11eaf9]" />
+</connection>
+<connection connection="con_commander004" id="[0x11eae6]">
+<connected connection="[0x11eae5]" />
+</connection>
+<connection connection="con_commander005" id="[0x11eb22]">
+<connected connection="[0x11eb21]" />
+</connection>
+<connection connection="con_commander006" id="[0x11eb04]">
+<connected connection="[0x11eb03]" />
+</connection>
+<connection connection="con_commander001" id="[0x11eb1d]">
+<connected connection="[0x11eb1c]" />
+</connection>
+</connections>
+</component>
+</connection>
+<connection connection="roleentities" id="[0x11eae8]">
+<connected connection="[0x11eae7]" />
+</connection>
+<connection connection="roleentities" id="[0x11eaed]">
+<connected connection="[0x11eaec]" />
+</connection>
+<connection connection="roleentities" id="[0x11eaf2]">
+<connected connection="[0x11eaf1]" />
+</connection>
+<connection connection="roleentities" id="[0x11eaf7]">
+<connected connection="[0x11eaf6]" />
+</connection>
+<connection connection="roleentities" id="[0x11eafc]">
+<connected connection="[0x11eafb]" />
+</connection>
+<connection connection="roleentities" id="[0x11eb01]">
+<connected connection="[0x11eb00]" />
+</connection>
+<connection connection="roleentities" id="[0x11eb06]">
+<connected connection="[0x11eb05]" />
+</connection>
+<connection connection="roleentities" id="[0x11eb0b]">
+<connected connection="[0x11eb0a]" />
+</connection>
+<connection connection="roleentities" id="[0x11eb10]">
+<connected connection="[0x11eb0f]" />
+</connection>
+<connection connection="roleentities" id="[0x11eb15]">
+<connected connection="[0x11eb14]" />
+</connection>
+<connection connection="roleentities" id="[0x11eb1a]">
+<connected connection="[0x11eb19]" />
+</connection>
+<connection connection="roleentities" id="[0x11eb1f]">
+<connected connection="[0x11eb1e]" />
+</connection>
+<connection connection="roleentities" id="[0x11eb24]">
+<connected connection="[0x11eb23]" />
+</connection>
+<connection connection="roleentities" id="[0x11eb29]">
+<connected connection="[0x11eb28]" />
+</connection>
+<connection connection="roleentities" id="[0x11eb2e]">
+<connected connection="[0x11eb2d]" />
+</connection>
+<connection connection="roleentities" id="[0x11eb33]">
+<connected connection="[0x11eb32]" />
+</connection>
+<connection connection="roleentities" id="[0x11eb38]">
+<connected connection="[0x11eb37]" />
+</connection>
+<connection connection="roleentities" id="[0x11eb3d]">
+<connected connection="[0x11eb3c]" />
+</connection>
+<connection connection="roleentities" id="[0x11eb42]">
+<connected connection="[0x11eb41]" />
+</connection>
+<connection connection="roleentities" id="[0x11eb47]">
+<connected connection="[0x11eb46]" />
+</connection>
+<connection connection="roleentities" id="[0x11eb4c]">
+<connected connection="[0x11eb4b]" />
+</connection>
+<connection connection="roleentities" id="[0x11eb51]">
+<connected connection="[0x11eb50]" />
+</connection>
+<connection connection="roleentities" id="[0x11eb56]">
+<connected connection="[0x11eb55]" />
+</connection>
+<connection connection="roleentities" id="[0x11eb5b]">
+<connected connection="[0x11eb5a]" />
+</connection>
+<connection connection="roleentities" id="[0x11eb60]">
+<connected connection="[0x11eb5f]" />
+</connection>
+<connection connection="roleentities" id="[0x11eb65]">
+<connected connection="[0x11eb64]" />
+</connection>
+<connection connection="roleentities" id="[0x11eb6a]">
+<connected connection="[0x11eb69]" />
+</connection>
+<connection connection="roleentities" id="[0x11eb6f]">
+<connected connection="[0x11eb6e]" />
+</connection>
+<connection connection="roleentities" id="[0x11eb74]">
+<connected connection="[0x11eb73]" />
+</connection>
+<connection connection="roleentities" id="[0x11eb79]">
+<connected connection="[0x11eb78]" />
+</connection>
+<connection connection="roleentities" id="[0x11eb7e]">
+<connected connection="[0x11eb7d]" />
+</connection>
+<connection connection="roleentities" id="[0x11eb83]">
+<connected connection="[0x11eb82]" />
+</connection>
+<connection connection="roleentities" id="[0x11eb88]">
+<connected connection="[0x11eb87]" />
+</connection>
+<connection connection="roleentities" id="[0x11eb8d]">
+<connected connection="[0x11eb8c]" />
+</connection>
+<connection connection="roleentities" id="[0x11eb92]">
+<connected connection="[0x11eb91]" />
+</connection>
+<connection connection="roleentities" id="[0x11eb97]">
+<connected connection="[0x11eb96]" />
+</connection>
+<connection connection="roleentities" id="[0x11eb9c]">
+<connected connection="[0x11eb9b]" />
+</connection>
+<connection connection="roleentities" id="[0x11eba1]">
+<connected connection="[0x11eba0]" />
+</connection>
+<connection connection="roleentities" id="[0x11eba6]">
+<connected connection="[0x11eba5]" />
+</connection>
+<connection connection="roleentities" id="[0x11ebab]">
+<connected connection="[0x11ebaa]" />
+</connection>
+<connection connection="roleentities" id="[0x11ebb0]">
+<connected connection="[0x11ebaf]" />
+</connection>
+<connection connection="con_engine_03">
+<component class="engine" macro="engine_ter_xl_travel_01_mk1_macro" connection="engineconnection01" id="[0xae45d]">
+<offset>
+<position x="0.1351" y="89.627" z="-893.912" />
+</offset>
+<animations>
+<animation part="detail_xs_lookat_target">
+<part sequence="flaps_right_minmax" />
+</animation>
+</animations>
+<render>
+<parameter flags="override" value="0.180174" owner="[0xae45d]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+</component>
+</connection>
+<connection connection="con_engine_02">
+<component class="engine" macro="engine_ter_xl_travel_01_mk1_macro" connection="engineconnection01" id="[0xae45e]">
+<offset>
+<position x="-77.449" y="-44.746" z="-893.912" />
+</offset>
+<animations>
+<animation part="detail_xs_lookat_target">
+<part sequence="flaps_right_minmax" />
+</animation>
+</animations>
+<render>
+<parameter flags="override" value="0.180174" owner="[0xae45e]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+</component>
+</connection>
+<connection connection="con_engine_01">
+<component class="engine" macro="engine_ter_xl_travel_01_mk1_macro" connection="engineconnection01" id="[0xae45f]">
+<offset>
+<position x="77.533" y="-44.786" z="-893.912" />
+</offset>
+<animations>
+<animation part="detail_xs_lookat_target">
+<part sequence="flaps_right_minmax" />
+</animation>
+</animations>
+<render>
+<parameter flags="override" value="0.180174" owner="[0xae45f]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+</component>
+</connection>
+<connection connection="con_shieldgen_xl_01">
+<component class="shieldgenerator" macro="shield_ter_xl_standard_01_mk2_macro" connection="con_shieldgen_01" id="[0xae461]">
+<offset>
+<position x="95.88" y="55.36" z="104.692" />
+<rotation yaw="-89.99998" pitch="60" />
+</offset>
+</component>
+</connection>
+<connection connection="con_turret_laser_l_01">
+<component class="turret" macro="turret_ter_l_beam_01_mk1_macro" connection="con_turret_laser_l" lastshottime="-3" id="[0xae45c]">
+<offset>
+<position x="0.01241" y="-110.667" z="104.734" />
+<rotation roll="179.99998" />
+</offset>
+<animations>
+<animation part="part_socket">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="anim_lights">
+<part sequence="turret_inactive" />
+<texture>
+<channel channel="1">
+<value sequence="turret_inactive" property="u_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="part_rotator">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="anim_gun">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="detail_m_rotator">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="anim_barrel">
+<part sequence="turret_inactive" />
+</animation>
+<animation light="xu arealight01">
+<float sequence="turret_inactive" property="intensity" />
+</animation>
+<animation light="xu arealight02">
+<float sequence="turret_inactive" property="intensity" />
+</animation>
+</animations>
+<render>
+<parameter flags="override" owner="[0xae45c]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+</component>
+</connection>
+<connection connection="con_dockarea_tel_xl_carrier_01_c" macro="con_dockarea_tel_xl_carrier_01_c">
+<component class="dockarea" macro="dockarea_tel_xl_carrier_01_macro" connection="connection01" name="{20104, 70001} {20005,8003}1" id="[0xae428]">
+<offset default="1" />
+<render>
+<parameter value="assets\textures\ui\factions\faction_player_diffhq" name="diffuse_map" type="texture" />
+</render>
+<connections>
+<connection connection="connectionfor_dockingbay_arg_s_01_macro1" macro="connectionfor_dockingbay_arg_s_01_macro1">
+<component class="dockingbay" macro="dockingbay_arg_s_01_macro" connection="space" id="[0xae429]">
+<events>
+<event event="unlockplatformtriggers" time="6.64176" group="transporter_01" />
+</events>
+<offset default="1" />
+<animations>
+<animation part="detail_xl_hatch">
+<part sequence="deactivated" />
+</animation>
+<animation part="dummy_sound_animation">
+<part sequence="deactivated" />
+<texture>
+<channel channel="1">
+<value sequence="deactivated" property="v_offset" />
+<value sequence="deactivated" property="u_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="fx_ne_base">
+<part sequence="dockingbay_unassigned" />
+</animation>
+<animation part="anim_door_right">
+<part sequence="deactivated" />
+</animation>
+<animation part="anim_door_left">
+<part sequence="deactivated" />
+</animation>
+<animation part="anim_door_02">
+<part sequence="dockingbay_idle" />
+</animation>
+<animation part="anim_lights_ship_assigned">
+<part sequence="dockingbay_unassigned" />
+<texture>
+<channel channel="1">
+<value sequence="dockingbay_unassigned" property="v_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="anim_fence_01">
+<part sequence="dockingbay_fence_closed" />
+</animation>
+<animation part="anim_fence_02">
+<part sequence="dockingbay_fence_closed" />
+</animation>
+<animation part="anim_floor">
+<part sequence="dockingbay_idle" />
+</animation>
+<animation part="anim_door_01">
+<part sequence="dockingbay_idle" />
+</animation>
+<animation part="fx_ne_dots">
+<part sequence="loop" />
+<texture>
+<channel channel="3">
+<value sequence="loop" property="v_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="detail_m_light_right">
+<part sequence="deactivated" />
+</animation>
+<animation part="detail_m_decals_left">
+<part sequence="deactivated" />
+</animation>
+<animation part="detail_m_light_left">
+<part sequence="deactivated" />
+</animation>
+<animation part="detail_m_decals_right">
+<part sequence="deactivated" />
+</animation>
+<animation part="detail_s_door_02">
+<part sequence="dockingbay_idle" />
+</animation>
+<animation part="detail_xl_cargotube_bottom">
+<part sequence="dockingbay_idle" />
+</animation>
+<animation part="detail_s_floor">
+<part sequence="dockingbay_idle" />
+</animation>
+<animation part="anim_cargotubelight">
+<part sequence="loop" />
+<texture>
+<channel channel="1">
+<value sequence="loop" property="u_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="detail_xl_cargotube_top">
+<part sequence="dockingbay_idle" />
+</animation>
+<animation part="fx_lightcones">
+<part sequence="dockingbay_unassigned" />
+<texture>
+<channel channel="2">
+<value sequence="dockingbay_unassigned" property="v_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="detail_s_door_01">
+<part sequence="dockingbay_idle" />
+</animation>
+<animation light="xu omni004">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu omni007">
+<color sequence="deactivated" property="color" />
+<float sequence="deactivated" property="intensity" />
+</animation>
+<animation light="xu omni05">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight50">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight051">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight052">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight053">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight054">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight055">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight056">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight057">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight058">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight059">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight060">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight061">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight015">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight016">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight036">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight037">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight038">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight039">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight040">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight041">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight042">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight043">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight044">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight045">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight046">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight047">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight048">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight049">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu arealight005">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu arealight006">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu arealight007">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu arealight008">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu arealight009">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu arealight010">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu arealight011">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu arealight012">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+</animations>
+<render>
+<parameter value="assets\textures\ui\factions\faction_player_diffhq" name="diffuse_map" type="texture" />
+</render>
+<room>
+<lockeddoors>
+<lock group="transporter_01" />
+</lockeddoors>
+</room>
+<connections>
+<connection connection="entities">
+<component class="npc" macro="character_argon_male_asi_crew_01_macro" connection="parentconnection" name="Met Yatar" code="URM-526" owner="player" known="1" read="0" page="10105" id="[0x11eb25]">
+<events>
+<event event="objectsignalled" time="85.9081">
+<param type="string" value="10278" />
+<param2 type="cue" value="686056" />
+<param3 />
+</event>
+</events>
+<offset>
+<position x="4.478" y="-0.005846" z="18.322" />
+<rotation yaw="-144.99997" />
+</offset>
+<render>
+<parameter flags="override" owner="[0x11eb25]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+<traits flags="remotecommable|temporary" role="service">
+<skills boarding="1" engineering="11" management="1" morale="11" piloting="5" />
+</traits>
+<entity type="crowd" />
+<blackboard>
+<value name="$StateMachine" type="cue" value="500423" />
+<value name="$HiringFee" type="money" value="2148610000" />
+</blackboard>
+<npcseed seed="3882734836237074493" />
+<connections>
+<connection connection="roleobject" id="[0x11eb28]">
+<connected connection="[0x11eb29]" />
+</connection>
+<connection connection="roomposition" id="[0x11eb26]">
+<connected connection="[0x11eb27]" />
+</connection>
+</connections>
+</component>
+</connection>
+<connection connection="entities">
+<component class="npc" macro="character_argon_male_cau_pilot_01_macro" connection="parentconnection" name="Rikerd Springer" code="JOW-917" owner="player" known="1" read="0" page="10103" id="[0x11eb57]">
+<offset>
+<position x="17.268" y="-2.489" z="19.662" />
+<rotation yaw="-90.00001" />
+</offset>
+<render>
+<parameter flags="override" owner="[0x11eb57]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+<traits flags="remotecommable|intransit|temporary" role="marine">
+<skills boarding="10" engineering="2" management="3" morale="10" piloting="6" />
+</traits>
+<entity type="crowd" />
+<blackboard>
+<value name="$StateMachine" type="cue" value="500823" />
+<value name="$HiringFee" type="money" value="752966000" />
+<value name="$casual" type="integer" value="1" />
+<value name="$state_machine_critical" type="integer" />
+</blackboard>
+<npcseed seed="142915018756342626" />
+<connections>
+<connection connection="roleobject" id="[0x11eb5a]">
+<connected connection="[0x11eb5b]" />
+</connection>
+<connection connection="roomposition" id="[0x18b75d]">
+<connected connection="[0x18b75e]" />
+</connection>
+</connections>
+</component>
+</connection>
+<connection connection="connection001" id="[0x11eb27]">
+<connected connection="[0x11eb26]" />
+</connection>
+</connections>
+</component>
+</connection>
+<connection connection="connectionfor_dockingbay_arg_m_01_macro" macro="connectionfor_dockingbay_arg_m_01_macro">
+<component class="dockingbay" macro="dockingbay_arg_m_01_macro" connection="space" id="[0xae42a]">
+<offset default="1" />
+<animations>
+<animation part="detail_xl_hatch">
+<part sequence="deactivated" />
+</animation>
+<animation part="fx_warnlights">
+<part sequence="dockingbay_warning_inactive" />
+<texture>
+<channel channel="1">
+<value sequence="dockingbay_warning_inactive" property="u_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="dummy_sound_animation">
+<part sequence="deactivated" />
+<texture>
+<channel channel="1">
+<value sequence="deactivated" property="v_offset" />
+<value sequence="deactivated" property="u_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="anim_door_right">
+<part sequence="deactivated" />
+</animation>
+<animation part="fx_lightcones_toggle">
+<part sequence="dockingbay_unassigned" />
+<texture>
+<channel channel="2">
+<value sequence="dockingbay_unassigned" property="v_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="anim_door_left">
+<part sequence="deactivated" />
+</animation>
+<animation part="anim_door_02">
+<part sequence="dockingbay_idle" />
+</animation>
+<animation part="anim_door_01">
+<part sequence="dockingbay_idle" />
+</animation>
+<animation part="anim_floor">
+<part sequence="dockingbay_idle" />
+</animation>
+<animation part="anim_fence">
+<part sequence="dockingbay_fence_closed" />
+</animation>
+<animation part="detail_m_light_right">
+<part sequence="deactivated" />
+</animation>
+<animation part="detail_m_decals_right">
+<part sequence="deactivated" />
+</animation>
+<animation part="detail_m_light_left">
+<part sequence="deactivated" />
+</animation>
+<animation part="detail_m_decals_left">
+<part sequence="deactivated" />
+</animation>
+<animation part="detail_xs_decals_floor">
+<part sequence="dockingbay_idle" />
+</animation>
+<animation part="detail_m_cargotube_bottom">
+<part sequence="dockingbay_idle" />
+</animation>
+<animation part="anim_cargotubelights">
+<part sequence="loop" />
+<texture>
+<channel channel="1">
+<value sequence="loop" property="u_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="detail_s_cargotube_top">
+<part sequence="dockingbay_idle" />
+</animation>
+<animation light="xu omni006">
+<float sequence="dockingbay_warning_inactive" property="intensity" />
+</animation>
+<animation light="xu omni007">
+<float sequence="dockingbay_warning_inactive" property="intensity" />
+<color sequence="deactivated" property="color" />
+<float sequence="deactivated" property="intensity" />
+</animation>
+<animation light="xu omni008">
+<float sequence="dockingbay_warning_inactive" property="intensity" />
+</animation>
+<animation light="xu omni009">
+<float sequence="dockingbay_warning_inactive" property="intensity" />
+</animation>
+<animation light="xu omni010">
+<float sequence="dockingbay_warning_inactive" property="intensity" />
+</animation>
+<animation light="xu omni011">
+<float sequence="dockingbay_warning_inactive" property="intensity" />
+</animation>
+<animation light="xu omni012">
+<float sequence="dockingbay_warning_inactive" property="intensity" />
+</animation>
+<animation light="xu omni013">
+<float sequence="dockingbay_warning_inactive" property="intensity" />
+</animation>
+<animation light="xu omni014">
+<float sequence="dockingbay_warning_inactive" property="intensity" />
+</animation>
+<animation light="xu omni015">
+<float sequence="dockingbay_warning_inactive" property="intensity" />
+</animation>
+<animation light="xu omni016">
+<float sequence="dockingbay_warning_inactive" property="intensity" />
+</animation>
+<animation light="xu omni017">
+<float sequence="dockingbay_warning_inactive" property="intensity" />
+</animation>
+<animation light="xu omni018">
+<float sequence="dockingbay_warning_inactive" property="intensity" />
+</animation>
+<animation light="xu omni019">
+<float sequence="dockingbay_warning_inactive" property="intensity" />
+</animation>
+<animation light="xu omni02">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu omni003">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu omni004">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu omni005">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu arealight063">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu arealight064">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu arealight065">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu arealight066">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+</animations>
+<render>
+<parameter value="assets\textures\ui\factions\faction_player_diffhq" name="diffuse_map" type="texture" />
+</render>
+<connections>
+<connection connection="entities">
+<component class="npc" macro="character_argon_male_afr_crew_01_macro" connection="parentconnection" name="Warron Mortell" code="VFC-092" owner="player" known="1" read="0" page="10105" id="[0x11eb07]">
+<events>
+<event event="objectsignalled" time="83.7406">
+<param type="string" value="10278" />
+<param2 type="cue" value="686038" />
+<param3 />
+</event>
+</events>
+<offset>
+<position x="52.573" y="-0.005846" z="84.421" />
+<rotation yaw="-64.99996" />
+</offset>
+<render>
+<parameter flags="override" owner="[0x11eb07]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+<traits flags="remotecommable|temporary" role="service">
+<skills boarding="2" engineering="10" management="2" morale="12" piloting="3" />
+</traits>
+<entity type="crowd" />
+<blackboard>
+<value name="$StateMachine" type="cue" value="500183" />
+<value name="$HiringFee" type="money" value="1372553000" />
+</blackboard>
+<npcseed seed="6932213257913314816" />
+<connections>
+<connection connection="roleobject" id="[0x11eb0a]">
+<connected connection="[0x11eb0b]" />
+</connection>
+<connection connection="roomposition" id="[0x11eb08]">
+<connected connection="[0x11eb09]" />
+</connection>
+</connections>
+</component>
+</connection>
+<connection connection="entities">
+<component class="npc" macro="character_argon_female_asi_crew_01_macro" connection="parentconnection" name="Thea Cruise" code="YHU-596" owner="player" known="1" read="0" page="10108" id="[0x11eb2a]">
+<events>
+<event event="objectsignalled" time="70.9443">
+<param type="string" value="10278" />
+<param2 type="cue" value="686059" />
+<param3 />
+</event>
+</events>
+<offset>
+<position x="-22.46" y="-0.005846" z="84.588" />
+<rotation yaw="109.99998" />
+</offset>
+<render>
+<parameter flags="override" owner="[0x11eb2a]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+<traits flags="remotecommable|temporary" role="service">
+<skills boarding="3" engineering="12" management="1" morale="11" piloting="3" />
+</traits>
+<entity type="crowd" />
+<blackboard>
+<value name="$StateMachine" type="cue" value="500463" />
+<value name="$HiringFee" type="money" value="4518010000" />
+</blackboard>
+<npcseed seed="13095487805221886273" />
+<connections>
+<connection connection="roleobject" id="[0x11eb2d]">
+<connected connection="[0x11eb2e]" />
+</connection>
+<connection connection="roomposition" id="[0x11eb2b]">
+<connected connection="[0x11eb2c]" />
+</connection>
+</connections>
+</component>
+</connection>
+<connection connection="entities">
+<component class="npc" macro="character_argon_female_cau_crew_01_macro" connection="parentconnection" name="Yara Silsarna" code="LGX-406" owner="player" known="1" read="0" page="10109" id="[0x11eb48]">
+<offset>
+<position x="41.625" y="-0.005846" z="82.797" />
+</offset>
+<render>
+<parameter flags="override" owner="[0x11eb48]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+<traits flags="remotecommable|temporary" role="service">
+<skills boarding="1" engineering="10" management="2" morale="12" piloting="3" />
+</traits>
+<entity type="crowd" />
+<blackboard>
+<value name="$StateMachine" type="cue" value="500703" />
+<value name="$HiringFee" type="money" value="1372554000" />
+<value name="$casual" type="integer" value="1" />
+</blackboard>
+<npcseed seed="7033137701542126099" />
+<connections>
+<connection connection="roleobject" id="[0x11eb4b]">
+<connected connection="[0x11eb4c]" />
+</connection>
+<connection connection="roomposition" id="[0x18a468]">
+<connected connection="[0x18a469]" />
+</connection>
+</connections>
+</component>
+</connection>
+<connection connection="entities">
+<component class="npc" macro="character_argon_male_cau_crew_01_macro" connection="parentconnection" name="Terrel Sahkarna" code="GOA-638" owner="player" known="1" read="0" page="10104" id="[0x11eb61]">
+<offset>
+<position x="-40.7" y="-0.005846" z="82.797" />
+</offset>
+<render>
+<parameter flags="override" owner="[0x11eb61]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+<traits flags="remotecommable|temporary" role="service">
+<skills boarding="2" engineering="12" management="1" morale="11" piloting="5" />
+</traits>
+<entity type="crowd" />
+<blackboard>
+<value name="$StateMachine" type="cue" value="500903" />
+<value name="$HiringFee" type="money" value="4518012000" />
+<value name="$casual" type="integer" value="1" />
+</blackboard>
+<npcseed seed="16814971548651899113" />
+<connections>
+<connection connection="roleobject" id="[0x11eb64]">
+<connected connection="[0x11eb65]" />
+</connection>
+<connection connection="roomposition" id="[0x11eb62]">
+<connected connection="[0x11eb63]" />
+</connection>
+</connections>
+</component>
+</connection>
+<connection connection="entities">
+<component class="npc" macro="character_argon_female_asi_crew_01_macro" connection="parentconnection" name="Rina Teller" code="PPW-277" owner="player" known="1" read="0" page="10108" id="[0x11eb66]">
+<offset>
+<position x="26.563" y="-0.005846" z="82.797" />
+</offset>
+<render>
+<parameter flags="override" owner="[0x11eb66]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+<traits flags="remotecommable|temporary" role="service">
+<skills boarding="2" engineering="10" management="2" morale="11" piloting="6" />
+</traits>
+<entity type="crowd" />
+<blackboard>
+<value name="$StateMachine" type="cue" value="500943" />
+<value name="$HiringFee" type="money" value="1017011000" />
+<value name="$casual" type="integer" value="1" />
+</blackboard>
+<npcseed seed="1166861391464111126" />
+<connections>
+<connection connection="roleobject" id="[0x11eb69]">
+<connected connection="[0x11eb6a]" />
+</connection>
+<connection connection="roomposition" id="[0x11eb67]">
+<connected connection="[0x11eb68]" />
+</connection>
+</connections>
+</component>
+</connection>
+<connection connection="entities">
+<component class="npc" macro="character_argon_male_afr_crew_01_macro" connection="parentconnection" name="Flot Kult" code="OOI-461" owner="player" known="1" read="0" page="10101" id="[0x11eb7a]">
+<offset>
+<position x="34.165" y="-0.005846" z="82.797" />
+</offset>
+<render>
+<parameter flags="override" owner="[0x11eb7a]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+<traits flags="remotecommable|temporary" role="service">
+<skills boarding="2" engineering="11" management="1" morale="10" piloting="3" />
+</traits>
+<entity type="crowd" />
+<blackboard>
+<value name="$StateMachine" type="cue" value="501103" />
+<value name="$HiringFee" type="money" value="1593986000" />
+<value name="$casual" type="integer" value="1" />
+</blackboard>
+<npcseed seed="4122567728465032777" />
+<connections>
+<connection connection="roleobject" id="[0x11eb7d]">
+<connected connection="[0x11eb7e]" />
+</connection>
+<connection connection="roomposition" id="[0x11eb7b]">
+<connected connection="[0x11eb7c]" />
+</connection>
+</connections>
+</component>
+</connection>
+<connection connection="entities">
+<component class="npc" macro="character_argon_male_cau_crew_01_macro" connection="parentconnection" name="Tomes Aldon" code="BOQ-052" owner="player" known="1" read="0" page="10104" id="[0x11eb7f]">
+<offset>
+<position x="49.563" y="-0.005846" z="82.797" />
+</offset>
+<render>
+<parameter flags="override" owner="[0x11eb7f]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+<traits flags="remotecommable|temporary" role="service">
+<skills boarding="3" engineering="12" management="1" morale="12" piloting="3" />
+</traits>
+<entity type="crowd" />
+<blackboard>
+<value name="$StateMachine" type="cue" value="501143" />
+<value name="$HiringFee" type="money" value="6075055000" />
+<value name="$casual" type="integer" value="1" />
+</blackboard>
+<npcseed seed="6535811737046293782" />
+<connections>
+<connection connection="roleobject" id="[0x11eb82]">
+<connected connection="[0x11eb83]" />
+</connection>
+<connection connection="roomposition" id="[0x11eb80]">
+<connected connection="[0x11eb81]" />
+</connection>
+</connections>
+</component>
+</connection>
+<connection connection="entities">
+<component class="npc" macro="character_argon_male_afr_crew_01_macro" connection="parentconnection" name="Grem Aldon" code="SDB-511" owner="player" known="1" read="0" page="10101" id="[0x11eb8e]">
+<events>
+<event event="objectsignalled" time="116.118">
+<param type="string" value="10278" />
+<param2 type="cue" value="686134" />
+<param3 />
+</event>
+</events>
+<offset>
+<position x="51.291" y="-0.005846" z="83.988" />
+<rotation yaw="25.00001" />
+</offset>
+<render>
+<parameter flags="override" owner="[0x11eb8e]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+<traits flags="remotecommable|temporary" role="service">
+<skills boarding="1" engineering="12" management="2" morale="10" piloting="3" />
+</traits>
+<entity type="crowd" />
+<blackboard>
+<value name="$StateMachine" type="cue" value="501263" />
+<value name="$HiringFee" type="money" value="3357827000" />
+</blackboard>
+<npcseed seed="11665047652622825928" />
+<connections>
+<connection connection="roleobject" id="[0x11eb91]">
+<connected connection="[0x11eb92]" />
+</connection>
+<connection connection="roomposition" id="[0x11eb8f]">
+<connected connection="[0x11eb90]" />
+</connection>
+</connections>
+</component>
+</connection>
+<connection connection="entities">
+<component class="npc" macro="character_argon_female_afr_crew_01_macro" connection="parentconnection" name="Menika Cornell" code="ODK-859" owner="player" known="1" read="0" page="10106" id="[0x11eb98]">
+<offset>
+<position x="-25.588" y="-0.005846" z="82.797" />
+</offset>
+<render>
+<parameter flags="override" owner="[0x11eb98]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+<traits flags="remotecommable|temporary" role="service">
+<skills boarding="2" engineering="10" management="2" morale="10" piloting="5" />
+</traits>
+<entity type="crowd" />
+<blackboard>
+<value name="$StateMachine" type="cue" value="501343" />
+<value name="$HiringFee" type="money" value="752929000" />
+<value name="$casual" type="integer" value="1" />
+</blackboard>
+<npcseed seed="565413648523955000" />
+<connections>
+<connection connection="roleobject" id="[0x11eb9b]">
+<connected connection="[0x11eb9c]" />
+</connection>
+<connection connection="roomposition" id="[0x11eb99]">
+<connected connection="[0x11eb9a]" />
+</connection>
+</connections>
+</component>
+</connection>
+<connection connection="entities">
+<component class="npc" macro="character_argon_male_cau_crew_01_macro" connection="parentconnection" name="Lenerd Yency" code="HIU-177" owner="player" known="1" read="0" page="10104" id="[0x11eb6b]">
+<offset>
+<position x="-34.554" y="-0.005846" z="82.797" />
+</offset>
+<render>
+<parameter flags="override" owner="[0x11eb6b]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+<traits flags="remotecommable|temporary" role="service">
+<skills boarding="3" engineering="10" management="1" morale="12" piloting="5" />
+</traits>
+<entity type="crowd" />
+<blackboard>
+<value name="$StateMachine" type="cue" value="500983" />
+<value name="$HiringFee" type="money" value="1372544000" />
+<value name="$casual" type="integer" value="1" />
+</blackboard>
+<npcseed seed="6649154456421713233" />
+<connections>
+<connection connection="roleobject" id="[0x11eb6e]">
+<connected connection="[0x11eb6f]" />
+</connection>
+<connection connection="roomposition" id="[0x18ad81]">
+<connected connection="[0x18ad82]" />
+</connection>
+</connections>
+</component>
+</connection>
+<connection connection="con_npc_stand_008" id="[0x18b77c]">
+<connected connection="[0x18b77b]" />
+</connection>
+<connection connection="con_npc_stand_007" id="[0x11eb2c]">
+<connected connection="[0x11eb2b]" />
+</connection>
+<connection connection="con_npc_stand_005" id="[0x11eb90]">
+<connected connection="[0x11eb8f]" />
+</connection>
+<connection connection="con_npc_stand_004" id="[0x11eb09]">
+<connected connection="[0x11eb08]" />
+</connection>
+<connection connection="con_npc_sit_014" id="[0x11eb63]">
+<connected connection="[0x11eb62]" />
+</connection>
+<connection connection="con_npc_sit_016" id="[0x18ad82]">
+<connected connection="[0x18ad81]" />
+</connection>
+<connection connection="con_npc_sit_003" id="[0x11eb7c]">
+<connected connection="[0x11eb7b]" />
+</connection>
+<connection connection="con_npc_sit_002" id="[0x18b781]">
+<connected connection="[0x18b780]" />
+</connection>
+<connection connection="con_npc_sit_001" id="[0x11eb68]">
+<connected connection="[0x11eb67]" />
+</connection>
+<connection connection="con_npc_sit_007" id="[0x11eb81]">
+<connected connection="[0x11eb80]" />
+</connection>
+<connection connection="con_npc_sit_005" id="[0x18a469]">
+<connected connection="[0x18a468]" />
+</connection>
+<connection connection="con_npc_sit_009" id="[0x11eb9a]">
+<connected connection="[0x11eb99]" />
+</connection>
+</connections>
+</component>
+</connection>
+<connection connection="connectionfor_dockingbay_arg_s_01_macro" macro="connectionfor_dockingbay_arg_s_01_macro">
+<component class="dockingbay" macro="dockingbay_arg_s_01_macro" connection="space" id="[0xae42b]">
+<offset default="1" />
+<animations>
+<animation part="detail_xl_hatch">
+<part sequence="deactivated" />
+</animation>
+<animation part="dummy_sound_animation">
+<part sequence="deactivated" />
+<texture>
+<channel channel="1">
+<value sequence="deactivated" property="v_offset" />
+<value sequence="deactivated" property="u_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="fx_ne_base">
+<part sequence="dockingbay_unassigned" />
+</animation>
+<animation part="anim_door_right">
+<part sequence="deactivated" />
+</animation>
+<animation part="anim_door_left">
+<part sequence="deactivated" />
+</animation>
+<animation part="anim_door_02">
+<part sequence="dockingbay_idle" />
+</animation>
+<animation part="anim_lights_ship_assigned">
+<part sequence="dockingbay_unassigned" />
+<texture>
+<channel channel="1">
+<value sequence="dockingbay_unassigned" property="v_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="anim_fence_01">
+<part sequence="dockingbay_fence_closed" />
+</animation>
+<animation part="anim_fence_02">
+<part sequence="dockingbay_fence_closed" />
+</animation>
+<animation part="anim_floor">
+<part sequence="dockingbay_idle" />
+</animation>
+<animation part="anim_door_01">
+<part sequence="dockingbay_idle" />
+</animation>
+<animation part="fx_ne_dots">
+<part sequence="loop" />
+<texture>
+<channel channel="3">
+<value sequence="loop" property="v_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="detail_m_light_right">
+<part sequence="deactivated" />
+</animation>
+<animation part="detail_m_decals_left">
+<part sequence="deactivated" />
+</animation>
+<animation part="detail_m_light_left">
+<part sequence="deactivated" />
+</animation>
+<animation part="detail_m_decals_right">
+<part sequence="deactivated" />
+</animation>
+<animation part="detail_s_door_02">
+<part sequence="dockingbay_idle" />
+</animation>
+<animation part="detail_xl_cargotube_bottom">
+<part sequence="dockingbay_idle" />
+</animation>
+<animation part="detail_s_floor">
+<part sequence="dockingbay_idle" />
+</animation>
+<animation part="anim_cargotubelight">
+<part sequence="loop" />
+<texture>
+<channel channel="1">
+<value sequence="loop" property="u_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="detail_xl_cargotube_top">
+<part sequence="dockingbay_idle" />
+</animation>
+<animation part="fx_lightcones">
+<part sequence="dockingbay_unassigned" />
+<texture>
+<channel channel="2">
+<value sequence="dockingbay_unassigned" property="v_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="detail_s_door_01">
+<part sequence="dockingbay_idle" />
+</animation>
+<animation light="xu omni004">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu omni007">
+<color sequence="deactivated" property="color" />
+<float sequence="deactivated" property="intensity" />
+</animation>
+<animation light="xu omni05">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight50">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight051">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight052">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight053">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight054">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight055">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight056">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight057">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight058">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight059">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight060">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight061">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight015">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight016">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight036">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight037">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight038">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight039">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight040">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight041">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight042">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight043">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight044">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight045">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight046">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight047">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight048">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight049">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu arealight005">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu arealight006">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu arealight007">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu arealight008">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu arealight009">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu arealight010">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu arealight011">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu arealight012">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+</animations>
+<render>
+<parameter value="assets\textures\ui\factions\faction_player_diffhq" name="diffuse_map" type="texture" />
+</render>
+<connections>
+<connection connection="entities">
+<component class="npc" macro="character_argon_female_afr_crew_01_macro" connection="parentconnection" name="Xandra Emmer" code="PYF-887" owner="player" known="1" read="0" page="10108" id="[0x11eb84]">
+<events>
+<event event="objectsignalled" time="107.183">
+<param type="string" value="10278" />
+<param2 type="cue" value="686125" />
+<param3 />
+</event>
+</events>
+<offset>
+<position x="4.478" y="-0.005846" z="18.322" />
+<rotation yaw="-144.99997" />
+</offset>
+<render>
+<parameter flags="override" owner="[0x11eb84]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+<traits flags="remotecommable|temporary" role="service">
+<skills boarding="3" engineering="11" management="2" morale="11" piloting="4" />
+</traits>
+<entity type="crowd" />
+<blackboard>
+<value name="$StateMachine" type="cue" value="501183" />
+<value name="$HiringFee" type="money" value="2148622000" />
+</blackboard>
+<npcseed seed="412113704897207257" />
+<connections>
+<connection connection="roleobject" id="[0x11eb87]">
+<connected connection="[0x11eb88]" />
+</connection>
+<connection connection="roomposition" id="[0x11eb85]">
+<connected connection="[0x11eb86]" />
+</connection>
+</connections>
+</component>
+</connection>
+<connection connection="connection001" id="[0x11eb86]">
+<connected connection="[0x11eb85]" />
+</connection>
+</connections>
+</component>
+</connection>
+</connections>
+</component>
+</connection>
+<connection connection="con_dockarea_tel_xl_carrier_01_b" macro="con_dockarea_tel_xl_carrier_01_b">
+<component class="dockarea" macro="dockarea_tel_xl_carrier_01_macro" connection="connection01" name="{20104, 70001} {20005,8003}2" id="[0xae42c]">
+<offset default="1" />
+<render>
+<parameter value="assets\textures\ui\factions\faction_player_diffhq" name="diffuse_map" type="texture" />
+</render>
+<connections>
+<connection connection="connectionfor_dockingbay_arg_s_01_macro1" macro="connectionfor_dockingbay_arg_s_01_macro1">
+<component class="dockingbay" macro="dockingbay_arg_s_01_macro" connection="space" id="[0xae42d]">
+<offset default="1" />
+<animations>
+<animation part="detail_xl_hatch">
+<part sequence="deactivated" />
+</animation>
+<animation part="dummy_sound_animation">
+<part sequence="deactivated" />
+<texture>
+<channel channel="1">
+<value sequence="deactivated" property="v_offset" />
+<value sequence="deactivated" property="u_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="fx_ne_base">
+<part sequence="dockingbay_unassigned" />
+</animation>
+<animation part="anim_door_right">
+<part sequence="deactivated" />
+</animation>
+<animation part="anim_door_left">
+<part sequence="deactivated" />
+</animation>
+<animation part="anim_door_02">
+<part sequence="dockingbay_idle" />
+</animation>
+<animation part="anim_lights_ship_assigned">
+<part sequence="dockingbay_unassigned" />
+<texture>
+<channel channel="1">
+<value sequence="dockingbay_unassigned" property="v_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="anim_fence_01">
+<part sequence="dockingbay_fence_closed" />
+</animation>
+<animation part="anim_fence_02">
+<part sequence="dockingbay_fence_closed" />
+</animation>
+<animation part="anim_floor">
+<part sequence="dockingbay_idle" />
+</animation>
+<animation part="anim_door_01">
+<part sequence="dockingbay_idle" />
+</animation>
+<animation part="fx_ne_dots">
+<part sequence="loop" />
+<texture>
+<channel channel="3">
+<value sequence="loop" property="v_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="detail_m_light_right">
+<part sequence="deactivated" />
+</animation>
+<animation part="detail_m_decals_left">
+<part sequence="deactivated" />
+</animation>
+<animation part="detail_m_light_left">
+<part sequence="deactivated" />
+</animation>
+<animation part="detail_m_decals_right">
+<part sequence="deactivated" />
+</animation>
+<animation part="detail_s_door_02">
+<part sequence="dockingbay_idle" />
+</animation>
+<animation part="detail_xl_cargotube_bottom">
+<part sequence="dockingbay_idle" />
+</animation>
+<animation part="detail_s_floor">
+<part sequence="dockingbay_idle" />
+</animation>
+<animation part="anim_cargotubelight">
+<part sequence="loop" />
+<texture>
+<channel channel="1">
+<value sequence="loop" property="u_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="detail_xl_cargotube_top">
+<part sequence="dockingbay_idle" />
+</animation>
+<animation part="fx_lightcones">
+<part sequence="dockingbay_unassigned" />
+<texture>
+<channel channel="2">
+<value sequence="dockingbay_unassigned" property="v_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="detail_s_door_01">
+<part sequence="dockingbay_idle" />
+</animation>
+<animation light="xu omni004">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu omni007">
+<color sequence="deactivated" property="color" />
+<float sequence="deactivated" property="intensity" />
+</animation>
+<animation light="xu omni05">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight50">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight051">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight052">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight053">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight054">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight055">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight056">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight057">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight058">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight059">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight060">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight061">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight015">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight016">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight036">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight037">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight038">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight039">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight040">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight041">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight042">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight043">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight044">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight045">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight046">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight047">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight048">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight049">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu arealight005">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu arealight006">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu arealight007">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu arealight008">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu arealight009">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu arealight010">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu arealight011">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu arealight012">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+</animations>
+<render>
+<parameter value="assets\textures\ui\factions\faction_player_diffhq" name="diffuse_map" type="texture" />
+</render>
+<connections>
+<connection connection="entities">
+<component class="npc" macro="character_argon_female_afr_crew_01_macro" connection="parentconnection" name="Kareen Braks" code="TFP-388" owner="player" known="1" read="0" page="10107" id="[0x11eafd]">
+<events>
+<event event="objectsignalled" time="96.8769">
+<param type="string" value="10278" />
+<param2 type="cue" value="686032" />
+<param3 />
+</event>
+</events>
+<offset>
+<position x="4.478" y="-0.005846" z="18.322" />
+<rotation yaw="-144.99997" />
+</offset>
+<render>
+<parameter flags="override" owner="[0x11eafd]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+<traits flags="remotecommable|temporary" role="service">
+<skills boarding="2" engineering="11" management="1" morale="11" piloting="3" />
+</traits>
+<entity type="crowd" />
+<blackboard>
+<value name="$StateMachine" type="cue" value="500103" />
+<value name="$HiringFee" type="money" value="2148589000" />
+</blackboard>
+<npcseed seed="16999895563329216392" />
+<connections>
+<connection connection="roleobject" id="[0x11eb00]">
+<connected connection="[0x11eb01]" />
+</connection>
+<connection connection="roomposition" id="[0x11eafe]">
+<connected connection="[0x11eaff]" />
+</connection>
+</connections>
+</component>
+</connection>
+<connection connection="connection001" id="[0x11eaff]">
+<connected connection="[0x11eafe]" />
+</connection>
+</connections>
+</component>
+</connection>
+<connection connection="connectionfor_dockingbay_arg_m_01_macro" macro="connectionfor_dockingbay_arg_m_01_macro">
+<component class="dockingbay" macro="dockingbay_arg_m_01_macro" connection="space" id="[0xae42e]">
+<events>
+<event event="unlockplatformtriggers" time="6.64176" group="transporter_01" />
+</events>
+<offset default="1" />
+<animations>
+<animation part="detail_xl_hatch">
+<part sequence="deactivated" />
+</animation>
+<animation part="fx_warnlights">
+<part sequence="dockingbay_warning_inactive" />
+<texture>
+<channel channel="1">
+<value sequence="dockingbay_warning_inactive" property="u_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="dummy_sound_animation">
+<part sequence="deactivated" />
+<texture>
+<channel channel="1">
+<value sequence="deactivated" property="v_offset" />
+<value sequence="deactivated" property="u_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="anim_door_right">
+<part sequence="deactivated" />
+</animation>
+<animation part="fx_lightcones_toggle">
+<part sequence="dockingbay_unassigned" />
+<texture>
+<channel channel="2">
+<value sequence="dockingbay_unassigned" property="v_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="anim_door_left">
+<part sequence="deactivated" />
+</animation>
+<animation part="anim_door_02">
+<part sequence="dockingbay_idle" />
+</animation>
+<animation part="anim_door_01">
+<part sequence="dockingbay_idle" />
+</animation>
+<animation part="anim_floor">
+<part sequence="dockingbay_idle" />
+</animation>
+<animation part="anim_fence">
+<part sequence="dockingbay_fence_closed" />
+</animation>
+<animation part="detail_m_light_right">
+<part sequence="deactivated" />
+</animation>
+<animation part="detail_m_decals_right">
+<part sequence="deactivated" />
+</animation>
+<animation part="detail_m_light_left">
+<part sequence="deactivated" />
+</animation>
+<animation part="detail_m_decals_left">
+<part sequence="deactivated" />
+</animation>
+<animation part="detail_xs_decals_floor">
+<part sequence="dockingbay_idle" />
+</animation>
+<animation part="detail_m_cargotube_bottom">
+<part sequence="dockingbay_idle" />
+</animation>
+<animation part="anim_cargotubelights">
+<part sequence="loop" />
+<texture>
+<channel channel="1">
+<value sequence="loop" property="u_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="detail_s_cargotube_top">
+<part sequence="dockingbay_idle" />
+</animation>
+<animation light="xu omni006">
+<float sequence="dockingbay_warning_inactive" property="intensity" />
+</animation>
+<animation light="xu omni007">
+<float sequence="dockingbay_warning_inactive" property="intensity" />
+<color sequence="deactivated" property="color" />
+<float sequence="deactivated" property="intensity" />
+</animation>
+<animation light="xu omni008">
+<float sequence="dockingbay_warning_inactive" property="intensity" />
+</animation>
+<animation light="xu omni009">
+<float sequence="dockingbay_warning_inactive" property="intensity" />
+</animation>
+<animation light="xu omni010">
+<float sequence="dockingbay_warning_inactive" property="intensity" />
+</animation>
+<animation light="xu omni011">
+<float sequence="dockingbay_warning_inactive" property="intensity" />
+</animation>
+<animation light="xu omni012">
+<float sequence="dockingbay_warning_inactive" property="intensity" />
+</animation>
+<animation light="xu omni013">
+<float sequence="dockingbay_warning_inactive" property="intensity" />
+</animation>
+<animation light="xu omni014">
+<float sequence="dockingbay_warning_inactive" property="intensity" />
+</animation>
+<animation light="xu omni015">
+<float sequence="dockingbay_warning_inactive" property="intensity" />
+</animation>
+<animation light="xu omni016">
+<float sequence="dockingbay_warning_inactive" property="intensity" />
+</animation>
+<animation light="xu omni017">
+<float sequence="dockingbay_warning_inactive" property="intensity" />
+</animation>
+<animation light="xu omni018">
+<float sequence="dockingbay_warning_inactive" property="intensity" />
+</animation>
+<animation light="xu omni019">
+<float sequence="dockingbay_warning_inactive" property="intensity" />
+</animation>
+<animation light="xu omni02">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu omni003">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu omni004">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu omni005">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu arealight063">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu arealight064">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu arealight065">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu arealight066">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+</animations>
+<render>
+<parameter value="assets\textures\ui\factions\faction_player_diffhq" name="diffuse_map" type="texture" />
+</render>
+<room>
+<lockeddoors>
+<lock group="transporter_01" />
+</lockeddoors>
+</room>
+<connections>
+<connection connection="entities">
+<component class="npc" macro="character_argon_male_asi_crew_01_macro" connection="parentconnection" name="Ban Seldon" code="FJR-114" owner="player" known="1" read="0" page="10101" id="[0x11eb16]">
+<events>
+<event event="objectsignalled" time="76.0748">
+<param type="string" value="10278" />
+<param2 type="cue" value="686047" />
+<param3 />
+</event>
+</events>
+<offset>
+<position x="9.667" y="-0.005846" z="83.76" />
+<rotation yaw="70.00001" />
+</offset>
+<render>
+<parameter flags="override" owner="[0x11eb16]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+<traits flags="remotecommable|temporary" role="service">
+<skills boarding="3" engineering="10" management="1" morale="10" piloting="4" />
+</traits>
+<entity type="crowd" />
+<blackboard>
+<value name="$StateMachine" type="cue" value="500303" />
+<value name="$HiringFee" type="money" value="752945000" />
+</blackboard>
+<npcseed seed="8163982556393202966" />
+<connections>
+<connection connection="roleobject" id="[0x11eb19]">
+<connected connection="[0x11eb1a]" />
+</connection>
+<connection connection="roomposition" id="[0x11eb17]">
+<connected connection="[0x11eb18]" />
+</connection>
+</connections>
+</component>
+</connection>
+<connection connection="entities">
+<component class="npc" macro="character_argon_male_afr_crew_01_macro" connection="parentconnection" name="Liom Riano" code="ODJ-932" owner="player" known="1" read="0" page="10101" id="[0x11eb34]">
+<events>
+<event event="objectsignalled" time="104.023">
+<param type="string" value="10278" />
+<param2 type="cue" value="686065" />
+<param3 />
+</event>
+</events>
+<offset>
+<position x="11.824" y="-0.005846" z="83.76" />
+<rotation yaw="-74.99999" />
+</offset>
+<render>
+<parameter flags="override" owner="[0x11eb34]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+<traits flags="remotecommable|temporary" role="service">
+<skills boarding="1" engineering="11" management="2" morale="11" piloting="5" />
+</traits>
+<entity type="crowd" />
+<blackboard>
+<value name="$StateMachine" type="cue" value="500543" />
+<value name="$HiringFee" type="money" value="2148594000" />
+</blackboard>
+<npcseed seed="13353082596986362541" />
+<connections>
+<connection connection="roleobject" id="[0x11eb37]">
+<connected connection="[0x11eb38]" />
+</connection>
+<connection connection="roomposition" id="[0x11eb35]">
+<connected connection="[0x11eb36]" />
+</connection>
+</connections>
+</component>
+</connection>
+<connection connection="entities">
+<component class="npc" macro="character_argon_female_cau_crew_01_macro" connection="parentconnection" name="Kori Sillarne" code="ZSS-220" owner="player" known="1" read="0" page="10110" id="[0x11eb39]">
+<events>
+<event event="objectsignalled" time="98.2068">
+<param type="string" value="10278" />
+<param2 type="cue" value="686068" />
+<param3 />
+</event>
+</events>
+<offset>
+<position x="-54.678" y="-0.005846" z="83.092" />
+<rotation yaw="-54.99997" />
+</offset>
+<render>
+<parameter flags="override" owner="[0x11eb39]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+<traits flags="remotecommable|temporary" role="service">
+<skills boarding="2" engineering="11" management="1" morale="11" piloting="6" />
+</traits>
+<entity type="crowd" />
+<blackboard>
+<value name="$StateMachine" type="cue" value="500583" />
+<value name="$HiringFee" type="money" value="2148601000" />
+</blackboard>
+<npcseed seed="7603256365164903866" />
+<connections>
+<connection connection="roleobject" id="[0x11eb3c]">
+<connected connection="[0x11eb3d]" />
+</connection>
+<connection connection="roomposition" id="[0x11eb3a]">
+<connected connection="[0x11eb3b]" />
+</connection>
+</connections>
+</component>
+</connection>
+<connection connection="entities">
+<component class="npc" macro="character_argon_female_asi_crew_01_macro" connection="parentconnection" name="Illisa Danar" code="REF-220" owner="player" known="1" read="0" page="10109" id="[0x11eb3e]">
+<offset>
+<position x="41.625" y="-0.005846" z="82.797" />
+</offset>
+<render>
+<parameter flags="override" owner="[0x11eb3e]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+<traits flags="remotecommable|temporary" role="service">
+<skills boarding="2" engineering="10" management="1" morale="12" piloting="6" />
+</traits>
+<entity type="crowd" />
+<blackboard>
+<value name="$StateMachine" type="cue" value="500623" />
+<value name="$HiringFee" type="money" value="1372551000" />
+<value name="$casual" type="integer" value="1" />
+</blackboard>
+<npcseed seed="8701868987273843269" />
+<connections>
+<connection connection="roleobject" id="[0x11eb41]">
+<connected connection="[0x11eb42]" />
+</connection>
+<connection connection="roomposition" id="[0x11eb3f]">
+<connected connection="[0x11eb40]" />
+</connection>
+</connections>
+</component>
+</connection>
+<connection connection="entities">
+<component class="npc" macro="character_argon_male_cau_crew_01_macro" connection="parentconnection" name="Hari Danar" code="UPK-337" owner="player" known="1" read="0" page="10102" id="[0x11eb43]">
+<offset>
+<position x="-47.815" y="-0.005846" z="82.797" />
+</offset>
+<render>
+<parameter flags="override" owner="[0x11eb43]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+<traits flags="remotecommable|temporary" role="service">
+<skills boarding="2" engineering="12" management="1" morale="11" piloting="6" />
+</traits>
+<entity type="crowd" />
+<blackboard>
+<value name="$StateMachine" type="cue" value="500663" />
+<value name="$HiringFee" type="money" value="4518022000" />
+<value name="$casual" type="integer" value="1" />
+</blackboard>
+<npcseed seed="8129133625428615341" />
+<connections>
+<connection connection="roleobject" id="[0x11eb46]">
+<connected connection="[0x11eb47]" />
+</connection>
+<connection connection="roomposition" id="[0x11eb44]">
+<connected connection="[0x11eb45]" />
+</connection>
+</connections>
+</component>
+</connection>
+<connection connection="entities">
+<component class="npc" macro="character_argon_female_asi_crew_01_macro" connection="parentconnection" name="Elin Kult" code="OJP-902" owner="player" known="1" read="0" page="10107" id="[0x11eb4d]">
+<offset>
+<position x="-26.902" y="-0.005846" z="82.797" />
+</offset>
+<render>
+<parameter flags="override" owner="[0x11eb4d]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+<traits flags="remotecommable|temporary" role="service">
+<skills boarding="2" engineering="11" management="1" morale="10" piloting="4" />
+</traits>
+<entity type="crowd" />
+<blackboard>
+<value name="$StateMachine" type="cue" value="500743" />
+<value name="$HiringFee" type="money" value="1593975000" />
+<value name="$casual" type="integer" value="1" />
+</blackboard>
+<npcseed seed="15750868198630531009" />
+<connections>
+<connection connection="roleobject" id="[0x11eb50]">
+<connected connection="[0x11eb51]" />
+</connection>
+<connection connection="roomposition" id="[0x11eb4e]">
+<connected connection="[0x11eb4f]" />
+</connection>
+</connections>
+</component>
+</connection>
+<connection connection="entities">
+<component class="npc" macro="character_argon_female_afr_crew_01_macro" connection="parentconnection" name="Branda Selek" code="IMC-585" owner="player" known="1" read="0" page="10109" id="[0x11eb52]">
+<offset>
+<position x="-33.24" y="-0.005846" z="82.797" />
+</offset>
+<render>
+<parameter flags="override" owner="[0x11eb52]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+<traits flags="remotecommable|temporary" role="service">
+<skills boarding="2" engineering="12" management="2" morale="12" piloting="5" />
+</traits>
+<entity type="crowd" />
+<blackboard>
+<value name="$StateMachine" type="cue" value="500783" />
+<value name="$HiringFee" type="money" value="6075057000" />
+<value name="$casual" type="integer" value="1" />
+</blackboard>
+<npcseed seed="2638272747896985935" />
+<connections>
+<connection connection="roleobject" id="[0x11eb55]">
+<connected connection="[0x11eb56]" />
+</connection>
+<connection connection="roomposition" id="[0x11eb53]">
+<connected connection="[0x11eb54]" />
+</connection>
+</connections>
+</component>
+</connection>
+<connection connection="entities">
+<component class="npc" macro="character_argon_male_asi_pilot_01_macro" connection="parentconnection" name="Basten Dresen" code="TZL-095" owner="player" known="1" read="0" page="10103" id="[0x11eb70]">
+<offset>
+<position x="40.311" y="-0.005846" z="82.797" />
+</offset>
+<render>
+<parameter flags="override" owner="[0x11eb70]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+<traits flags="remotecommable|temporary" role="marine">
+<skills boarding="12" engineering="2" management="3" morale="10" piloting="5" />
+</traits>
+<entity type="crowd" />
+<blackboard>
+<value name="$StateMachine" type="cue" value="501023" />
+<value name="$HiringFee" type="money" value="4518003000" />
+<value name="$casual" type="integer" value="1" />
+</blackboard>
+<npcseed seed="9071941244291476347" />
+<connections>
+<connection connection="roleobject" id="[0x11eb73]">
+<connected connection="[0x11eb74]" />
+</connection>
+<connection connection="roomposition" id="[0x11eb71]">
+<connected connection="[0x11eb72]" />
+</connection>
+</connections>
+</component>
+</connection>
+<connection connection="entities">
+<component class="npc" macro="character_argon_female_asi_crew_01_macro" connection="parentconnection" name="Chianna Nedley" code="DHY-841" owner="player" known="1" read="0" page="10108" id="[0x11eb89]">
+<offset>
+<position x="49.563" y="-0.005846" z="82.797" />
+</offset>
+<render>
+<parameter flags="override" owner="[0x11eb89]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+<traits flags="remotecommable|temporary" role="service">
+<skills boarding="2" engineering="11" management="2" morale="10" piloting="3" />
+</traits>
+<entity type="crowd" />
+<blackboard>
+<value name="$StateMachine" type="cue" value="501223" />
+<value name="$HiringFee" type="money" value="1594009000" />
+<value name="$casual" type="integer" value="1" />
+</blackboard>
+<npcseed seed="9404644477635511743" />
+<connections>
+<connection connection="roleobject" id="[0x11eb8c]">
+<connected connection="[0x11eb8d]" />
+</connection>
+<connection connection="roomposition" id="[0x11eb8a]">
+<connected connection="[0x11eb8b]" />
+</connection>
+</connections>
+</component>
+</connection>
+<connection connection="entities">
+<component class="npc" macro="character_argon_male_asi_crew_01_macro" connection="parentconnection" name="Andru Rana" code="BDO-654" owner="player" known="1" read="0" page="10101" id="[0x11ebac]">
+<offset>
+<position x="0.005885" y="-2.499" z="87.499" />
+</offset>
+<render>
+<parameter flags="override" owner="[0x11ebac]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+<traits flags="remotecommable|intransit|temporary" role="service">
+<skills boarding="2" engineering="11" management="1" morale="11" piloting="5" />
+</traits>
+<entity type="crowd" />
+<blackboard>
+<value name="$StateMachine" type="cue" value="501503" />
+<value name="$HiringFee" type="money" value="2148599000" />
+<value name="$casual" type="integer" value="1" />
+<value name="$state_machine_critical" type="integer" />
+</blackboard>
+<npcseed seed="18258687056313591567" />
+<connections>
+<connection connection="roleobject" id="[0x11ebaf]">
+<connected connection="[0x11ebb0]" />
+</connection>
+<connection connection="roomposition" id="[0x18b77b]">
+<connected connection="[0x18b77c]" />
+</connection>
+</connections>
+</component>
+</connection>
+<connection connection="con_npc_stand_008" id="[0x11eb3b]">
+<connected connection="[0x11eb3a]" />
+</connection>
+<connection connection="con_npc_stand_003" id="[0x11eb18]">
+<connected connection="[0x11eb17]" />
+</connection>
+<connection connection="con_npc_stand_002" id="[0x11eb36]">
+<connected connection="[0x11eb35]" />
+</connection>
+<connection connection="con_npc_sit_010" id="[0x11eb4f]">
+<connected connection="[0x11eb4e]" />
+</connection>
+<connection connection="con_npc_sit_011" id="[0x11eb45]">
+<connected connection="[0x11eb44]" />
+</connection>
+<connection connection="con_npc_sit_012" id="[0x11eb54]">
+<connected connection="[0x11eb53]" />
+</connection>
+<connection connection="con_npc_sit_007" id="[0x11eb8b]">
+<connected connection="[0x11eb8a]" />
+</connection>
+<connection connection="con_npc_sit_006" id="[0x11eb72]">
+<connected connection="[0x11eb71]" />
+</connection>
+<connection connection="con_npc_sit_005" id="[0x11eb40]">
+<connected connection="[0x11eb3f]" />
+</connection>
+</connections>
+</component>
+</connection>
+<connection connection="connectionfor_dockingbay_arg_s_01_macro" macro="connectionfor_dockingbay_arg_s_01_macro">
+<component class="dockingbay" macro="dockingbay_arg_s_01_macro" connection="space" id="[0xae42f]">
+<offset default="1" />
+<animations>
+<animation part="detail_xl_hatch">
+<part sequence="deactivated" />
+</animation>
+<animation part="dummy_sound_animation">
+<part sequence="deactivated" />
+<texture>
+<channel channel="1">
+<value sequence="deactivated" property="v_offset" />
+<value sequence="deactivated" property="u_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="fx_ne_base">
+<part sequence="dockingbay_unassigned" />
+</animation>
+<animation part="anim_door_right">
+<part sequence="deactivated" />
+</animation>
+<animation part="anim_door_left">
+<part sequence="deactivated" />
+</animation>
+<animation part="anim_door_02">
+<part sequence="dockingbay_idle" />
+</animation>
+<animation part="anim_lights_ship_assigned">
+<part sequence="dockingbay_unassigned" />
+<texture>
+<channel channel="1">
+<value sequence="dockingbay_unassigned" property="v_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="anim_fence_01">
+<part sequence="dockingbay_fence_closed" />
+</animation>
+<animation part="anim_fence_02">
+<part sequence="dockingbay_fence_closed" />
+</animation>
+<animation part="anim_floor">
+<part sequence="dockingbay_idle" />
+</animation>
+<animation part="anim_door_01">
+<part sequence="dockingbay_idle" />
+</animation>
+<animation part="fx_ne_dots">
+<part sequence="loop" />
+<texture>
+<channel channel="3">
+<value sequence="loop" property="v_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="detail_m_light_right">
+<part sequence="deactivated" />
+</animation>
+<animation part="detail_m_decals_left">
+<part sequence="deactivated" />
+</animation>
+<animation part="detail_m_light_left">
+<part sequence="deactivated" />
+</animation>
+<animation part="detail_m_decals_right">
+<part sequence="deactivated" />
+</animation>
+<animation part="detail_s_door_02">
+<part sequence="dockingbay_idle" />
+</animation>
+<animation part="detail_xl_cargotube_bottom">
+<part sequence="dockingbay_idle" />
+</animation>
+<animation part="detail_s_floor">
+<part sequence="dockingbay_idle" />
+</animation>
+<animation part="anim_cargotubelight">
+<part sequence="loop" />
+<texture>
+<channel channel="1">
+<value sequence="loop" property="u_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="detail_xl_cargotube_top">
+<part sequence="dockingbay_idle" />
+</animation>
+<animation part="fx_lightcones">
+<part sequence="dockingbay_unassigned" />
+<texture>
+<channel channel="2">
+<value sequence="dockingbay_unassigned" property="v_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="detail_s_door_01">
+<part sequence="dockingbay_idle" />
+</animation>
+<animation light="xu omni004">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu omni007">
+<color sequence="deactivated" property="color" />
+<float sequence="deactivated" property="intensity" />
+</animation>
+<animation light="xu omni05">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight50">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight051">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight052">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight053">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight054">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight055">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight056">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight057">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight058">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight059">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight060">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight061">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight015">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight016">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight036">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight037">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight038">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight039">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight040">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight041">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight042">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight043">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight044">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight045">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight046">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight047">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight048">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight049">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu arealight005">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu arealight006">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu arealight007">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu arealight008">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu arealight009">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu arealight010">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu arealight011">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu arealight012">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+</animations>
+<render>
+<parameter value="assets\textures\ui\factions\faction_player_diffhq" name="diffuse_map" type="texture" />
+</render>
+</component>
+</connection>
+</connections>
+</component>
+</connection>
+<connection connection="con_dockarea_tel_xl_carrier_01_a" macro="con_dockarea_tel_xl_carrier_01_a">
+<component class="dockarea" macro="dockarea_tel_xl_carrier_01_macro" connection="connection01" name="{20104, 70001} {20005,8003}3" id="[0xae430]">
+<offset default="1" />
+<render>
+<parameter value="assets\textures\ui\factions\faction_player_diffhq" name="diffuse_map" type="texture" />
+</render>
+<connections>
+<connection connection="connectionfor_dockingbay_arg_s_01_macro1" macro="connectionfor_dockingbay_arg_s_01_macro1">
+<component class="dockingbay" macro="dockingbay_arg_s_01_macro" connection="space" id="[0xae431]">
+<offset default="1" />
+<animations>
+<animation part="detail_xl_hatch">
+<part sequence="deactivated" />
+</animation>
+<animation part="dummy_sound_animation">
+<part sequence="deactivated" />
+<texture>
+<channel channel="1">
+<value sequence="deactivated" property="v_offset" />
+<value sequence="deactivated" property="u_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="fx_ne_base">
+<part sequence="dockingbay_unassigned" />
+</animation>
+<animation part="anim_door_right">
+<part sequence="deactivated" />
+</animation>
+<animation part="anim_door_left">
+<part sequence="deactivated" />
+</animation>
+<animation part="anim_door_02">
+<part sequence="dockingbay_idle" />
+</animation>
+<animation part="anim_lights_ship_assigned">
+<part sequence="dockingbay_unassigned" />
+<texture>
+<channel channel="1">
+<value sequence="dockingbay_unassigned" property="v_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="anim_fence_01">
+<part sequence="dockingbay_fence_closed" />
+</animation>
+<animation part="anim_fence_02">
+<part sequence="dockingbay_fence_closed" />
+</animation>
+<animation part="anim_floor">
+<part sequence="dockingbay_idle" />
+</animation>
+<animation part="anim_door_01">
+<part sequence="dockingbay_idle" />
+</animation>
+<animation part="fx_ne_dots">
+<part sequence="loop" />
+<texture>
+<channel channel="3">
+<value sequence="loop" property="v_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="detail_m_light_right">
+<part sequence="deactivated" />
+</animation>
+<animation part="detail_m_decals_left">
+<part sequence="deactivated" />
+</animation>
+<animation part="detail_m_light_left">
+<part sequence="deactivated" />
+</animation>
+<animation part="detail_m_decals_right">
+<part sequence="deactivated" />
+</animation>
+<animation part="detail_s_door_02">
+<part sequence="dockingbay_idle" />
+</animation>
+<animation part="detail_xl_cargotube_bottom">
+<part sequence="dockingbay_idle" />
+</animation>
+<animation part="detail_s_floor">
+<part sequence="dockingbay_idle" />
+</animation>
+<animation part="anim_cargotubelight">
+<part sequence="loop" />
+<texture>
+<channel channel="1">
+<value sequence="loop" property="u_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="detail_xl_cargotube_top">
+<part sequence="dockingbay_idle" />
+</animation>
+<animation part="fx_lightcones">
+<part sequence="dockingbay_unassigned" />
+<texture>
+<channel channel="2">
+<value sequence="dockingbay_unassigned" property="v_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="detail_s_door_01">
+<part sequence="dockingbay_idle" />
+</animation>
+<animation light="xu omni004">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu omni007">
+<color sequence="deactivated" property="color" />
+<float sequence="deactivated" property="intensity" />
+</animation>
+<animation light="xu omni05">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight50">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight051">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight052">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight053">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight054">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight055">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight056">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight057">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight058">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight059">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight060">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight061">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight015">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight016">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight036">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight037">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight038">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight039">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight040">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight041">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight042">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight043">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight044">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight045">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight046">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight047">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight048">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight049">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu arealight005">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu arealight006">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu arealight007">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu arealight008">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu arealight009">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu arealight010">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu arealight011">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu arealight012">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+</animations>
+<render>
+<parameter value="assets\textures\ui\factions\faction_player_diffhq" name="diffuse_map" type="texture" />
+</render>
+<connections>
+<connection connection="entities">
+<component class="npc" macro="character_argon_female_asi_crew_01_macro" connection="parentconnection" name="Coralyn Berron" code="HVY-783" owner="player" known="1" read="0" page="10108" id="[0x11eaee]">
+<events>
+<event event="objectsignalled" time="75.6214">
+<param type="string" value="10278" />
+<param2 type="cue" value="686022" />
+<param3 />
+</event>
+</events>
+<offset>
+<position x="4.478" y="-0.005846" z="18.322" />
+<rotation yaw="-144.99997" />
+</offset>
+<render>
+<parameter flags="override" owner="[0x11eaee]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+<traits flags="remotecommable|temporary" role="service">
+<skills boarding="3" engineering="11" management="2" morale="12" piloting="5" />
+</traits>
+<entity type="crowd" />
+<blackboard>
+<value name="$StateMachine" type="cue" value="499983" />
+<value name="$HiringFee" type="money" value="2894043000" />
+</blackboard>
+<npcseed seed="9423790177083330192" />
+<connections>
+<connection connection="roleobject" id="[0x11eaf1]">
+<connected connection="[0x11eaf2]" />
+</connection>
+<connection connection="roomposition" id="[0x11eaef]">
+<connected connection="[0x11eaf0]" />
+</connection>
+</connections>
+</component>
+</connection>
+<connection connection="connection001" id="[0x11eaf0]">
+<connected connection="[0x11eaef]" />
+</connection>
+</connections>
+</component>
+</connection>
+<connection connection="connectionfor_dockingbay_arg_m_01_macro" macro="connectionfor_dockingbay_arg_m_01_macro">
+<component class="dockingbay" macro="dockingbay_arg_m_01_macro" connection="space" id="[0xae432]">
+<offset default="1" />
+<animations>
+<animation part="detail_xl_hatch">
+<part sequence="deactivated" />
+</animation>
+<animation part="fx_warnlights">
+<part sequence="dockingbay_warning_inactive" />
+<texture>
+<channel channel="1">
+<value sequence="dockingbay_warning_inactive" property="u_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="dummy_sound_animation">
+<part sequence="deactivated" />
+<texture>
+<channel channel="1">
+<value sequence="deactivated" property="v_offset" />
+<value sequence="deactivated" property="u_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="anim_door_right">
+<part sequence="deactivated" />
+</animation>
+<animation part="fx_lightcones_toggle">
+<part sequence="dockingbay_unassigned" />
+<texture>
+<channel channel="2">
+<value sequence="dockingbay_unassigned" property="v_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="anim_door_left">
+<part sequence="deactivated" />
+</animation>
+<animation part="anim_door_02">
+<part sequence="dockingbay_idle" />
+</animation>
+<animation part="anim_door_01">
+<part sequence="dockingbay_idle" />
+</animation>
+<animation part="anim_floor">
+<part sequence="dockingbay_idle" />
+</animation>
+<animation part="anim_fence">
+<part sequence="dockingbay_fence_closed" />
+</animation>
+<animation part="detail_m_light_right">
+<part sequence="deactivated" />
+</animation>
+<animation part="detail_m_decals_right">
+<part sequence="deactivated" />
+</animation>
+<animation part="detail_m_light_left">
+<part sequence="deactivated" />
+</animation>
+<animation part="detail_m_decals_left">
+<part sequence="deactivated" />
+</animation>
+<animation part="detail_xs_decals_floor">
+<part sequence="dockingbay_idle" />
+</animation>
+<animation part="detail_m_cargotube_bottom">
+<part sequence="dockingbay_idle" />
+</animation>
+<animation part="anim_cargotubelights">
+<part sequence="loop" />
+<texture>
+<channel channel="1">
+<value sequence="loop" property="u_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="detail_s_cargotube_top">
+<part sequence="dockingbay_idle" />
+</animation>
+<animation light="xu omni006">
+<float sequence="dockingbay_warning_inactive" property="intensity" />
+</animation>
+<animation light="xu omni007">
+<float sequence="dockingbay_warning_inactive" property="intensity" />
+<color sequence="deactivated" property="color" />
+<float sequence="deactivated" property="intensity" />
+</animation>
+<animation light="xu omni008">
+<float sequence="dockingbay_warning_inactive" property="intensity" />
+</animation>
+<animation light="xu omni009">
+<float sequence="dockingbay_warning_inactive" property="intensity" />
+</animation>
+<animation light="xu omni010">
+<float sequence="dockingbay_warning_inactive" property="intensity" />
+</animation>
+<animation light="xu omni011">
+<float sequence="dockingbay_warning_inactive" property="intensity" />
+</animation>
+<animation light="xu omni012">
+<float sequence="dockingbay_warning_inactive" property="intensity" />
+</animation>
+<animation light="xu omni013">
+<float sequence="dockingbay_warning_inactive" property="intensity" />
+</animation>
+<animation light="xu omni014">
+<float sequence="dockingbay_warning_inactive" property="intensity" />
+</animation>
+<animation light="xu omni015">
+<float sequence="dockingbay_warning_inactive" property="intensity" />
+</animation>
+<animation light="xu omni016">
+<float sequence="dockingbay_warning_inactive" property="intensity" />
+</animation>
+<animation light="xu omni017">
+<float sequence="dockingbay_warning_inactive" property="intensity" />
+</animation>
+<animation light="xu omni018">
+<float sequence="dockingbay_warning_inactive" property="intensity" />
+</animation>
+<animation light="xu omni019">
+<float sequence="dockingbay_warning_inactive" property="intensity" />
+</animation>
+<animation light="xu omni02">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu omni003">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu omni004">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu omni005">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu arealight063">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu arealight064">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu arealight065">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu arealight066">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+</animations>
+<render>
+<parameter value="assets\textures\ui\factions\faction_player_diffhq" name="diffuse_map" type="texture" />
+</render>
+<connections>
+<connection connection="entities">
+<component class="npc" macro="character_argon_male_afr_crew_01_macro" connection="parentconnection" name="Dru Tiago" code="CKO-930" owner="player" known="1" read="0" page="10103" id="[0x11eae9]">
+<events>
+<event event="objectsignalled" time="79.8048">
+<param type="string" value="10278" />
+<param2 type="cue" value="686019" />
+<param3 />
+</event>
+</events>
+<offset>
+<position x="9.667" y="-0.005846" z="83.76" />
+<rotation yaw="70.00001" />
+</offset>
+<render>
+<parameter flags="override" owner="[0x11eae9]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+<traits flags="remotecommable|temporary" role="service">
+<skills boarding="3" engineering="10" management="1" morale="11" piloting="3" />
+</traits>
+<entity type="crowd" />
+<blackboard>
+<value name="$StateMachine" type="cue" value="499943" />
+<value name="$HiringFee" type="money" value="1017034000" />
+</blackboard>
+<npcseed seed="9733181065364324238" />
+<connections>
+<connection connection="roleobject" id="[0x11eaec]">
+<connected connection="[0x11eaed]" />
+</connection>
+<connection connection="roomposition" id="[0x11eaea]">
+<connected connection="[0x11eaeb]" />
+</connection>
+</connections>
+</component>
+</connection>
+<connection connection="entities">
+<component class="npc" macro="character_argon_female_afr_crew_01_macro" connection="parentconnection" name="Sihoban Dehaan" code="ULB-377" owner="player" known="1" read="0" page="10109" id="[0x11eaf3]">
+<events>
+<event event="objectsignalled" time="75.6892">
+<param type="string" value="10278" />
+<param2 type="cue" value="686025" />
+<param3 />
+</event>
+</events>
+<offset>
+<position x="-22.46" y="-0.005846" z="84.588" />
+<rotation yaw="109.99998" />
+</offset>
+<render>
+<parameter flags="override" owner="[0x11eaf3]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+<traits flags="remotecommable|temporary" role="service">
+<skills boarding="2" engineering="10" management="2" morale="11" piloting="4" />
+</traits>
+<entity type="crowd" />
+<blackboard>
+<value name="$StateMachine" type="cue" value="500023" />
+<value name="$HiringFee" type="money" value="1017041000" />
+</blackboard>
+<npcseed seed="7628117029872404064" />
+<connections>
+<connection connection="roleobject" id="[0x11eaf6]">
+<connected connection="[0x11eaf7]" />
+</connection>
+<connection connection="roomposition" id="[0x11eaf4]">
+<connected connection="[0x11eaf5]" />
+</connection>
+</connections>
+</component>
+</connection>
+<connection connection="entities">
+<component class="npc" macro="character_argon_male_cau_crew_01_macro" connection="parentconnection" name="Frenk Harben" code="MIS-964" owner="player" known="1" read="0" page="10103" id="[0x11eb0c]">
+<events>
+<event event="objectsignalled" time="90.8527">
+<param type="string" value="10278" />
+<param2 type="cue" value="686041" />
+<param3 />
+</event>
+</events>
+<offset>
+<position x="52.573" y="-0.005846" z="84.421" />
+<rotation yaw="-64.99996" />
+</offset>
+<render>
+<parameter flags="override" owner="[0x11eb0c]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+<traits flags="remotecommable|temporary" role="service">
+<skills boarding="3" engineering="12" management="2" morale="10" piloting="3" />
+</traits>
+<entity type="crowd" />
+<blackboard>
+<value name="$StateMachine" type="cue" value="500223" />
+<value name="$HiringFee" type="money" value="3357814000" />
+</blackboard>
+<npcseed seed="440126879745603633" />
+<connections>
+<connection connection="roleobject" id="[0x11eb0f]">
+<connected connection="[0x11eb10]" />
+</connection>
+<connection connection="roomposition" id="[0x11eb0d]">
+<connected connection="[0x11eb0e]" />
+</connection>
+</connections>
+</component>
+</connection>
+<connection connection="entities">
+<component class="npc" macro="character_argon_male_afr_crew_01_macro" connection="parentconnection" name="Even Kult" code="KFQ-073" owner="player" known="1" read="0" page="10103" id="[0x11eb2f]">
+<events>
+<event event="objectsignalled" time="109.957">
+<param type="string" value="10278" />
+<param2 type="cue" value="686062" />
+<param3 />
+</event>
+</events>
+<offset>
+<position x="51.291" y="-0.005846" z="83.988" />
+<rotation yaw="25.00001" />
+</offset>
+<render>
+<parameter flags="override" owner="[0x11eb2f]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+<traits flags="remotecommable|temporary" role="service">
+<skills boarding="3" engineering="11" management="1" morale="11" piloting="4" />
+</traits>
+<entity type="crowd" />
+<blackboard>
+<value name="$StateMachine" type="cue" value="500503" />
+<value name="$HiringFee" type="money" value="2148608000" />
+</blackboard>
+<npcseed seed="1815516772062147337" />
+<connections>
+<connection connection="roleobject" id="[0x11eb32]">
+<connected connection="[0x11eb33]" />
+</connection>
+<connection connection="roomposition" id="[0x11eb30]">
+<connected connection="[0x11eb31]" />
+</connection>
+</connections>
+</component>
+</connection>
+<connection connection="entities">
+<component class="npc" macro="character_argon_female_cau_crew_01_macro" connection="parentconnection" name="Sihoban Arek" code="TTB-303" owner="player" known="1" read="0" page="10109" id="[0x11eb5c]">
+<offset>
+<position x="11.824" y="-0.005846" z="83.76" />
+<rotation yaw="-74.99999" />
+</offset>
+<render>
+<parameter flags="override" owner="[0x11eb5c]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+<traits flags="remotecommable|temporary" role="service">
+<skills boarding="1" engineering="11" management="1" morale="12" piloting="6" />
+</traits>
+<entity type="crowd" />
+<blackboard>
+<value name="$StateMachine" type="cue" value="500863" />
+<value name="$HiringFee" type="money" value="2894021000" />
+<value name="$casual" type="integer" value="1" />
+</blackboard>
+<npcseed seed="9176743625893586585" />
+<connections>
+<connection connection="roleobject" id="[0x11eb5f]">
+<connected connection="[0x11eb60]" />
+</connection>
+<connection connection="roomposition" id="[0x18a5df]">
+<connected connection="[0x18a5e0]" />
+</connection>
+</connections>
+</component>
+</connection>
+<connection connection="entities">
+<component class="npc" macro="character_argon_male_afr_crew_01_macro" connection="parentconnection" name="Jace Weamond" code="WRW-755" owner="player" known="1" read="0" page="10105" id="[0x11eb75]">
+<offset>
+<position x="-25.588" y="-0.005846" z="82.797" />
+</offset>
+<render>
+<parameter flags="override" owner="[0x11eb75]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+<traits flags="remotecommable|temporary" role="service">
+<skills boarding="2" engineering="12" management="2" morale="11" piloting="4" />
+</traits>
+<entity type="crowd" />
+<blackboard>
+<value name="$StateMachine" type="cue" value="501063" />
+<value name="$HiringFee" type="money" value="4518001000" />
+<value name="$casual" type="integer" value="1" />
+</blackboard>
+<npcseed seed="17988028808208887072" />
+<connections>
+<connection connection="roleobject" id="[0x11eb78]">
+<connected connection="[0x11eb79]" />
+</connection>
+<connection connection="roomposition" id="[0x18ad7c]">
+<connected connection="[0x18ad7d]" />
+</connection>
+</connections>
+</component>
+</connection>
+<connection connection="entities">
+<component class="npc" macro="character_argon_male_asi_pilot_01_macro" connection="parentconnection" name="Frenk Weamond" code="IDM-291" owner="player" known="1" read="0" page="10103" id="[0x11eb93]">
+<offset>
+<position x="-47.815" y="-0.005846" z="82.797" />
+</offset>
+<render>
+<parameter flags="override" owner="[0x11eb93]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+<traits flags="remotecommable|temporary" role="marine">
+<skills boarding="12" engineering="2" management="3" morale="11" piloting="6" />
+</traits>
+<entity type="crowd" />
+<blackboard>
+<value name="$StateMachine" type="cue" value="501303" />
+<value name="$HiringFee" type="money" value="5239401000" />
+<value name="$casual" type="integer" value="1" />
+</blackboard>
+<npcseed seed="5218405682111631908" />
+<connections>
+<connection connection="roleobject" id="[0x11eb96]">
+<connected connection="[0x11eb97]" />
+</connection>
+<connection connection="roomposition" id="[0x11eb94]">
+<connected connection="[0x11eb95]" />
+</connection>
+</connections>
+</component>
+</connection>
+<connection connection="entities">
+<component class="npc" macro="character_argon_female_asi_crew_01_macro" connection="parentconnection" name="Lori Myle" code="KQN-935" owner="player" known="1" read="0" page="10106" id="[0x11eb9d]">
+<offset>
+<position x="-49.129" y="-0.005846" z="82.797" />
+</offset>
+<render>
+<parameter flags="override" owner="[0x11eb9d]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+<traits flags="remotecommable|temporary" role="service">
+<skills boarding="3" engineering="11" management="2" morale="11" piloting="6" />
+</traits>
+<entity type="crowd" />
+<blackboard>
+<value name="$StateMachine" type="cue" value="501383" />
+<value name="$HiringFee" type="money" value="2148599000" />
+<value name="$casual" type="integer" value="1" />
+</blackboard>
+<npcseed seed="10551930619580672398" />
+<connections>
+<connection connection="roleobject" id="[0x11eba0]">
+<connected connection="[0x11eba1]" />
+</connection>
+<connection connection="roomposition" id="[0x11eb9e]">
+<connected connection="[0x11eb9f]" />
+</connection>
+</connections>
+</component>
+</connection>
+<connection connection="entities">
+<component class="npc" macro="character_argon_female_afr_crew_01_macro" connection="parentconnection" name="Karry Myle" code="WFO-275" owner="player" known="1" read="0" page="10106" id="[0x11eba2]">
+<offset>
+<position x="-42.014" y="-0.005846" z="82.797" />
+</offset>
+<render>
+<parameter flags="override" owner="[0x11eba2]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+<traits flags="remotecommable|temporary" role="service">
+<skills boarding="3" engineering="11" management="1" morale="10" piloting="5" />
+</traits>
+<entity type="crowd" />
+<blackboard>
+<value name="$StateMachine" type="cue" value="501423" />
+<value name="$HiringFee" type="money" value="1593976000" />
+<value name="$casual" type="integer" value="1" />
+</blackboard>
+<npcseed seed="9864857085176942089" />
+<connections>
+<connection connection="roleobject" id="[0x11eba5]">
+<connected connection="[0x11eba6]" />
+</connection>
+<connection connection="roomposition" id="[0x11eba3]">
+<connected connection="[0x11eba4]" />
+</connection>
+</connections>
+</component>
+</connection>
+<connection connection="con_npc_stand_003" id="[0x11eaeb]">
+<connected connection="[0x11eaea]" />
+</connection>
+<connection connection="con_npc_stand_002" id="[0x18a5e0]">
+<connected connection="[0x18a5df]" />
+</connection>
+<connection connection="con_npc_stand_007" id="[0x11eaf5]">
+<connected connection="[0x11eaf4]" />
+</connection>
+<connection connection="con_npc_stand_005" id="[0x11eb31]">
+<connected connection="[0x11eb30]" />
+</connection>
+<connection connection="con_npc_stand_004" id="[0x11eb0e]">
+<connected connection="[0x11eb0d]" />
+</connection>
+<connection connection="con_npc_sit_011" id="[0x11eb95]">
+<connected connection="[0x11eb94]" />
+</connection>
+<connection connection="con_npc_sit_013" id="[0x11eba4]">
+<connected connection="[0x11eba3]" />
+</connection>
+<connection connection="con_npc_sit_015" id="[0x11eb9f]">
+<connected connection="[0x11eb9e]" />
+</connection>
+<connection connection="con_npc_sit_003" id="[0x18b75e]">
+<connected connection="[0x18b75d]" />
+</connection>
+<connection connection="con_npc_sit_009" id="[0x18ad7d]">
+<connected connection="[0x18ad7c]" />
+</connection>
+</connections>
+</component>
+</connection>
+<connection connection="connectionfor_dockingbay_arg_s_01_macro" macro="connectionfor_dockingbay_arg_s_01_macro">
+<component class="dockingbay" macro="dockingbay_arg_s_01_macro" connection="space" id="[0xae433]">
+<events>
+<event event="unlockplatformtriggers" time="6.64176" group="transporter_01" />
+</events>
+<offset default="1" />
+<animations>
+<animation part="detail_xl_hatch">
+<part sequence="deactivated" />
+</animation>
+<animation part="dummy_sound_animation">
+<part sequence="deactivated" />
+<texture>
+<channel channel="1">
+<value sequence="deactivated" property="v_offset" />
+<value sequence="deactivated" property="u_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="fx_ne_base">
+<part sequence="dockingbay_unassigned" />
+</animation>
+<animation part="anim_door_right">
+<part sequence="deactivated" />
+</animation>
+<animation part="anim_door_left">
+<part sequence="deactivated" />
+</animation>
+<animation part="anim_door_02">
+<part sequence="dockingbay_idle" />
+</animation>
+<animation part="anim_lights_ship_assigned">
+<part sequence="dockingbay_unassigned" />
+<texture>
+<channel channel="1">
+<value sequence="dockingbay_unassigned" property="v_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="anim_fence_01">
+<part sequence="dockingbay_fence_closed" />
+</animation>
+<animation part="anim_fence_02">
+<part sequence="dockingbay_fence_closed" />
+</animation>
+<animation part="anim_floor">
+<part sequence="dockingbay_idle" />
+</animation>
+<animation part="anim_door_01">
+<part sequence="dockingbay_idle" />
+</animation>
+<animation part="fx_ne_dots">
+<part sequence="loop" />
+<texture>
+<channel channel="3">
+<value sequence="loop" property="v_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="detail_m_light_right">
+<part sequence="deactivated" />
+</animation>
+<animation part="detail_m_decals_left">
+<part sequence="deactivated" />
+</animation>
+<animation part="detail_m_light_left">
+<part sequence="deactivated" />
+</animation>
+<animation part="detail_m_decals_right">
+<part sequence="deactivated" />
+</animation>
+<animation part="detail_s_door_02">
+<part sequence="dockingbay_idle" />
+</animation>
+<animation part="detail_xl_cargotube_bottom">
+<part sequence="dockingbay_idle" />
+</animation>
+<animation part="detail_s_floor">
+<part sequence="dockingbay_idle" />
+</animation>
+<animation part="anim_cargotubelight">
+<part sequence="loop" />
+<texture>
+<channel channel="1">
+<value sequence="loop" property="u_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="detail_xl_cargotube_top">
+<part sequence="dockingbay_idle" />
+</animation>
+<animation part="fx_lightcones">
+<part sequence="dockingbay_unassigned" />
+<texture>
+<channel channel="2">
+<value sequence="dockingbay_unassigned" property="v_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="detail_s_door_01">
+<part sequence="dockingbay_idle" />
+</animation>
+<animation light="xu omni004">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu omni007">
+<color sequence="deactivated" property="color" />
+<float sequence="deactivated" property="intensity" />
+</animation>
+<animation light="xu omni05">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight50">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight051">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight052">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight053">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight054">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight055">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight056">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight057">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight058">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight059">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight060">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight061">
+<color sequence="dockingbay_unassigned" property="color" />
+</animation>
+<animation light="xu boxlight015">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight016">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight036">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight037">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight038">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight039">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight040">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight041">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight042">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight043">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight044">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight045">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight046">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight047">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight048">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu boxlight049">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu arealight005">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu arealight006">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu arealight007">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu arealight008">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu arealight009">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu arealight010">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu arealight011">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+<animation light="xu arealight012">
+<float sequence="dockingbay_unassigned" property="intensity" />
+</animation>
+</animations>
+<render>
+<parameter value="assets\textures\ui\factions\faction_player_diffhq" name="diffuse_map" type="texture" />
+</render>
+<room>
+<lockeddoors>
+<lock group="transporter_01" />
+</lockeddoors>
+</room>
+<connections>
+<connection connection="entities">
+<component class="npc" macro="character_argon_male_cau_crew_01_macro" connection="parentconnection" name="Scot Jerigan" code="VXQ-065" owner="player" known="1" read="0" page="10104" id="[0x11eb11]">
+<events>
+<event event="objectsignalled" time="89.7002">
+<param type="string" value="10278" />
+<param2 type="cue" value="686044" />
+<param3 />
+</event>
+</events>
+<offset>
+<position x="4.478" y="-0.005846" z="18.322" />
+<rotation yaw="-144.99997" />
+</offset>
+<render>
+<parameter flags="override" owner="[0x11eb11]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+<traits flags="remotecommable|temporary" role="service">
+<skills boarding="3" engineering="10" management="1" morale="11" piloting="4" />
+</traits>
+<entity type="crowd" />
+<blackboard>
+<value name="$StateMachine" type="cue" value="500263" />
+<value name="$HiringFee" type="money" value="1017037000" />
+</blackboard>
+<npcseed seed="9883049808988040637" />
+<connections>
+<connection connection="roleobject" id="[0x11eb14]">
+<connected connection="[0x11eb15]" />
+</connection>
+<connection connection="roomposition" id="[0x11eb12]">
+<connected connection="[0x11eb13]" />
+</connection>
+</connections>
+</component>
+</connection>
+<connection connection="entities">
+<component class="npc" macro="character_argon_female_asi_crew_01_macro" connection="parentconnection" name="Kallie Hinder" code="SSD-850" owner="player" known="1" read="0" page="10106" id="[0x11eba7]">
+<offset>
+<position x="17.268" y="-2.489" z="19.662" />
+<rotation yaw="-90.00001" />
+</offset>
+<render>
+<parameter flags="override" owner="[0x11eba7]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+<traits flags="remotecommable|intransit|temporary" role="service">
+<skills boarding="3" engineering="10" management="2" morale="10" piloting="3" />
+</traits>
+<entity type="crowd" />
+<blackboard>
+<value name="$StateMachine" type="cue" value="501463" />
+<value name="$HiringFee" type="money" value="752952000" />
+<value name="$casual" type="integer" value="1" />
+<value name="$state_machine_critical" type="integer" />
+</blackboard>
+<npcseed seed="14070997319652703774" />
+<connections>
+<connection connection="roleobject" id="[0x11ebaa]">
+<connected connection="[0x11ebab]" />
+</connection>
+<connection connection="roomposition" id="[0x18b780]">
+<connected connection="[0x18b781]" />
+</connection>
+</connections>
+</component>
+</connection>
+<connection connection="connection001" id="[0x11eb13]">
+<connected connection="[0x11eb12]" />
+</connection>
+</connections>
+</component>
+</connection>
+</connections>
+</component>
+</connection>
+<connection connection="con_buildmodule" macro="con_buildmodule">
+<component class="buildmodule" macro="buildmodule_gen_carrier_macro" connection="object" id="[0xae434]">
+<offset default="1" />
+<render>
+<parameter value="assets\textures\ui\factions\faction_player_diffhq" name="diffuse_map" type="texture" />
+</render>
+<connections>
+<connection connection="buildprocessorconnection_01">
+<component class="buildprocessor" macro="buildprocessor_gen_01_macro" connection="object" id="[0xae435]" />
+</connection>
+<connection connection="buildprocessorconnection_02">
+<component class="buildprocessor" macro="buildprocessor_gen_01_macro" connection="object" id="[0xae436]" />
+</connection>
+<connection connection="buildprocessorconnection_03">
+<component class="buildprocessor" macro="buildprocessor_gen_01_macro" connection="object" id="[0xae437]" />
+</connection>
+</connections>
+</component>
+</connection>
+<connection connection="con_launchtube_arg_s_01_a" macro="con_launchtube_arg_s_01_a">
+<component class="dockingbay" macro="launchtube_arg_s_01_macro" connection="connection02" id="[0xae438]">
+<offset default="1" />
+<animations>
+<animation part="anim_door_up">
+<part sequence="dockingbay_closed" />
+</animation>
+<animation part="anim_lights">
+<part sequence="dockingbay_closed" />
+<texture>
+<channel channel="1">
+<value sequence="dockingbay_closed" property="v_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="anim_door_down">
+<part sequence="dockingbay_closed" />
+</animation>
+<animation light="xu omni006">
+<color sequence="dockingbay_closed" property="color" />
+</animation>
+<animation light="xu omni01">
+<color sequence="dockingbay_closed" property="color" />
+</animation>
+<animation light="xu omni002">
+<color sequence="dockingbay_closed" property="color" />
+</animation>
+<animation light="xu omni003">
+<color sequence="dockingbay_closed" property="color" />
+</animation>
+<animation light="xu omni004">
+<color sequence="dockingbay_closed" property="color" />
+</animation>
+<animation light="xu omni005">
+<color sequence="dockingbay_closed" property="color" />
+</animation>
+</animations>
+<render>
+<parameter value="assets\textures\ui\factions\faction_player_diffhq" name="diffuse_map" type="texture" />
+</render>
+</component>
+</connection>
+<connection connection="con_launchtube_arg_s_01_c" macro="con_launchtube_arg_s_01_c">
+<component class="dockingbay" macro="launchtube_arg_s_01_macro" connection="connection02" id="[0xae439]">
+<offset default="1" />
+<animations>
+<animation part="anim_door_up">
+<part sequence="dockingbay_closed" />
+</animation>
+<animation part="anim_lights">
+<part sequence="dockingbay_closed" />
+<texture>
+<channel channel="1">
+<value sequence="dockingbay_closed" property="v_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="anim_door_down">
+<part sequence="dockingbay_closed" />
+</animation>
+<animation light="xu omni006">
+<color sequence="dockingbay_closed" property="color" />
+</animation>
+<animation light="xu omni01">
+<color sequence="dockingbay_closed" property="color" />
+</animation>
+<animation light="xu omni002">
+<color sequence="dockingbay_closed" property="color" />
+</animation>
+<animation light="xu omni003">
+<color sequence="dockingbay_closed" property="color" />
+</animation>
+<animation light="xu omni004">
+<color sequence="dockingbay_closed" property="color" />
+</animation>
+<animation light="xu omni005">
+<color sequence="dockingbay_closed" property="color" />
+</animation>
+</animations>
+<render>
+<parameter value="assets\textures\ui\factions\faction_player_diffhq" name="diffuse_map" type="texture" />
+</render>
+</component>
+</connection>
+<connection connection="con_launchtube_arg_s_01_b" macro="con_launchtube_arg_s_01_b">
+<component class="dockingbay" macro="launchtube_arg_s_01_macro" connection="connection02" id="[0xae43a]">
+<offset default="1" />
+<animations>
+<animation part="anim_door_up">
+<part sequence="dockingbay_closed" />
+</animation>
+<animation part="anim_lights">
+<part sequence="dockingbay_closed" />
+<texture>
+<channel channel="1">
+<value sequence="dockingbay_closed" property="v_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="anim_door_down">
+<part sequence="dockingbay_closed" />
+</animation>
+<animation light="xu omni006">
+<color sequence="dockingbay_closed" property="color" />
+</animation>
+<animation light="xu omni01">
+<color sequence="dockingbay_closed" property="color" />
+</animation>
+<animation light="xu omni002">
+<color sequence="dockingbay_closed" property="color" />
+</animation>
+<animation light="xu omni003">
+<color sequence="dockingbay_closed" property="color" />
+</animation>
+<animation light="xu omni004">
+<color sequence="dockingbay_closed" property="color" />
+</animation>
+<animation light="xu omni005">
+<color sequence="dockingbay_closed" property="color" />
+</animation>
+</animations>
+<render>
+<parameter value="assets\textures\ui\factions\faction_player_diffhq" name="diffuse_map" type="texture" />
+</render>
+</component>
+</connection>
+<connection connection="con_launchtube_arg_s_01_e" macro="con_launchtube_arg_s_01_e">
+<component class="dockingbay" macro="launchtube_arg_s_01_macro" connection="connection02" id="[0xae43b]">
+<offset default="1" />
+<animations>
+<animation part="anim_door_up">
+<part sequence="dockingbay_closed" />
+</animation>
+<animation part="anim_lights">
+<part sequence="dockingbay_closed" />
+<texture>
+<channel channel="1">
+<value sequence="dockingbay_closed" property="v_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="anim_door_down">
+<part sequence="dockingbay_closed" />
+</animation>
+<animation light="xu omni006">
+<color sequence="dockingbay_closed" property="color" />
+</animation>
+<animation light="xu omni01">
+<color sequence="dockingbay_closed" property="color" />
+</animation>
+<animation light="xu omni002">
+<color sequence="dockingbay_closed" property="color" />
+</animation>
+<animation light="xu omni003">
+<color sequence="dockingbay_closed" property="color" />
+</animation>
+<animation light="xu omni004">
+<color sequence="dockingbay_closed" property="color" />
+</animation>
+<animation light="xu omni005">
+<color sequence="dockingbay_closed" property="color" />
+</animation>
+</animations>
+<render>
+<parameter value="assets\textures\ui\factions\faction_player_diffhq" name="diffuse_map" type="texture" />
+</render>
+</component>
+</connection>
+<connection connection="con_launchtube_arg_s_01_d" macro="con_launchtube_arg_s_01_d">
+<component class="dockingbay" macro="launchtube_arg_s_01_macro" connection="connection02" id="[0xae43c]">
+<offset default="1" />
+<animations>
+<animation part="anim_door_up">
+<part sequence="dockingbay_closed" />
+</animation>
+<animation part="anim_lights">
+<part sequence="dockingbay_closed" />
+<texture>
+<channel channel="1">
+<value sequence="dockingbay_closed" property="v_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="anim_door_down">
+<part sequence="dockingbay_closed" />
+</animation>
+<animation light="xu omni006">
+<color sequence="dockingbay_closed" property="color" />
+</animation>
+<animation light="xu omni01">
+<color sequence="dockingbay_closed" property="color" />
+</animation>
+<animation light="xu omni002">
+<color sequence="dockingbay_closed" property="color" />
+</animation>
+<animation light="xu omni003">
+<color sequence="dockingbay_closed" property="color" />
+</animation>
+<animation light="xu omni004">
+<color sequence="dockingbay_closed" property="color" />
+</animation>
+<animation light="xu omni005">
+<color sequence="dockingbay_closed" property="color" />
+</animation>
+</animations>
+<render>
+<parameter value="assets\textures\ui\factions\faction_player_diffhq" name="diffuse_map" type="texture" />
+</render>
+</component>
+</connection>
+<connection connection="con_launchtube_arg_s_01_f" macro="con_launchtube_arg_s_01_f">
+<component class="dockingbay" macro="launchtube_arg_s_01_macro" connection="connection02" id="[0xae43d]">
+<offset default="1" />
+<animations>
+<animation part="anim_door_up">
+<part sequence="dockingbay_closed" />
+</animation>
+<animation part="anim_lights">
+<part sequence="dockingbay_closed" />
+<texture>
+<channel channel="1">
+<value sequence="dockingbay_closed" property="v_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="anim_door_down">
+<part sequence="dockingbay_closed" />
+</animation>
+<animation light="xu omni006">
+<color sequence="dockingbay_closed" property="color" />
+</animation>
+<animation light="xu omni01">
+<color sequence="dockingbay_closed" property="color" />
+</animation>
+<animation light="xu omni002">
+<color sequence="dockingbay_closed" property="color" />
+</animation>
+<animation light="xu omni003">
+<color sequence="dockingbay_closed" property="color" />
+</animation>
+<animation light="xu omni004">
+<color sequence="dockingbay_closed" property="color" />
+</animation>
+<animation light="xu omni005">
+<color sequence="dockingbay_closed" property="color" />
+</animation>
+</animations>
+<render>
+<parameter value="assets\textures\ui\factions\faction_player_diffhq" name="diffuse_map" type="texture" />
+</render>
+</component>
+</connection>
+<connection connection="con_dock_xs" macro="con_dock_xs">
+<component class="dockingbay" macro="dock_gen_xs_ship_01_macro" connection="connection_component" id="[0xae43e]">
+<offset default="1" />
+<render>
+<parameter value="assets\textures\ui\factions\faction_player_diffhq" name="diffuse_map" type="texture" />
+</render>
+</component>
+</connection>
+<connection connection="con_shipstorage03" macro="con_shipstorage03">
+<component class="dockingbay" macro="shipstorage_gen_xs_01_macro" connection="object" id="[0xae43f]">
+<offset default="1" />
+</component>
+</connection>
+<connection connection="con_shipstorage02" macro="con_shipstorage02">
+<component class="dockingbay" macro="shipstorage_gen_s_twentyfour_macro" connection="object" id="[0xae440]">
+<offset default="1" />
+</component>
+</connection>
+<connection connection="con_shipstorage01" macro="con_shipstorage01">
+<component class="dockingbay" macro="shipstorage_gen_m_six_macro" connection="object" id="[0xae441]">
+<offset default="1" />
+</component>
+</connection>
+</connections>
+</component>

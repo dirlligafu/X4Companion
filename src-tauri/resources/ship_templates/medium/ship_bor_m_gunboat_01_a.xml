@@ -1,0 +1,942 @@
+<component class="ship_m" macro="ship_bor_m_gunboat_01_a_macro" connection="space" code="ONP-214" owner="player" knownto="player" variation="0" spawntime="0" thruster="thruster_gen_m_combat_01_mk3_macro" id="[0xadd63]">
+<listeners>
+<listener listener="[0xadd87]" event="killed" />
+<listener listener="[0xadd68]" event="boostdisabled" />
+<listener listener="[0xadd69]" event="boostdisabled" />
+<listener listener="[0xadd75]" event="killed" />
+<listener listener="[0xadd84]" event="killed" />
+</listeners>
+<events>
+<event event="updateengineparameters" time="13.5907" />
+</events>
+<movement forcerotation="1" forceposition="0" class="navigation">
+<position>
+<read space="[0xa5d10]" numpathpoints="1" avoidbigobjects="1" avoidsmallobjects="1">
+<offset>
+<position x="2.968" z="632.28" />
+</offset>
+<velocity>
+<linear z="1" />
+</velocity>
+<acceleration />
+</read>
+<write space="[0xa5d10]" numpathpoints="1" avoidbigobjects="1" avoidsmallobjects="1">
+<offset>
+<position x="2.968" z="632.245" />
+</offset>
+<velocity>
+<linear z="1" />
+</velocity>
+<acceleration />
+</write>
+</position>
+<targetpoints>
+<targetpoint refobject="[0xa5d10]" behavior="default" direction="forward" forcerotation="1" avoidbigobjects="1" avoidsmallobjects="1" resetroll="1">
+<offset>
+<position x="2.968" z="636.231" />
+</offset>
+</targetpoint>
+</targetpoints>
+<flightcontrolmodel type="spline" />
+<transition />
+</movement>
+<offset>
+<position x="2.968" z="632.28" />
+</offset>
+<animations>
+<animation part="dummy_sound_animation">
+<part sequence="deactivated" />
+<texture>
+<channel channel="1">
+<value sequence="deactivated" property="v_offset" />
+<value sequence="deactivated" property="u_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="part_chair_ht_01">
+<part sequence="chair_default_active">
+<control current="chair_default_active" />
+</part>
+</animation>
+<animation part="anim_door_right">
+<part sequence="deactivated" />
+</animation>
+<animation part="anim_elevator_gear_01">
+<part sequence="deactivated" />
+</animation>
+<animation part="anim_landinggear_hatch_front">
+<part sequence="landinggears_inactive" />
+</animation>
+<animation part="anim_landinggear_hatch_back">
+<part sequence="landinggears_inactive" />
+</animation>
+<animation part="dummy_sound_animation001">
+<part sequence="deactivated" />
+<texture>
+<channel channel="1">
+<value sequence="deactivated" property="v_offset" />
+<value sequence="deactivated" property="u_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="anim_door_left001">
+<part sequence="deactivated" />
+</animation>
+<animation part="anim_hatch_elevator">
+<part sequence="cockpit_closed" />
+</animation>
+<animation part="fx_exhaust">
+<part time="4.04983" />
+<texture>
+<channel channel="1">
+<value time="4.04983" property="v_offset" />
+<value time="4.04983" property="u_offset" />
+</channel>
+<channel channel="2">
+<value time="4.04983" property="v_offset" />
+<value time="4.04983" property="u_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="anim_lightcone_01">
+<part sequence="cockpit_closed" />
+<texture>
+<channel channel="2">
+<value sequence="cockpit_closed" property="v_offset" />
+<value sequence="cockpit_closed" property="u_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="anim_hatch">
+<part sequence="dockingbay_closed" />
+</animation>
+<animation part="anim_door_left">
+<part sequence="deactivated" />
+</animation>
+<animation part="anim_door_right001">
+<part sequence="deactivated" />
+</animation>
+<animation part="anim_landinggear_back_dummy">
+<part sequence="landinggears_inactive" />
+</animation>
+<animation part="anim_landinggear_front_dummy">
+<part sequence="landinggears_inactive" />
+</animation>
+<animation part="detail_m_decals_right">
+<part sequence="deactivated" />
+</animation>
+<animation part="part_chair_ht_01001">
+<part sequence="chair_default_inactive" />
+</animation>
+<animation part="anim_turret_hatch_b_b_01">
+<part sequence="turrethatch_inactive" />
+</animation>
+<animation part="detail_m_decals_right001">
+<part sequence="deactivated" />
+</animation>
+<animation part="anim_turret_hatch_f_b_01">
+<part sequence="turrethatch_inactive" />
+</animation>
+<animation part="anim_turret_hatch_f_b_02">
+<part sequence="turrethatch_inactive" />
+</animation>
+<animation part="anim_landinggear_f_04">
+<part sequence="landinggears_inactive" />
+</animation>
+<animation part="anim_landinggear_f_05">
+<part sequence="landinggears_inactive" />
+</animation>
+<animation part="anim_landinggear_f_02">
+<part sequence="landinggears_inactive" />
+</animation>
+<animation part="anim_landinggear_f_03">
+<part sequence="landinggears_inactive" />
+</animation>
+<animation part="anim_landinggear_f_01">
+<part sequence="landinggears_inactive" />
+</animation>
+<animation part="detail_m_light_right">
+<part sequence="deactivated" />
+</animation>
+<animation part="anim_elevator_platform">
+<part sequence="deactivated" />
+</animation>
+<animation part="anim_turret_hatch_f_t_04">
+<part sequence="turrethatch_inactive" />
+</animation>
+<animation part="anim_turret_hatch_f_t_02">
+<part sequence="turrethatch_inactive" />
+</animation>
+<animation part="anim_turret_hatch_f_t_03">
+<part sequence="turrethatch_inactive" />
+</animation>
+<animation part="anim_turret_hatch_f_t_01">
+<part sequence="turrethatch_inactive" />
+</animation>
+<animation part="anim_landinggear_f_04_r">
+<part sequence="landinggears_inactive" />
+</animation>
+<animation part="anim_landinggear_f_05_r">
+<part sequence="landinggears_inactive" />
+</animation>
+<animation part="anim_landinggear_f_02_r">
+<part sequence="landinggears_inactive" />
+</animation>
+<animation part="anim_landinggear_f_03_r">
+<part sequence="landinggears_inactive" />
+</animation>
+<animation part="anim_landinggear_f_01_r">
+<part sequence="landinggears_inactive" />
+</animation>
+<animation part="part_chair_ht_01002">
+<part sequence="chair_default_inactive chair_default_activating chair_default_active">
+<control current="chair_default_active" />
+</part>
+</animation>
+<animation part="detail_m_decals_left">
+<part sequence="deactivated" />
+</animation>
+<animation part="part_chair_ht_02">
+<part sequence="chair_default_active">
+<control current="chair_default_active" />
+</part>
+</animation>
+<animation part="detail_m_decals_left001">
+<part sequence="deactivated" />
+</animation>
+<animation part="anim_landinggear_f_04_lb">
+<part sequence="landinggears_inactive" />
+</animation>
+<animation part="anim_landinggear_f_04_rb">
+<part sequence="landinggears_inactive" />
+</animation>
+<animation part="anim_landinggear_f_05_lb">
+<part sequence="landinggears_inactive" />
+</animation>
+<animation part="anim_landinggear_f_05_rb">
+<part sequence="landinggears_inactive" />
+</animation>
+<animation part="anim_landinggear_f_02_rb">
+<part sequence="landinggears_inactive" />
+</animation>
+<animation part="anim_landinggear_f_02_lb">
+<part sequence="landinggears_inactive" />
+</animation>
+<animation part="anim_landinggear_f_03_rb">
+<part sequence="landinggears_inactive" />
+</animation>
+<animation part="anim_landinggear_f_03_lb">
+<part sequence="landinggears_inactive" />
+</animation>
+<animation part="part_chair_ht_02001">
+<part sequence="chair_default_inactive" />
+</animation>
+<animation part="detail_m_light_left">
+<part sequence="deactivated" />
+</animation>
+<animation part="anim_landinggear_f_01_rb">
+<part sequence="landinggears_inactive" />
+</animation>
+<animation part="anim_landinggear_f_01_lb">
+<part sequence="landinggears_inactive" />
+</animation>
+<animation part="detail_m_light_left001">
+<part sequence="deactivated" />
+</animation>
+<animation part="part_chair_ht_03">
+<part sequence="chair_default_active">
+<control current="chair_default_active" />
+</part>
+</animation>
+<animation part="anim_turret_hatch_t_b_01">
+<part sequence="turrethatch_inactive" />
+</animation>
+<animation part="detail_m_light_right001">
+<part sequence="deactivated" />
+</animation>
+<animation part="part_chair_ht_03001">
+<part sequence="chair_default_inactive" />
+</animation>
+<animation part="part_chair_ht_02002">
+<part sequence="chair_default_inactive chair_default_activating chair_default_active">
+<control current="chair_default_active" />
+</part>
+</animation>
+<animation part="part_chair_ht_03002">
+<part sequence="chair_default_inactive chair_default_activating chair_default_active">
+<control current="chair_default_active" />
+</part>
+</animation>
+<animation part="part_chair_ht_04">
+<part sequence="chair_default_active">
+<control current="chair_default_active" />
+</part>
+</animation>
+<animation part="part_chair_ht_05">
+<part sequence="chair_default_active">
+<control current="chair_default_active" />
+</part>
+</animation>
+<animation part="part_chair_ht_06">
+<part sequence="chair_default_active">
+<control current="chair_default_active" />
+</part>
+</animation>
+<animation part="part_chair_ht_04002">
+<part sequence="chair_default_inactive chair_default_activating chair_default_active">
+<control current="chair_default_active" />
+</part>
+</animation>
+<animation part="part_chair_ht_07">
+<part sequence="chair_default_active">
+<control current="chair_default_active" />
+</part>
+</animation>
+<animation part="part_chair_ht_04001">
+<part sequence="chair_default_inactive" />
+</animation>
+<animation part="part_chair_ht_07002">
+<part sequence="chair_default_inactive chair_default_activating chair_default_active">
+<control current="chair_default_active" />
+</part>
+</animation>
+<animation part="part_trackball">
+<part sequence="chair_steering_active">
+<control current="chair_steering_active" />
+</part>
+<texture>
+<channel channel="2">
+<value sequence="chair_steering_active" property="v_offset">
+<control current="chair_steering_active" />
+</value>
+<value sequence="chair_steering_active" property="u_offset">
+<control current="chair_steering_active" />
+</value>
+</channel>
+</texture>
+</animation>
+<animation part="part_chair_ht_07001">
+<part sequence="chair_default_inactive" />
+</animation>
+<animation part="part_chair_ht_05001">
+<part sequence="chair_default_inactive" />
+</animation>
+<animation part="part_trackball001">
+<part sequence="chair_steering_inactive" />
+<texture>
+<channel channel="2">
+<value sequence="chair_steering_inactive" property="v_offset" />
+<value sequence="chair_steering_inactive" property="u_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="part_trackball002">
+<part sequence="chair_steering_inactive" />
+<texture>
+<channel channel="2">
+<value sequence="chair_steering_inactive" property="v_offset" />
+<value sequence="chair_steering_inactive" property="u_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="part_chair_ht_05002">
+<part sequence="chair_default_inactive chair_default_activating chair_default_active">
+<control current="chair_default_active" />
+</part>
+</animation>
+<animation part="part_chair_ht_06001">
+<part sequence="chair_default_inactive" />
+</animation>
+<animation part="part_chair_ht_06002">
+<part sequence="chair_default_inactive chair_default_activating chair_default_active">
+<control current="chair_default_active" />
+</part>
+</animation>
+<animation light="xu omni007">
+<color sequence="deactivated" property="color" />
+<float sequence="deactivated" property="intensity" />
+<color sequence="deactivated" property="color" />
+<float sequence="deactivated" property="intensity" />
+</animation>
+<animation light="ego_area_flight_01">
+<float sequence="cockpit_closed" property="intensity" />
+</animation>
+</animations>
+<render>
+<parameter value="4279110927" name="letter_color" type="color" />
+<parameter value="4280032030" name="number_color" type="color" />
+<parameter value="assets\textures\ui\factions\faction_player_diffhq" name="diffuse_map" type="texture" />
+</render>
+<modification>
+<paint ware="paintmod_0006" generated="1" />
+</modification>
+<gravidar />
+<orders>
+<order id="[0x45c8]" default="1" order="Wait" state="started">
+<syncpoint state="reached" />
+<param name="timeout" type="time" />
+<param name="allowdocked" type="integer" value="1" />
+<param name="holdfire" type="integer" />
+<param name="noattackresponse" type="integer" />
+<param name="attacker" />
+<param name="skipalignment" />
+<param name="fidget" type="integer" />
+<param name="debugchance" type="integer" />
+</order>
+</orders>
+<software wares="software_dockmk2 software_scannerlongrangemk2 software_scannerobjectmk2 software_trademk1" />
+<control>
+<post id="defence" component="[0xadd75]" />
+<post id="tradecomputer" />
+<post id="aipilot" component="[0xadd87]" />
+<post id="playerpilot" />
+<post id="engineer" component="[0xadd84]" />
+</control>
+<people>
+<person macro="character_argon_female_cau_crew_01_macro" role="service">
+<npcseed seed="11191119116558192300" />
+<skills boarding="1" engineering="11" management="2" morale="11" piloting="3" />
+</person>
+<person macro="character_argon_male_afr_crew_01_macro" role="service">
+<npcseed seed="9537680824745448261" />
+<skills boarding="3" engineering="11" management="2" morale="12" piloting="3" />
+</person>
+<person macro="character_argon_female_asi_crew_01_macro" role="service">
+<npcseed seed="11153021272462423039" />
+<skills boarding="1" engineering="11" management="1" morale="10" piloting="5" />
+</person>
+<person macro="character_argon_male_asi_pilot_01_macro" role="marine">
+<npcseed seed="2528094486309958817" />
+<skills boarding="11" engineering="3" management="2" morale="10" piloting="5" />
+</person>
+<person macro="character_argon_female_asi_crew_01_macro" role="service">
+<npcseed seed="13622687881677127721" />
+<skills boarding="3" engineering="12" management="1" morale="12" piloting="6" />
+</person>
+<person macro="character_argon_female_cau_crew_01_macro" role="service">
+<npcseed seed="9041114872061779142" />
+<skills boarding="3" engineering="12" management="2" morale="12" piloting="5" />
+</person>
+<person macro="character_argon_male_afr_crew_01_macro" role="service">
+<npcseed seed="12144000878527175006" />
+<skills boarding="3" engineering="11" management="1" morale="10" piloting="3" />
+</person>
+<person macro="character_argon_male_cau_crew_01_macro" role="service">
+<npcseed seed="3437763109786860871" />
+<skills boarding="3" engineering="10" management="1" morale="12" piloting="4" />
+</person>
+</people>
+<quantity variation="0" />
+<quality variation="0" />
+<ammunition>
+<available>
+<item macro="countermeasure_flares_01_macro" amount="8" />
+</available>
+</ammunition>
+<weapongroups>
+<primary active="0">
+<entry>
+<weapon id="[0xadd6a]" />
+</entry>
+</primary>
+<secondary active="0" />
+</weapongroups>
+<locked nextchecktime="4.88964" />
+<account id="[0x88]" amount="10000" />
+<boost />
+<stance unlocktime="0" />
+<connections>
+<connection connection="con_shipstorage_xs_01" macro="con_shipstorage_xs_01">
+<component class="dockingbay" macro="shipstorage_gen_xs_01_macro" connection="object" id="[0xadd64]">
+<offset default="1" />
+</component>
+</connection>
+<connection connection="con_shield_01">
+<component class="shieldgenerator" macro="shield_ter_m_virtual_01_mk3_macro" connection="parentconnection" id="[0xadd6b]">
+<offset>
+<position x="-7.763" y="-0.3845" z="6.834" />
+</offset>
+</component>
+</connection>
+<connection connection="con_shield_02">
+<component class="shieldgenerator" macro="shield_ter_m_virtual_01_mk3_macro" connection="parentconnection" id="[0xadd6c]">
+<offset>
+<position x="7.763" y="-0.3845" z="6.861" />
+</offset>
+</component>
+</connection>
+<connection connection="connectionforpart_chair_ht_012687346993664" id="[0xadd8b]">
+<connected connection="[0xadd8a]" />
+</connection>
+<connection connection="con_cockpit_01" macro="con_cockpit_01">
+<component class="cockpit" macro="cockpit_gen_virtual_01_macro" connection="ship" id="[0xadd65]">
+<offset default="1" />
+<connections>
+<connection connection="entities">
+<component class="computer" macro="character_defence_computer_01_macro" connection="parentconnection" code="QXX-645" owner="player" known="1" read="0" id="[0xadd75]">
+<listeners>
+<listener listener="[0xadd63]" event="killed" />
+</listeners>
+<traits flags="remotecommable">
+<skills morale="6" />
+</traits>
+<entity type="officer" post="defence" />
+</component>
+</connection>
+<connection connection="entities">
+<component class="computer" macro="character_engineer_computer_01_macro" connection="parentconnection" code="QVA-133" owner="player" known="1" read="0" id="[0xadd84]">
+<listeners>
+<listener listener="[0xadd63]" event="killed" />
+</listeners>
+<traits flags="remotecommable">
+<skills engineering="6" morale="6" />
+</traits>
+<entity type="officer" post="engineer" />
+</component>
+</connection>
+<connection connection="entities">
+<component class="npc" macro="character_terran_female_cau_pilot_01_macro" connection="parentconnection" name="Danielle Smith" code="DHS-058" owner="player" known="1" read="0" page="10109" id="[0xadd87]">
+<listeners>
+<listener listener="[0xadd63]" event="killed" />
+</listeners>
+<movement class="crossconnection">
+<additionaloffset />
+<attached component="[0xadd63]" connection="con_control_01" />
+<offset>
+<position y="-1.881" z="7.776" />
+</offset>
+</movement>
+<offset>
+<position x="-0.0003878" y="-1.825" z="72.587" />
+</offset>
+<render>
+<parameter flags="override" owner="[0xadd87]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+<traits flags="remotecommable" />
+<entity type="officer" post="aipilot" />
+<blackboard>
+<value name="$StateMachine" type="cue" value="478753" />
+</blackboard>
+<npcseed seed="9298562658708137370" />
+<npcanimation currentanimation="anim_sitpilot_piloting_01">
+<currentsequence type="busy" behavior="sit_pilot" startpose="sitting_pilot" endpose="sitting_pilot" animation="anim_sitpilot_piloting_01" />
+</npcanimation>
+<connections>
+<connection connection="currentchair" id="[0xadd8a]">
+<connected connection="[0xadd8b]" />
+</connection>
+<connection connection="roomposition" id="[0xadd88]">
+<connected connection="[0xadd89]" />
+</connection>
+</connections>
+</component>
+</connection>
+<connection connection="entities">
+<component class="npc" macro="character_argon_female_cau_crew_01_macro" connection="parentconnection" name="Hayla Mettel" code="ORA-746" owner="player" known="1" read="0" page="10107" id="[0x10f98a]">
+<events>
+<event event="objectsignalled" time="195.154">
+<param type="string" value="10281" />
+<param2 type="cue" value="643915" />
+<param3 />
+</event>
+</events>
+<movement class="crossconnection">
+<additionaloffset />
+<attached component="[0xadd63]" connection="con_control_03" />
+<offset>
+<position y="-1.881" z="7.776" />
+</offset>
+</movement>
+<offset>
+<position x="1.142" y="-2.141" z="70.388" />
+<rotation yaw="45.00005" />
+</offset>
+<render>
+<parameter flags="override" owner="[0x10f98a]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+<traits flags="remotecommable|temporary" role="service">
+<skills boarding="3" engineering="12" management="2" morale="12" piloting="5" />
+</traits>
+<entity type="crowd" />
+<blackboard>
+<value name="$StateMachine" type="cue" value="490700" />
+<value name="$HiringFee" type="money" value="6075056000" />
+</blackboard>
+<npcseed seed="9041114872061779142" />
+<npcanimation currentanimation="anim_sit_idle_03">
+<currentsequence type="idle" behavior="sit" startpose="sitting" endpose="sitting" animation="anim_sit_idle_03" />
+</npcanimation>
+<connections>
+<connection connection="roleobject" id="[0x10f98f]">
+<connected connection="[0x10f990]" />
+</connection>
+<connection connection="currentchair" id="[0x10f98d]">
+<connected connection="[0x10f98e]" />
+</connection>
+<connection connection="roomposition" id="[0x10f98b]">
+<connected connection="[0x10f98c]" />
+</connection>
+</connections>
+</component>
+</connection>
+</connections>
+</component>
+</connection>
+<connection connection="con_weapon_01">
+<component class="weapon" macro="weapon_bor_m_railgun_01_mk1_macro" connection="con_weapon_01" lastshottime="0" id="[0xadd6a]">
+<offset>
+<position y="-6.228" z="60.42" />
+</offset>
+<render>
+<parameter flags="override" owner="[0xadd6a]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+</component>
+</connection>
+<connection connection="con_control_01" id="[0xadd89]">
+<connected connection="[0xadd88]" />
+</connection>
+<connection connection="con_control_03" id="[0x10f98c]">
+<connected connection="[0x10f98b]" />
+</connection>
+<connection connection="con_turret_m_07">
+<component class="turret" macro="turret_gen_m_shieldpierce_01_mk1_macro" connection="con_turret" lastshottime="-4" id="[0xadd6d]">
+<offset>
+<position x="-5.543" y="-6.419" z="20.996" />
+<rotation yaw="-1.72749" pitch="-3.81864" roll="-153.36124" />
+</offset>
+<animations>
+<animation part="part_base">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="part_arm">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="part_rotator">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="fx_rotator_base">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="fx_rotator">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="part_gun">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="fx_gun">
+<part sequence="turret_inactive" />
+</animation>
+</animations>
+<render>
+<parameter flags="override" owner="[0xadd6d]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+</component>
+</connection>
+<connection connection="con_turret_m_06">
+<component class="turret" macro="turret_gen_m_shieldpierce_01_mk1_macro" connection="con_turret" lastshottime="-4" id="[0xadd6e]">
+<offset>
+<position x="12.075" y="-1.493" z="35.099" />
+<rotation yaw="-0.169325" pitch="0.0136744" roll="16.575" />
+</offset>
+<animations>
+<animation part="part_base">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="part_arm">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="part_rotator">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="fx_rotator_base">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="fx_rotator">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="part_gun">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="fx_gun">
+<part sequence="turret_inactive" />
+</animation>
+</animations>
+<render>
+<parameter flags="override" owner="[0xadd6e]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+</component>
+</connection>
+<connection connection="con_turret_m_05">
+<component class="turret" macro="turret_gen_m_shieldpierce_01_mk1_macro" connection="con_turret" lastshottime="-4" id="[0xadd6f]">
+<offset>
+<position x="8.627" y="-0.9008" z="29.085" />
+<rotation yaw="-0.167352" pitch="0.0292686" roll="21.87865" />
+</offset>
+<animations>
+<animation part="part_base">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="part_arm">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="part_rotator">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="fx_rotator_base">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="fx_rotator">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="part_gun">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="fx_gun">
+<part sequence="turret_inactive" />
+</animation>
+</animations>
+<render>
+<parameter flags="override" owner="[0xadd6f]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+</component>
+</connection>
+<connection connection="con_turret_m_04">
+<component class="turret" macro="turret_gen_m_shieldpierce_01_mk1_macro" connection="con_turret" lastshottime="-4" id="[0xadd70]">
+<offset>
+<position x="-8.507" y="-0.8572" z="29.085" />
+<rotation yaw="-0.146834" pitch="-0.0854682" roll="-18.24412" />
+</offset>
+<animations>
+<animation part="part_base">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="part_arm">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="part_rotator">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="fx_rotator_base">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="fx_rotator">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="part_gun">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="fx_gun">
+<part sequence="turret_inactive" />
+</animation>
+</animations>
+<render>
+<parameter flags="override" owner="[0xadd70]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+</component>
+</connection>
+<connection connection="con_turret_m_03">
+<component class="turret" macro="turret_gen_m_shieldpierce_01_mk1_macro" connection="con_turret" lastshottime="-4" id="[0xadd71]">
+<offset>
+<position x="-12.131" y="-1.51" z="35.099" />
+<rotation yaw="-0.146834" pitch="-0.0854682" roll="-18.24412" />
+</offset>
+<animations>
+<animation part="part_base">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="part_arm">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="part_rotator">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="fx_rotator_base">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="fx_rotator">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="part_gun">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="fx_gun">
+<part sequence="turret_inactive" />
+</animation>
+</animations>
+<render>
+<parameter flags="override" owner="[0xadd71]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+</component>
+</connection>
+<connection connection="con_turret_m_02">
+<component class="turret" macro="turret_gen_m_shieldpierce_01_mk1_macro" connection="con_turret" lastshottime="-4" id="[0xadd72]">
+<offset>
+<position y="-7.919" z="-8.916" />
+<rotation yaw="-179.99997" roll="179.99997" />
+</offset>
+<animations>
+<animation part="part_base">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="part_arm">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="part_rotator">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="fx_rotator_base">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="fx_rotator">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="part_gun">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="fx_gun">
+<part sequence="turret_inactive" />
+</animation>
+</animations>
+<render>
+<parameter flags="override" owner="[0xadd72]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+</component>
+</connection>
+<connection connection="con_turret_m_01">
+<component class="turret" macro="turret_gen_m_shieldpierce_01_mk1_macro" connection="con_turret" lastshottime="-4" id="[0xadd73]">
+<offset>
+<position y="0.4764" z="3.828" />
+<rotation yaw="179.99997" />
+</offset>
+<animations>
+<animation part="part_base">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="part_arm">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="part_rotator">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="fx_rotator_base">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="fx_rotator">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="part_gun">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="fx_gun">
+<part sequence="turret_inactive" />
+</animation>
+</animations>
+<render>
+<parameter flags="override" owner="[0xadd73]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+</component>
+</connection>
+<connection connection="con_turret_m_08">
+<component class="turret" macro="turret_gen_m_shieldpierce_01_mk1_macro" connection="con_turret" lastshottime="-4" id="[0xadd74]">
+<offset>
+<position x="5.443" y="-6.466" z="20.996" />
+<rotation yaw="1.81957" pitch="-3.7757" roll="156.52118" />
+</offset>
+<animations>
+<animation part="part_base">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="part_arm">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="part_rotator">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="fx_rotator_base">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="fx_rotator">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="part_gun">
+<part sequence="turret_inactive" />
+</animation>
+<animation part="fx_gun">
+<part sequence="turret_inactive" />
+</animation>
+</animations>
+<render>
+<parameter flags="override" owner="[0xadd74]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+</component>
+</connection>
+<connection connection="connectionforpart_chair_ht_010022687346995584" id="[0x10f98e]">
+<connected connection="[0x10f98d]" />
+</connection>
+<connection connection="roleentities" id="[0x10f990]">
+<connected connection="[0x10f98f]" />
+</connection>
+<connection connection="con_engine_02">
+<component class="engine" macro="engine_bor_m_allround_01_mk3_macro" connection="ship" id="[0xadd68]">
+<offset>
+<position x="17.273" y="-4.894" z="33.279" />
+</offset>
+<render>
+<parameter flags="override" owner="[0xadd68]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+</component>
+</connection>
+<connection connection="con_engine_01">
+<component class="engine" macro="engine_bor_m_allround_01_mk3_macro" connection="ship" id="[0xadd69]">
+<offset>
+<position x="-17.251" y="-4.894" z="33.279" />
+</offset>
+<render>
+<parameter flags="override" owner="[0xadd69]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+</component>
+</connection>
+<connection connection="con_storage_01" macro="con_storage_01">
+<component class="storage" macro="storage_bor_m_gunboat_01_a_macro" connection="shipconnection" id="[0xadd66]">
+<offset default="1" />
+<render>
+<parameter value="assets\textures\ui\factions\faction_player_diffhq" name="diffuse_map" type="texture" />
+</render>
+</component>
+</connection>
+<connection connection="con_dock_xs" macro="con_dock_xs">
+<component class="dockingbay" macro="dock_gen_xs_ship_01_macro" connection="connection_component" id="[0xadd67]">
+<offset default="1" />
+<render>
+<parameter value="assets\textures\ui\factions\faction_player_diffhq" name="diffuse_map" type="texture" />
+</render>
+</component>
+</connection>
+</connections>
+</component>

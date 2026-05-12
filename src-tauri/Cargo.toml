@@ -1,0 +1,31 @@
+[package]
+name = "x4-companion"
+version = "1.31.0"
+description = "X4 Foundations Companion"
+authors = []
+edition = "2021"
+
+[lib]
+name = "x4_companion_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+tauri-plugin-dialog = "2"
+tauri-plugin-store = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+quick-xml = "0.36"
+flate2 = "1"
+rusqlite = { version = "0.31", features = ["bundled"] }
+tauri-plugin-opener = "2"
+
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = "s"
+panic = "abort"
+strip = true

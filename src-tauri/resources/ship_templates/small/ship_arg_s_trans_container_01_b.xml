@@ -1,0 +1,436 @@
+<component class="ship_s" macro="ship_arg_s_trans_container_01_b_macro" connection="space" code="NYO-828" owner="player" knownto="player" variation="0" spawntime="0" thruster="thruster_gen_s_allround_01_mk3_macro" id="[0xadcef]">
+<listeners>
+<listener listener="[0xadcf9]" event="killed" />
+<listener listener="[0xadcf4]" event="boostdisabled" />
+<listener listener="[0xadcf5]" event="boostdisabled" />
+<listener listener="[0xadcf6]" event="boostdisabled" />
+</listeners>
+<events>
+<event event="updateengineparameters" time="12.8832" />
+</events>
+<movement forcerotation="1" forceposition="0" class="navigation">
+<position>
+<read space="[0xa5968]" numpathpoints="1" avoidbigobjects="1" avoidsmallobjects="1">
+<offset>
+<position x="-150.495" z="113.639" />
+</offset>
+<velocity>
+<linear z="1" />
+</velocity>
+<acceleration />
+</read>
+<write space="[0xa5968]" numpathpoints="1" avoidbigobjects="1" avoidsmallobjects="1">
+<offset>
+<position x="-150.495" z="113.599" />
+</offset>
+<velocity />
+<acceleration />
+</write>
+</position>
+<targetpoints>
+<targetpoint refobject="[0xa5968]" behavior="default" direction="forward" forcerotation="1" avoidbigobjects="1" avoidsmallobjects="1" resetroll="1">
+<offset>
+<position x="-150.495" z="118.599" />
+</offset>
+</targetpoint>
+</targetpoints>
+<flightcontrolmodel type="spline" />
+<transition />
+</movement>
+<offset>
+<position x="-150.495" z="113.639" />
+</offset>
+<animations>
+<animation part="detail_l_door">
+<part sequence="doors_open" />
+</animation>
+<animation part="part_chair_01">
+<part sequence="chair_default_active">
+<control current="chair_default_active" />
+</part>
+</animation>
+<animation part="anim_poslights">
+<part time="3.37441" />
+<texture>
+<channel channel="1">
+<value time="3.37441" property="u_offset" />
+</channel>
+</texture>
+</animation>
+<animation part="xs_dock_hatch_r">
+<part sequence="dockingbay_closed" />
+</animation>
+<animation part="xs_dock_hatch_l">
+<part sequence="dockingbay_closed" />
+</animation>
+<animation part="anim_door_a">
+<part sequence="cockpit_closed" />
+</animation>
+<animation part="anim_main">
+<part sequence="landinggears_inactive" />
+</animation>
+<animation part="part_chair_02">
+<part sequence="chair_default_active">
+<control current="chair_default_active" />
+</part>
+</animation>
+<animation part="part_chair_03">
+<part sequence="chair_default_active">
+<control current="chair_default_active" />
+</part>
+</animation>
+<animation part="part_chair_04">
+<part sequence="chair_default_active">
+<control current="chair_default_active" />
+</part>
+</animation>
+<animation part="landinggear_b_l_02">
+<part sequence="landinggears_inactive" />
+</animation>
+<animation part="landinggear_b_l_01">
+<part sequence="landinggears_inactive" />
+</animation>
+<animation part="landinggear_b_r_02">
+<part sequence="landinggears_inactive" />
+</animation>
+<animation part="landinggear_b_r_01">
+<part sequence="landinggears_inactive" />
+</animation>
+<animation part="anim_door_b">
+<part sequence="cockpit_closed" />
+</animation>
+<animation part="landinggear_b_r_hatch2">
+<part sequence="landinggears_inactive" />
+</animation>
+<animation part="landinggear_b_r_hatch1">
+<part sequence="landinggears_inactive" />
+</animation>
+<animation part="landinggear_b_l_hatch2">
+<part sequence="landinggears_inactive" />
+</animation>
+<animation part="landinggear_b_l_hatch1">
+<part sequence="landinggears_inactive" />
+</animation>
+<animation part="landinggear_f_r">
+<part sequence="landinggears_inactive" />
+</animation>
+<animation part="landinggear_f_l">
+<part sequence="landinggears_inactive" />
+</animation>
+<animation part="landinggear_f_r_hatch">
+<part sequence="landinggears_inactive" />
+</animation>
+<animation part="landinggear_f_l_hatch">
+<part sequence="landinggears_inactive" />
+</animation>
+<animation part="part_chair_05">
+<part sequence="chair_default_active">
+<control current="chair_default_active" />
+</part>
+</animation>
+<animation part="part_chair_06">
+<part sequence="chair_default_active">
+<control current="chair_default_active" />
+</part>
+</animation>
+<animation part="part_chair_07">
+<part sequence="chair_default_active">
+<control current="chair_default_active" />
+</part>
+</animation>
+<animation part="part_trackball">
+<part sequence="chair_steering_active">
+<control current="chair_steering_active" />
+</part>
+<texture>
+<channel channel="2">
+<value sequence="chair_steering_active" property="u_offset">
+<control current="chair_steering_active" />
+</value>
+</channel>
+</texture>
+</animation>
+<animation light="xu arealight027">
+<float sequence="landinggears_inactive" property="intensity" />
+</animation>
+<animation light="xu arealight021">
+<float sequence="landinggears_inactive" property="intensity" />
+</animation>
+<animation light="xu arealight024">
+<float sequence="landinggears_inactive" property="intensity" />
+</animation>
+<animation light="xu arealight026">
+<float sequence="landinggears_inactive" property="intensity" />
+</animation>
+<animation light="xu arealight032">
+<float sequence="landinggears_inactive" property="intensity" />
+</animation>
+</animations>
+<render>
+<parameter value="4279048206" name="letter_color" type="color" />
+<parameter value="4280425506" name="number_color" type="color" />
+<parameter value="assets\textures\ui\factions\faction_player_diffhq" name="diffuse_map" type="texture" />
+</render>
+<modification>
+<paint ware="paintmod_0006" generated="1" />
+</modification>
+<gravidar />
+<orders>
+<order id="[0x4546]" default="1" order="Wait" state="started">
+<syncpoint state="reached" />
+<param name="timeout" type="time" />
+<param name="allowdocked" type="integer" value="1" />
+<param name="holdfire" type="integer" />
+<param name="noattackresponse" type="integer" />
+<param name="attacker" />
+<param name="skipalignment" />
+<param name="fidget" type="integer" />
+<param name="debugchance" type="integer" />
+</order>
+</orders>
+<software wares="software_dockmk2 software_scannerlongrangemk2 software_scannerobjectmk2 software_targetmk1" />
+<control>
+<post id="tradecomputer" />
+<post id="aipilot" component="[0xadcf9]" />
+<post id="playerpilot" />
+</control>
+<people>
+<person macro="character_argon_female_cau_pilot_01_macro" role="marine">
+<npcseed seed="15971796760948656462" />
+<skills boarding="11" engineering="2" management="3" morale="10" piloting="6" />
+</person>
+<person macro="character_argon_female_asi_crew_01_macro" role="service">
+<npcseed seed="5399912811374871644" />
+<skills boarding="2" engineering="11" management="1" morale="12" piloting="5" />
+</person>
+<person macro="character_argon_male_afr_pilot_01_macro" role="marine">
+<npcseed seed="8710425594733061668" />
+<skills boarding="12" engineering="3" management="2" morale="10" piloting="6" />
+</person>
+<person macro="character_argon_male_cau_crew_01_macro" role="service">
+<npcseed seed="15158912446985508003" />
+<skills boarding="3" engineering="12" management="2" morale="10" piloting="5" />
+</person>
+</people>
+<quantity variation="0" />
+<quality variation="0" />
+<ammunition>
+<available>
+<item macro="countermeasure_flares_01_macro" amount="4" />
+</available>
+</ammunition>
+<weapongroups>
+<primary active="0">
+<entry>
+<weapon id="[0xadcf7]" />
+</entry>
+</primary>
+<secondary active="0" />
+</weapongroups>
+<locked nextchecktime="4.90417" />
+<account id="[0x88]" amount="10000" />
+<boost />
+<stance unlocktime="0" />
+<connections>
+<connection connection="con_shipstorage_xs_01" macro="con_shipstorage_xs_01">
+<component class="dockingbay" macro="shipstorage_gen_xs_01_macro" connection="object" id="[0xadcf0]">
+<offset default="1" />
+</component>
+</connection>
+<connection connection="con_storage01" macro="con_storage01">
+<component class="storage" macro="storage_arg_s_trans_container_01_b_macro" connection="shipconnection" id="[0xadcf1]">
+<offset default="1" />
+<render>
+<parameter value="assets\textures\ui\factions\faction_player_diffhq" name="diffuse_map" type="texture" />
+</render>
+</component>
+</connection>
+<connection connection="con_weapon">
+<component class="weapon" macro="weapon_par_s_railgun_01_mk2_macro" connection="weaponcon_01" lastshottime="0" id="[0xadcf7]">
+<offset>
+<position x="1.528" y="1.259" z="11.563" />
+</offset>
+<render>
+<parameter flags="override" value="5" owner="[0xadcf7]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+</component>
+</connection>
+<connection connection="con_cockpit" macro="con_cockpit">
+<component class="cockpit" macro="cockpit_gen_virtual_01_macro" connection="ship" id="[0xadcf2]">
+<offset default="1" />
+<connections>
+<connection connection="entities">
+<component class="npc" macro="character_split_male_generic_02_macro" connection="parentconnection" name="Cio t'Nst" code="YIN-700" owner="player" known="1" read="0" page="10401" id="[0xadcf9]">
+<listeners>
+<listener listener="[0xadcef]" event="killed" />
+</listeners>
+<movement class="crossconnection">
+<additionaloffset />
+<attached component="[0xadcef]" connection="con_control01" />
+<offset>
+<position x="1.523" y="-2.058" z="-12.242" />
+</offset>
+</movement>
+<offset>
+<position x="0.002206" y="-1.169" z="1.601" />
+</offset>
+<render>
+<parameter flags="override" owner="[0xadcf9]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+<traits flags="remotecommable" />
+<entity type="officer" post="aipilot" />
+<blackboard>
+<value name="$StateMachine" type="cue" value="481113" />
+</blackboard>
+<npcseed seed="12264366548583610626" />
+<npcanimation currentanimation="anim_sitpilot_piloting_03">
+<currentsequence type="busy" behavior="sit_pilot" startpose="sitting_pilot" endpose="sitting_pilot" animation="anim_sitpilot_piloting_03" />
+</npcanimation>
+<connections>
+<connection connection="currentchair" id="[0xadcfc]">
+<connected connection="[0xadcfd]" />
+</connection>
+<connection connection="roomposition" id="[0xadcfa]">
+<connected connection="[0xadcfb]" />
+</connection>
+</connections>
+</component>
+</connection>
+</connections>
+</component>
+</connection>
+<connection connection="con_control01" id="[0xadcfb]">
+<connected connection="[0xadcfa]" />
+</connection>
+<connection connection="con_engine_03">
+<component class="engine" macro="engine_spl_s_combat_01_mk4_macro" connection="engineconnection01" id="[0xadcf4]">
+<offset>
+<position x="-0.04469" y="2.927" z="-9.468" />
+</offset>
+<animations>
+<animation part="detail_xs_lookat_target">
+<part sequence="flaps_right_minmax" />
+</animation>
+<animation part="anim_flame_01">
+<part time="3.9911" />
+<texture>
+<channel channel="1">
+<value time="3.9911" property="u_offset" />
+</channel>
+</texture>
+</animation>
+</animations>
+<render>
+<parameter flags="override" value="0.0101695" owner="[0xadcf4]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+<connections>
+<connection connection="connectionre">
+<component class="effectobject" macro="dummyemitter_macro" connection="connectionre" seed="3901697893" id="[0xadd50]">
+<offset>
+<position z="-8.573" />
+<quaternion qx="-0.707107" qw="0.707107" />
+</offset>
+<effect id="trail_engine_s_distortion" effect="trail_engine_s_distortion" element="1" duration="-1" starttime="0" />
+</component>
+</connection>
+</connections>
+</component>
+</connection>
+<connection connection="con_engine_02">
+<component class="engine" macro="engine_spl_s_combat_01_mk4_macro" connection="engineconnection01" id="[0xadcf5]">
+<offset>
+<position x="7.761" y="-0.9665" z="-9.249" />
+</offset>
+<animations>
+<animation part="detail_xs_lookat_target">
+<part sequence="flaps_right_minmax" />
+</animation>
+<animation part="anim_flame_01">
+<part time="3.9911" />
+<texture>
+<channel channel="1">
+<value time="3.9911" property="u_offset" />
+</channel>
+</texture>
+</animation>
+</animations>
+<render>
+<parameter flags="override" value="0.0101695" owner="[0xadcf5]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+<connections>
+<connection connection="connectionre">
+<component class="effectobject" macro="dummyemitter_macro" connection="connectionre" seed="3901697896" id="[0xadd53]">
+<offset>
+<position z="-8.573" />
+<quaternion qx="-0.707107" qw="0.707107" />
+</offset>
+<effect id="trail_engine_s_distortion" effect="trail_engine_s_distortion" element="1" duration="-1" starttime="0" />
+</component>
+</connection>
+</connections>
+</component>
+</connection>
+<connection connection="con_engine_01">
+<component class="engine" macro="engine_spl_s_combat_01_mk4_macro" connection="engineconnection01" id="[0xadcf6]">
+<offset>
+<position x="-7.695" y="-0.9665" z="-9.249" />
+</offset>
+<animations>
+<animation part="detail_xs_lookat_target">
+<part sequence="flaps_right_minmax" />
+</animation>
+<animation part="anim_flame_01">
+<part time="3.9911" />
+<texture>
+<channel channel="1">
+<value time="3.9911" property="u_offset" />
+</channel>
+</texture>
+</animation>
+</animations>
+<render>
+<parameter flags="override" value="0.0101695" owner="[0xadcf6]" name="mat_dynamicglow" type="glow">
+<persistent interval="0" />
+</parameter>
+</render>
+<connections>
+<connection connection="connectionre">
+<component class="effectobject" macro="dummyemitter_macro" connection="connectionre" seed="3901697899" id="[0xadd56]">
+<offset>
+<position z="-8.573" />
+<quaternion qx="-0.707107" qw="0.707107" />
+</offset>
+<effect id="trail_engine_s_distortion" effect="trail_engine_s_distortion" element="1" duration="-1" starttime="0" />
+</component>
+</connection>
+</connections>
+</component>
+</connection>
+<connection connection="con_shield">
+<component class="shieldgenerator" macro="shield_ter_s_standard_01_mk3_macro" connection="connection01" id="[0xadcf8]">
+<offset>
+<position y="4.316" z="3.779" />
+</offset>
+</component>
+</connection>
+<connection connection="con_dock_xs" macro="con_dock_xs">
+<component class="dockingbay" macro="dock_gen_xs_ship_01_macro" connection="connection_component" id="[0xadcf3]">
+<offset default="1" />
+<render>
+<parameter value="assets\textures\ui\factions\faction_player_diffhq" name="diffuse_map" type="texture" />
+</render>
+</component>
+</connection>
+<connection connection="connection30" id="[0xadcfd]">
+<connected connection="[0xadcfc]" />
+</connection>
+</connections>
+</component>
