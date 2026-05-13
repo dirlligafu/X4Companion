@@ -1,6 +1,6 @@
 import { invoke } from "@tauri-apps/api/core";
 import { useEffect, useState } from "react";
-import type { BlueprintInfo, EquipmentCatalog, HighwaysCatalog, InventoryCatalogItem, ModuleCargoInfo, ModStat, ShipCatalogItem, SectorsCatalog, WareCargoInfo } from "@/types/save";
+import type { BlueprintInfo, EquipmentCatalog, HighwaysCatalog, InventoryCatalogItem, ModuleCargoInfo, ModRecipesData, ModStat, ShipCatalogItem, SectorsCatalog, WareCargoInfo } from "@/types/save";
 
 const EMPTY_EQUIPMENT: EquipmentCatalog = { weapons: [], engines: [], shields: [], thrusters: [] };
 
@@ -16,6 +16,7 @@ export function useGameResources() {
   const [shipsCatalog, setShipsCatalog] = useState<ShipCatalogItem[]>([]);
   const [equipmentCatalog, setEquipmentCatalog] = useState<EquipmentCatalog>(EMPTY_EQUIPMENT);
   const [modStats, setModStats] = useState<ModStat[]>([]);
+  const [modRecipes, setModRecipes] = useState<ModRecipesData | null>(null);
   const [sectorsCatalog, setSectorsCatalog] = useState<SectorsCatalog | null>(null);
   const [highwaysCatalog, setHighwaysCatalog] = useState<HighwaysCatalog | null>(null);
 
@@ -53,6 +54,9 @@ export function useGameResources() {
     invoke<ModStat[]>("get_mod_stats")
       .then(setModStats)
       .catch(e => console.error("Impossible de charger mod stats :", e));
+    invoke<ModRecipesData>("get_mod_recipes")
+      .then(setModRecipes)
+      .catch(e => console.error("Impossible de charger mod recipes :", e));
     invoke<SectorsCatalog>("get_sectors_catalog")
       .then(setSectorsCatalog)
       .catch(e => console.error("Impossible de charger sectors catalog :", e));
@@ -61,5 +65,5 @@ export function useGameResources() {
       .catch(e => console.error("Impossible de charger highways catalog :", e));
   }, []);
 
-  return { moduleCargoIndex, wareCargoInfo, wareLabels, blueprintInfos, factionNames, shipLabels, sectorNames, inventoryCatalog, shipsCatalog, equipmentCatalog, modStats, sectorsCatalog, highwaysCatalog };
+  return { moduleCargoIndex, wareCargoInfo, wareLabels, blueprintInfos, factionNames, shipLabels, sectorNames, inventoryCatalog, shipsCatalog, equipmentCatalog, modStats, modRecipes, sectorsCatalog, highwaysCatalog };
 }

@@ -15,7 +15,7 @@ import { ShipComparator } from "@/components/fitting/ship-comparator";
 type AppView = "editor" | "dictionaries" | "map" | "fitting" | "compare";
 
 export default function App() {
-  const { moduleCargoIndex, wareCargoInfo, wareLabels, blueprintInfos, factionNames, shipLabels, sectorNames, inventoryCatalog, shipsCatalog, equipmentCatalog, modStats, sectorsCatalog } = useGameResources();
+  const { moduleCargoIndex, wareCargoInfo, wareLabels, blueprintInfos, factionNames, shipLabels, sectorNames, inventoryCatalog, shipsCatalog, equipmentCatalog, modStats, modRecipes, sectorsCatalog } = useGameResources();
   const prefs = usePreferences();
   const editor = useSaveEditor(prefs.defaultSaveDir);
 
@@ -42,7 +42,7 @@ export default function App() {
 
         {view === "dictionaries" ? (
           <div className="flex min-h-0 flex-1 flex-col overflow-hidden">
-            <DictionariesView shipsCatalog={shipsCatalog} equipmentCatalog={equipmentCatalog} modStats={modStats} />
+            <DictionariesView shipsCatalog={shipsCatalog} equipmentCatalog={equipmentCatalog} modStats={modStats} modRecipes={modRecipes} />
           </div>
         ) : view === "map" ? (
           <div className="flex min-h-0 flex-1 flex-col overflow-hidden">
@@ -146,6 +146,7 @@ export default function App() {
                   savePath={editor.path}
                   equipmentCatalog={equipmentCatalog}
                   modStats={modStats}
+                  modRecipes={modRecipes}
                   sectorsCatalog={sectorsCatalog}
                 />
                 <div className="shrink-0">

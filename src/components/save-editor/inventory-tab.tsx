@@ -12,7 +12,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { capitalize } from "@/lib/format";
-import type { InventoryCatalogItem, InventoryItem } from "@/types/save";
+import type { InventoryCatalogItem, InventoryItem, ModRecipe, ModRecipesData } from "@/types/save";
 
 type InventoryTabProps = {
   editInventory: InventoryItem[];
@@ -21,6 +21,7 @@ type InventoryTabProps = {
   onUpdateWareAmount: (index: number, amount: number) => void;
   onAddItem: (ware: string, amount: number) => void;
   inventoryCatalog: InventoryCatalogItem[];
+  modRecipes?: ModRecipesData | null;
   inventorySearch: string;
   setInventorySearch: (v: string) => void;
 };
@@ -38,6 +39,14 @@ const GROUP_LABELS: Record<string, string> = {
   lasertower:     "Laser Tower",
 };
 
+const CRAFT_CATEGORY_LABELS: Record<string, string> = {
+  weapon: "Weapon",
+  engine: "Engine",
+  ship:   "Ship",
+  shield: "Shield",
+};
+const CRAFT_QUALITY_LABELS: Record<number, string> = { 1: "Mk1", 2: "Mk2", 3: "Mk3" };
+
 export function InventoryTab({
   editInventory,
   wareLabels,
@@ -45,6 +54,7 @@ export function InventoryTab({
   onUpdateWareAmount,
   onAddItem,
   inventoryCatalog,
+  modRecipes,
   inventorySearch,
   setInventorySearch,
 }: InventoryTabProps) {
@@ -75,6 +85,39 @@ export function InventoryTab({
   const [selectedId, setSelectedId] = useState("");
   const [addQty, setAddQty]         = useState(1);
 
+  // ── État panneau craft mod ─────────────────────────────────────────────────
+  const [craftModId, setCraftModId] = useState("");
+
+  const craftModsByCategory = useMemo(() => {
+    if (!modRecipes) return {} as Record<string, ModRecipe[]>;
+    const order = ["weapon", "engine", "ship", "shield"];
+    const groups: Record<string, ModRecipe[]> = {};
+    for (const r of modRecipes.mods) {
+      if (r.noplayerblueprint) continue;
+      (groups[r.category] ??= []).push(r);
+    }
+    for (const items of Object.values(groups)) {
+      items.sort((a, b) => a.quality - b.quality || (a.name ?? a.ware).localeCompare(b.name ?? b.ware));
+    }
+    return order.reduce<Record<string, ModRecipe[]>>((acc, cat) => {
+      if (groups[cat]?.length) acc[cat] = groups[cat];
+      return acc;
+    }, {});
+  }, [modRecipes]);
+
+  const selectedRecipe = useMemo(
+    () => modRecipes?.mods.find((r) => r.ware === craftModId) ?? null,
+    [modRecipes, craftModId],
+  );
+
+  function handleCraftIngredients() {
+    if (!selectedRecipe) return;
+    for (const ing of selectedRecipe.ingredients) {
+      onAddItem(ing.ware, ing.amount);
+    }
+    setCraftModId("");
+  }
+
   // Catalogue filtré : on retire les items déjà dans l'inventaire
   const ownedIds = useMemo(() => new Set(editInventory.map(i => i.ware)), [editInventory]);
 
@@ -103,40 +146,88 @@ export function InventoryTab({
     <Card className="flex min-h-0 flex-1 flex-col overflow-hidden">
       <CardContent className="flex min-h-0 flex-1 flex-col gap-3 overflow-hidden pt-4">
 
-        {/* ── Panneau d'ajout ── */}
-        <div className="flex shrink-0 items-center gap-2">
-          <select
-            value={selectedId}
-            onChange={e => setSelectedId(e.target.value)}
-            disabled={busy || inventoryCatalog.length === 0}
-            className="flex-1 rounded-md border border-input bg-background px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-ring"
-          >
-            <option value="">— Select item to add —</option>
-            {Object.entries(catalogByGroup).sort(([a], [b]) => a.localeCompare(b)).map(([group, items]) => (
-              <optgroup key={group} label={GROUP_LABELS[group] ?? group}>
-                {items.map(item => (
-                  <option key={item.id} value={item.id}>
-                    {item.name}{item.price ? ` (${item.price.toLocaleString()} cr)` : ""}
-                  </option>
+        {/* ── Panneaux d'ajout + craft mod côte à côte ── */}
+        <div className="flex shrink-0 flex-col gap-1.5">
+          <div className="flex items-center gap-2">
+            {/* Moitié gauche — ajout item */}
+            <div className="flex w-1/2 items-center gap-2">
+              <select
+                value={selectedId}
+                onChange={e => setSelectedId(e.target.value)}
+                disabled={busy || inventoryCatalog.length === 0}
+                className="flex-1 min-w-0 rounded-md border border-input bg-background px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-ring"
+              >
+                <option value="">— Select item to add —</option>
+                {Object.entries(catalogByGroup).sort(([a], [b]) => a.localeCompare(b)).map(([group, items]) => (
+                  <optgroup key={group} label={GROUP_LABELS[group] ?? group}>
+                    {items.map(item => (
+                      <option key={item.id} value={item.id}>
+                        {item.name}{item.price ? ` (${item.price.toLocaleString()} cr)` : ""}
+                      </option>
+                    ))}
+                  </optgroup>
                 ))}
-              </optgroup>
-            ))}
-          </select>
-          <Input
-            type="number"
-            min={1}
-            value={addQty}
-            onChange={e => setAddQty(parseInt(e.target.value, 10) || 1)}
-            disabled={busy}
-            className="w-20 text-center font-mono"
-          />
-          <Button
-            onClick={handleAdd}
-            disabled={busy || !selectedId}
-            size="sm"
-          >
-            Add
-          </Button>
+              </select>
+              <Input
+                type="number"
+                min={1}
+                value={addQty}
+                onChange={e => setAddQty(parseInt(e.target.value, 10) || 1)}
+                disabled={busy}
+                className="w-20 shrink-0 text-center font-mono"
+              />
+              <Button onClick={handleAdd} disabled={busy || !selectedId} size="sm">
+                Add
+              </Button>
+            </div>
+
+            {/* Moitié droite — craft mod */}
+            {modRecipes && (
+              <div className="flex w-1/2 items-center gap-2">
+                <select
+                  value={craftModId}
+                  onChange={e => setCraftModId(e.target.value)}
+                  disabled={busy}
+                  className="flex-1 min-w-0 rounded-md border border-input bg-background px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-ring"
+                >
+                  <option value="">— Add crafting ingredients for mod —</option>
+                  {Object.entries(craftModsByCategory).map(([cat, items]) => (
+                    <optgroup key={cat} label={CRAFT_CATEGORY_LABELS[cat] ?? cat}>
+                      {items.map(r => (
+                        <option key={r.ware} value={r.ware}>
+                          {CRAFT_QUALITY_LABELS[r.quality] ? `[${CRAFT_QUALITY_LABELS[r.quality]}] ` : ""}{r.name ?? r.ware}
+                        </option>
+                      ))}
+                    </optgroup>
+                  ))}
+                </select>
+                <Button
+                  onClick={handleCraftIngredients}
+                  disabled={busy || !craftModId}
+                  size="sm"
+                  variant="secondary"
+                >
+                  Add ingredients
+                </Button>
+              </div>
+            )}
+          </div>
+
+          {/* Prévisualisation ingrédients */}
+          {selectedRecipe && (
+            <div className="flex flex-wrap gap-x-4 gap-y-0.5 pl-1 text-xs text-muted-foreground">
+              {selectedRecipe.ingredients.map(ing => (
+                <span key={ing.ware}>
+                  {ing.name ?? ing.ware} <span className="font-mono text-foreground">×{ing.amount}</span>
+                </span>
+              ))}
+              {selectedRecipe.research && (
+                <span className="italic">
+                  Research: {modRecipes!.ingredient_names[selectedRecipe.research] ?? selectedRecipe.research}
+                </span>
+              )}
+            </div>
+          )}
         </div>
 
         {/* ── Filtre inventaire ── */}

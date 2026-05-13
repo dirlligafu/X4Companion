@@ -2,7 +2,7 @@ import { useState, useMemo } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
-import type { BlueprintInfo, EquipmentCatalog, InventoryCatalogItem, ModStat, ModuleCargoInfo, NpcInfo, PlayerBasics, WareCargoInfo } from "@/types/save";
+import type { BlueprintInfo, EquipmentCatalog, InventoryCatalogItem, ModRecipesData, ModStat, ModuleCargoInfo, NpcInfo, PlayerBasics, WareCargoInfo } from "@/types/save";
 import type { NpcTraitKey } from "@/hooks/useSaveEditor";
 import { BlueprintsTab } from "./blueprints-tab";
 import { EmployeesTab } from "./employees-tab";
@@ -66,6 +66,7 @@ type SaveEditorTabsProps = {
   savePath: string;
   equipmentCatalog: EquipmentCatalog;
   modStats: ModStat[];
+  modRecipes: ModRecipesData | null;
   sectorsCatalog: SectorsCatalog | null;
 };
 
@@ -89,6 +90,7 @@ export function SaveEditorTabs(props: SaveEditorTabsProps) {
     savePath,
     equipmentCatalog,
     modStats,
+    modRecipes,
     sectorsCatalog,
   } = props;
 
@@ -198,6 +200,7 @@ export function SaveEditorTabs(props: SaveEditorTabsProps) {
           onUpdateWareAmount={updateWareAmount}
           onAddItem={addInventoryItem}
           inventoryCatalog={inventoryCatalog}
+          modRecipes={modRecipes}
           inventorySearch={inventorySearch}
           setInventorySearch={setInventorySearch}
         />

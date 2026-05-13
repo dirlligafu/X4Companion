@@ -2839,6 +2839,22 @@ fn get_mod_stats(app: tauri::AppHandle) -> Result<Vec<ModStat>, String> {
     Ok(mods)
 }
 
+/// Retourne les recettes de crafting des mods depuis catalog/mod_recipes.json.
+#[tauri::command]
+fn get_mod_recipes(app: tauri::AppHandle) -> Result<serde_json::Value, String> {
+    let path = app.path().resource_dir()
+        .map_err(|e| format!("resource_dir: {e}"))?
+        .join("resources")
+        .join("catalog")
+        .join("mod_recipes.json");
+
+    let content = fs::read_to_string(&path)
+        .map_err(|e| format!("Lecture mod_recipes.json : {e}"))?;
+
+    serde_json::from_str(&content)
+        .map_err(|e| format!("Parse mod_recipes.json : {e}"))
+}
+
 /// Retourne le catalogue complet des items d'inventaire depuis x4_data.db,
 /// avec les noms résolus depuis la table strings (résolution applicative).
 #[tauri::command]
@@ -3287,7 +3303,7 @@ pub fn run() {
             Ok(())
         })
         .invoke_handler(tauri::generate_handler![ping, parse_save_basics, parse_player_stats, parse_player_messages, get_ware_labels, get_blueprint_labels, get_faction_names, get_ship_labels, get_sector_names, apply_edits, extract_player_ship_xml, inspect_player_ship, get_inventory_catalog, get_ships_catalog, get_equipment_catalog, open_dictionaries, get_sectors_catalog, get_highways_catalog, get_gates_catalog, get_stations_catalog,
-            list_ship_templates, inject_ships, get_module_cargo_index, get_ware_cargo_info, get_template_loadout, save_fitting, load_fitting_from_path, get_mod_stats, ensure_fittings_dir])
+            list_ship_templates, inject_ships, get_module_cargo_index, get_ware_cargo_info, get_template_loadout, save_fitting, load_fitting_from_path, get_mod_stats, get_mod_recipes, ensure_fittings_dir])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }

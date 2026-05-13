@@ -5,7 +5,13 @@ Tested on v8 saves (vanilla + all DLCs), not tested on V9 yet.
 
 > Unofficial tool, not affiliated with Egosoft. Use at your own risk.
 >
-> **Current release: v1.31.0** (development history starts here, earlier commits live in a private and very messy repo.)
+
+**Current release: v1.32.0**
+NEW: desktop icon for the application
+NEW: the mods tab now shows components, quantities and research level needed to produce a mod
+NEW: the player inventory tab now lets you inject needed components and quantities needed to produce a mod
+
+~~Current release: v1.31.0~~ (development history starts here, earlier commits live in a private and very messy repo.)
 
 
 ![screenshot.png](images/screenshot.png)

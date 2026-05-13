@@ -7,9 +7,9 @@ import {
   Table, TableBody, TableCell, TableHead, TableHeader, TableRow,
 } from "@/components/ui/table";
 import { cn } from "@/lib/utils";
-import type { ModStat } from "@/types/save";
+import type { ModRecipe, ModRecipesData, ModStat } from "@/types/save";
 
-type Props = { mods: ModStat[] };
+type Props = { mods: ModStat[]; modRecipes?: ModRecipesData | null };
 
 const CATEGORY_LABELS: Record<string, string> = {
   weapon: "Weapon",
@@ -88,45 +88,88 @@ function fmtRange(min: number, max: number, stat: string): string {
 
 const COL_COUNT = 7;
 
-function ModDetail({ mod: m }: { mod: ModStat }) {
-  if (!m.bonuses || m.bonuses.length === 0) return null;
+function ModDetail({ mod: m, recipe, ingredientNames }: {
+  mod: ModStat;
+  recipe?: ModRecipe;
+  ingredientNames?: Record<string, string | null>;
+}) {
+  const hasBonuses = (m.bonuses?.length ?? 0) > 0;
+  const hasRecipe  = !!recipe;
+  if (!hasBonuses && !hasRecipe) return null;
 
-  // Deduplicate by max_count (bonus group)
-  const maxCount = m.bonuses[0].max_count;
-  const plural = maxCount > 1 ? `up to ${maxCount} of` : "one of";
+  const maxCount = hasBonuses ? m.bonuses![0].max_count : 0;
+  const plural   = maxCount > 1 ? `up to ${maxCount} of` : "one of";
 
   return (
     <div className={cn(
       "box-border w-full min-w-0 rounded-lg border border-border/80 bg-muted/25 p-4 text-xs",
       "animate-in fade-in slide-in-from-top-0.5 duration-200 fill-mode-both",
+      "flex flex-col gap-4",
     )}>
-      <p className="mb-3 text-muted-foreground">
-        Rolls <span className="font-medium text-foreground">{plural}</span> the following bonus effects:
-      </p>
-      <div className="flex flex-col gap-1.5">
-        {m.bonuses.map((b, i) => (
-          <div key={i} className="flex items-baseline gap-3">
-            <span className="w-44 shrink-0 text-muted-foreground">
-              {STAT_LABELS[b.stat] ?? b.stat}
-            </span>
-            <span className="font-mono tabular-nums text-foreground">
-              {fmtRange(b.min, b.max, b.stat)}
-            </span>
-            {b.chance < 1 && (
-              <span className="text-muted-foreground/70">{(b.chance * 100).toFixed(0)}% chance</span>
-            )}
+      {hasBonuses && (
+        <div>
+          <p className="mb-3 text-muted-foreground">
+            Rolls <span className="font-medium text-foreground">{plural}</span> the following bonus effects:
+          </p>
+          <div className="flex flex-col gap-1.5">
+            {m.bonuses!.map((b, i) => (
+              <div key={i} className="flex items-baseline gap-3">
+                <span className="w-44 shrink-0 text-muted-foreground">
+                  {STAT_LABELS[b.stat] ?? b.stat}
+                </span>
+                <span className="font-mono tabular-nums text-foreground">
+                  {fmtRange(b.min, b.max, b.stat)}
+                </span>
+                {b.chance < 1 && (
+                  <span className="text-muted-foreground/70">{(b.chance * 100).toFixed(0)}% chance</span>
+                )}
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
+        </div>
+      )}
+
+      {hasRecipe && (
+        <div>
+          <p className="mb-2 font-medium text-foreground">Crafting recipe</p>
+          <div className="flex flex-col gap-1">
+            {recipe!.ingredients.map(ing => (
+              <div key={ing.ware} className="flex items-baseline gap-3">
+                <span className="w-64 shrink-0 text-muted-foreground">
+                  {ing.name ?? ing.ware}
+                </span>
+                <span className="font-mono tabular-nums text-foreground">× {ing.amount}</span>
+              </div>
+            ))}
+          </div>
+          {recipe!.research && (
+            <p className="mt-2 text-muted-foreground/70">
+              Research required:{" "}
+              <span className="text-muted-foreground">
+                {ingredientNames?.[recipe!.research] ?? recipe!.research}
+              </span>
+            </p>
+          )}
+          {recipe!.noplayerblueprint && (
+            <p className="mt-1 italic text-muted-foreground/60">Not available in player blueprint</p>
+          )}
+        </div>
+      )}
     </div>
   );
 }
 
-export function ModsBrowser({ mods }: Props) {
+export function ModsBrowser({ mods, modRecipes }: Props) {
   const [search, setSearch]           = useState("");
   const [categoryFilter, setCategoryFilter] = useState<string | null>(null);
   const [qualityFilter, setQualityFilter]   = useState<number | null>(null);
   const [expandedWare, setExpandedWare]     = useState<string | null>(null);
+
+  const recipeIndex = useMemo(() => {
+    const idx: Record<string, ModRecipe> = {};
+    for (const r of modRecipes?.mods ?? []) idx[r.ware] = r;
+    return idx;
+  }, [modRecipes]);
 
   function toggleExpand(ware: string) {
     setExpandedWare(p => p === ware ? null : ware);
@@ -220,14 +263,16 @@ export function ModsBrowser({ mods }: Props) {
                   {items.map(m => {
                     const isExpanded = expandedWare === m.ware;
                     const hasBonus   = (m.bonuses?.length ?? 0) > 0;
+                    const recipe     = recipeIndex[m.ware];
+                    const expandable = hasBonus || !!recipe;
                     return (
                       <Fragment key={m.ware}>
                         <TableRow
-                          className={cn("cursor-pointer", !hasBonus && "cursor-default")}
-                          onClick={() => hasBonus && toggleExpand(m.ware)}
+                          className={cn("cursor-pointer", !expandable && "cursor-default")}
+                          onClick={() => expandable && toggleExpand(m.ware)}
                         >
                           <TableCell className="text-muted-foreground pr-0">
-                            {hasBonus
+                            {expandable
                               ? isExpanded
                                 ? <ChevronDown className="h-3 w-3" />
                                 : <ChevronRight className="h-3 w-3" />
@@ -252,11 +297,15 @@ export function ModsBrowser({ mods }: Props) {
                             {m.ware}
                           </TableCell>
                         </TableRow>
-                        {isExpanded && hasBonus && (
+                        {isExpanded && expandable && (
                           <TableRow className="hover:bg-transparent bg-muted/20">
                             <TableCell className="py-0.5 pr-0 align-top" aria-hidden />
                             <TableCell colSpan={COL_COUNT - 1} className="min-w-0 px-0 py-0.5 align-top whitespace-normal">
-                              <ModDetail mod={m} />
+                              <ModDetail
+                                mod={m}
+                                recipe={recipe}
+                                ingredientNames={modRecipes?.ingredient_names}
+                              />
                             </TableCell>
                           </TableRow>
                         )}

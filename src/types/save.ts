@@ -315,6 +315,27 @@ export interface ModStat {
   bonuses: ModBonus[] | null;
 }
 
+export interface ModRecipeIngredient {
+  ware: string;
+  amount: number;
+  name: string | null;
+}
+
+export interface ModRecipe {
+  ware: string;
+  name: string | null;
+  category: string;
+  quality: number;
+  noplayerblueprint: boolean;
+  ingredients: ModRecipeIngredient[];
+  research: string | null;
+}
+
+export interface ModRecipesData {
+  mods: ModRecipe[];
+  ingredient_names: Record<string, string | null>;
+}
+
 export interface DeployableInfo {
   class: string;
   macro_id: string;

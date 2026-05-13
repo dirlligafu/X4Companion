@@ -7,12 +7,13 @@ import { EnginesBrowser }   from "./engines-browser";
 import { ShieldsBrowser }   from "./shields-browser";
 import { ThrustersBrowser } from "./thrusters-browser";
 import { ModsBrowser }     from "./mods-browser";
-import type { EquipmentCatalog, ModStat, ShipCatalogItem } from "@/types/save";
+import type { EquipmentCatalog, ModRecipesData, ModStat, ShipCatalogItem } from "@/types/save";
 
 type Props = {
   shipsCatalog:     ShipCatalogItem[];
   equipmentCatalog: EquipmentCatalog;
   modStats:         ModStat[];
+  modRecipes:       ModRecipesData | null;
 };
 
 function CountBadge({ count }: { count: number }) {
@@ -24,7 +25,7 @@ function CountBadge({ count }: { count: number }) {
   );
 }
 
-export function DictionariesView({ shipsCatalog, equipmentCatalog, modStats }: Props) {
+export function DictionariesView({ shipsCatalog, equipmentCatalog, modStats, modRecipes }: Props) {
   const { weapons, engines, shields, thrusters } = equipmentCatalog;
 
   const fixedWeapons = useMemo(
@@ -109,7 +110,7 @@ export function DictionariesView({ shipsCatalog, equipmentCatalog, modStats }: P
       <TabsContent value="mods" className="mt-4 flex min-h-0 flex-1 flex-col overflow-hidden">
         {modStats.length === 0
           ? <p className="text-sm text-muted-foreground">Loading mods catalog…</p>
-          : <ModsBrowser mods={modStats} />
+          : <ModsBrowser mods={modStats} modRecipes={modRecipes} />
         }
       </TabsContent>
     </Tabs>
