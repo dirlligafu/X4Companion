@@ -2082,8 +2082,19 @@ fn get_sector_names(app: tauri::AppHandle) -> Result<HashMap<String, String>, St
     Ok(map)
 }
 
+fn validate_save_path(path: &str) -> Result<(), String> {
+    if !path.ends_with(".xml") && !path.ends_with(".xml.gz") {
+        return Err(format!("Extension invalide : le chemin doit se terminer par .xml ou .xml.gz"));
+    }
+    if !Path::new(path).exists() {
+        return Err(format!("Fichier introuvable : {path}"));
+    }
+    Ok(())
+}
+
 #[tauri::command]
 fn apply_edits(app: tauri::AppHandle, path: String, edits: EditRequest) -> Result<(), String> {
+    validate_save_path(&path)?;
     let is_gz = path.ends_with(".gz");
     let total = fs::metadata(&path).map(|m| m.len()).unwrap_or(0);
 
@@ -2100,38 +2111,45 @@ fn apply_edits(app: tauri::AppHandle, path: String, edits: EditRequest) -> Resul
         build_storage_cargo_patches(&edits, &mod_map, &ware_map)?
     };
 
-    // Backup
+    // Backup — préservé tel quel si déjà existant (session initiale)
     let backup = format!("{}.bak", &path);
-    fs::copy(&path, &backup)
-        .map_err(|e| format!("Impossible de créer le backup : {e}"))?;
+    if !Path::new(&backup).exists() {
+        fs::copy(&path, &backup)
+            .map_err(|e| format!("Impossible de créer le backup : {e}"))?;
+    }
 
-    // Écriture vers fichier temporaire
-    let tmp = format!("{}.tmp", &path);
+    // Écriture vers fichier temporaire (nettoyage automatique en cas d'erreur)
+    let parent_dir = Path::new(&path)
+        .parent()
+        .ok_or_else(|| "Chemin sans répertoire parent".to_string())?;
+    let mut tmp_file = tempfile::Builder::new()
+        .suffix(".tmp")
+        .tempfile_in(parent_dir)
+        .map_err(|e| format!("Impossible de créer le fichier temporaire : {e}"))?;
+
     {
         let src = File::open(&path)
             .map_err(|e| format!("Impossible d'ouvrir le fichier : {e}"))?;
-        let dst = File::create(&tmp)
-            .map_err(|e| format!("Impossible de créer le fichier temporaire : {e}"))?;
         let progress = ProgressReader::new(src, total, app.clone());
 
         if is_gz {
-            // Pipeline : GzDecoder → write_edits → GzEncoder (pas de fichier intermédiaire)
             let reader = BufReader::new(GzDecoder::new(BufReader::new(progress)));
-            let mut encoder = GzEncoder::new(BufWriter::new(dst), Compression::default());
+            let mut encoder = GzEncoder::new(BufWriter::new(tmp_file.as_file_mut()), Compression::default());
             write_edits(reader, &mut encoder, &edits, &storage_cargo_patches)?;
             encoder
                 .finish()
                 .map_err(|e| format!("Erreur finalisation gz : {e}"))?;
         } else {
-            let mut writer = BufWriter::new(dst);
+            let mut writer = BufWriter::new(tmp_file.as_file_mut());
             write_edits(BufReader::new(progress), &mut writer, &edits, &storage_cargo_patches)?;
             writer.flush().map_err(|e| format!("Erreur flush : {e}"))?;
         }
     }
 
     // Remplacement atomique
-    fs::rename(&tmp, &path)
-        .map_err(|e| format!("Impossible de remplacer le fichier : {e}"))?;
+    tmp_file
+        .persist(&path)
+        .map_err(|e| format!("Impossible de remplacer le fichier : {}", e.error))?;
 
     app.emit("progress", json!({ "pct": 100 })).ok();
     Ok(())
@@ -2190,6 +2208,7 @@ fn parse_stats_section<R: std::io::BufRead>(reader: R) -> Result<Vec<StatEntry>,
 
 #[tauri::command]
 fn parse_player_stats(path: String) -> Result<Vec<StatEntry>, String> {
+    validate_save_path(&path)?;
     let file = File::open(&path).map_err(|e| format!("Cannot open file: {e}"))?;
 
     if path.ends_with(".gz") {
@@ -2255,6 +2274,7 @@ fn parse_messages_section<R: std::io::BufRead>(reader: R) -> Result<Vec<MessageE
 
 #[tauri::command]
 fn parse_player_messages(path: String) -> Result<Vec<MessageEntry>, String> {
+    validate_save_path(&path)?;
     let file = File::open(&path).map_err(|e| format!("Cannot open file: {e}"))?;
 
     if path.ends_with(".gz") {
@@ -2271,6 +2291,7 @@ fn ping() -> String {
 
 #[tauri::command]
 fn parse_save_basics(app: tauri::AppHandle, path: String) -> Result<PlayerBasics, String> {
+    validate_save_path(&path)?;
     let file = File::open(&path).map_err(|e| format!("Impossible d'ouvrir le fichier : {e}"))?;
     let total = fs::metadata(&path).map(|m| m.len()).unwrap_or(0);
     let progress_reader = ProgressReader::new(file, total, app.clone());
@@ -2326,12 +2347,14 @@ fn parse_save_basics(app: tauri::AppHandle, path: String) -> Result<PlayerBasics
 /// Extrait le sous-arbre XML brut d'un vaisseau joueur (code instance), à la demande.
 #[tauri::command]
 fn extract_player_ship_xml(path: String, code: String) -> Result<String, String> {
+    validate_save_path(&path)?;
     ship_xml::extract_player_ship_subtree(&path, &code)
 }
 
 /// Inspection structurée (équipage, loadout, ordres, …) sans reconstruire tout le XML.
 #[tauri::command]
 fn inspect_player_ship(path: String, code: String) -> Result<ship_inspect::ShipInspect, String> {
+    validate_save_path(&path)?;
     ship_inspect::inspect_player_ship(&path, &code)
 }
 
@@ -3238,6 +3261,7 @@ fn list_ship_templates(app: tauri::AppHandle) -> Result<HashMap<String, Vec<Stri
 /// Retourne les codes générés pour chaque nouveau vaisseau.
 #[tauri::command]
 fn inject_ships(app: tauri::AppHandle, save_path: String, template_names: Vec<String>) -> Result<Vec<String>, String> {
+    validate_save_path(&save_path)?;
     if template_names.is_empty() {
         return Err("Aucun template sélectionné.".to_string());
     }

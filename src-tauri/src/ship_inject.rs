@@ -362,29 +362,34 @@ pub fn inject_into_save(save_path: &str, injection_block: &str, tempzone_id: &st
             .map_err(|e| format!("Backup impossible : {e}"))?;
     }
 
-    let tmp = format!("{}.tmp", save_path);
+    let parent_dir = std::path::Path::new(save_path)
+        .parent()
+        .ok_or_else(|| "Chemin sans répertoire parent".to_string())?;
+    let mut tmp_file = tempfile::Builder::new()
+        .suffix(".tmp")
+        .tempfile_in(parent_dir)
+        .map_err(|e| format!("Création .tmp impossible : {e}"))?;
 
     {
         let src = File::open(save_path)
             .map_err(|e| format!("Ouverture save impossible : {e}"))?;
-        let dst = File::create(&tmp)
-            .map_err(|e| format!("Création .tmp impossible : {e}"))?;
 
         if is_gz {
             let reader = BufReader::new(GzDecoder::new(BufReader::new(src)));
-            let mut encoder = GzEncoder::new(BufWriter::new(dst), Compression::default());
+            let mut encoder = GzEncoder::new(BufWriter::new(tmp_file.as_file_mut()), Compression::default());
             write_with_injection(reader, &mut encoder, injection_block, tempzone_id)?;
             encoder.finish().map_err(|e| format!("Finalisation gz : {e}"))?;
         } else {
             let reader = BufReader::new(src);
-            let mut writer = BufWriter::new(dst);
+            let mut writer = BufWriter::new(tmp_file.as_file_mut());
             write_with_injection(reader, &mut writer, injection_block, tempzone_id)?;
             writer.flush().map_err(|e| format!("Flush : {e}"))?;
         }
     }
 
-    fs::rename(&tmp, save_path)
-        .map_err(|e| format!("Remplacement atomique impossible : {e}"))?;
+    tmp_file
+        .persist(save_path)
+        .map_err(|e| format!("Remplacement atomique impossible : {}", e.error))?;
 
     Ok(())
 }

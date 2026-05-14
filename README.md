@@ -6,7 +6,13 @@ Tested on v8 saves (vanilla + all DLCs), not tested on V9 yet.
 > Unofficial tool, not affiliated with Egosoft. Use at your own risk.
 >
 
-**Current release: v1.32.0**
+**Current release: v1.33.0**
+FIX: correction of the backup system where a saved save could be overwritten when applying changes
+FIX: automatic cleaning of .tmp files in case of write error
+FIX: save_path() validated on all tauri commands
+
+
+~~Current release: v1.32.0~~
 NEW: desktop icon for the application
 NEW: the mods tab now shows components, quantities and research level needed to produce a mod
 NEW: the player inventory tab now lets you inject needed components and quantities needed to produce a mod
