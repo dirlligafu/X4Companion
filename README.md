@@ -4,18 +4,21 @@ Companion app for **X4: Foundations**. A Windows desktop app built with Tauri 2 
 Tested on v8 saves (vanilla + all DLCs), not tested on V9 yet.
 
 > Unofficial tool, not affiliated with Egosoft. Use at your own risk.
->
 
-**Current release: v1.33.0**
-FIX: correction of the backup system where a saved save could be overwritten when applying changes
-FIX: automatic cleaning of .tmp files in case of write error
-FIX: save_path() validated on all tauri commands
+**Current release: v1.34.0**
+- **New:** Research module added to the player save (table mode and flow mode)
+- **New:** Research entries are hierarchically linked, following the game's prerequisite chain
+- **New:** Players can now unlock research technologies and inject them into their save
 
+~~Current release: v1.33.0~~
+- **Fix:** correction of the backup system where a saved save could be overwritten when applying changes
+- **Fix:** automatic cleaning of .tmp files in case of write error
+- **Fix:** save_path() validated on all tauri commands
 
 ~~Current release: v1.32.0~~
-NEW: desktop icon for the application
-NEW: the mods tab now shows components, quantities and research level needed to produce a mod
-NEW: the player inventory tab now lets you inject needed components and quantities needed to produce a mod
+- **New:** desktop icon for the application
+- **New:** the mods tab now shows components, quantities and research level needed to produce a mod
+- **New:** the player inventory tab now lets you inject needed components and quantities needed to produce a mod
 
 ~~Current release: v1.31.0~~ (development history starts here, earlier commits live in a private and very messy repo.)
 
@@ -30,7 +33,7 @@ Five top-level views, accessible from the toolbar. No save file required for Dic
 
 | View | Description |
 |------|-------------|
-| **Editor** | Load a save file and browse/edit its contents across 12 tabs |
+| **Editor** | Load a save file and browse/edit its contents across 13 tabs |
 | **Dictionaries** | Browsable catalog of all in-game ships and equipment |
 | **Map** | Full interactive universe map with faction control and overlays |
 | **Fitting** | Design ship loadouts with live stat calculations |
@@ -58,7 +61,7 @@ X4 also scratches a very specific itch. After ten years of EVE Online, I needed 
 
 ## Save Editor
 
-Open any `.xml` or `.xml.gz` save file and browse 12 tabs:
+Open any `.xml` or `.xml.gz` save file and browse 13 tabs:
 
 | Tab | Access | Description |
 |-----|--------|-------------|
@@ -66,6 +69,7 @@ Open any `.xml` or `.xml.gz` save file and browse 12 tabs:
 | **Map** | R | Save-centric player map: Only visited sectors, true faction ownership, gates, NPC stations, ship-presence highlight |
 | **Inventory** | R/W | All wares with editable quantities, grouped by categories |
 | **Blueprints** | R/W | Full blueprint list (12 categories): Filter Owned / Missing / All, select/deselect all per category |
+|         **Research**        |   R/W  |                                                    Full research tree (and table): unlock research                                                   |
 | **Reputations** | R/W | All 33 factions: colored rank badges, slider editor (capped at ceremony thresholds), licences display |
 | **Fleet** | R/W | All player ships: hierarchical fleet formations, nested sub-fleets, expandable loadout (shields, weapons, turrets, engines, equipped mods in orange), editable ship names, cross-navigation to Employees/Stations |
 | **Employees** | R/W | All NPCs: 5 skills, star rating (0–15), editable per-trait (quick actions `All 5` / `All 0`), linked ship or station |
@@ -143,8 +147,8 @@ Side-by-side comparison of multiple ships across all catalog stats (hull, cargo,
 
 Download the latest installer from the Releases page:
 
-- `X4Companion_1.31.0_x64-setup.exe` — NSIS installer (recommended)
-- `X4Companion_1.31.0_x64_en-US.msi` — MSI package
+- `X4Companion_1.34.0_x64-setup.exe` — NSIS installer (recommended)
+- `X4Companion_1.34.0_x64_en-US.msi` — MSI package
 
 No dependencies required. Windows 10/11 with WebView2 (included by default since Windows 11).
 
@@ -185,7 +189,7 @@ Available from the main toolbar without opening a save file.
 | Operation | Time (520 MB uncompressed save) |
 |---|---|
 | Open `.xml` or `.gz` | ~2-3 seconds |
-| Apply + write `.gz` | ~5–10 seconds |
+| Apply + write `.gz` | ~5–30 seconds depending on the number of edits and injections |
 
 Streaming parser, no full DOM load at any point. The write bottleneck is gzip recompression.
 

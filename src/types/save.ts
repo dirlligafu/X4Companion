@@ -1,3 +1,17 @@
+export interface ResearchEntry {
+  id: string;
+  name: string | null;
+  description: string | null;
+  time: number;
+  sortorder: number | null;
+  hidden: boolean;
+  missiononly: boolean;
+  nocustomgamestart: boolean;
+  dlc: string;
+  prerequisites: string[];
+  materials: { ware: string; amount: number }[];
+}
+
 export interface PatchEntry {
   name: string;
   extension: string;

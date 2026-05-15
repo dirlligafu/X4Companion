@@ -22,6 +22,8 @@ export function useSaveEditor(defaultSaveDir: string) {
   const [editInventory, setEditInventory] = useState<InventoryItem[]>([]);
   const [editNpcs, setEditNpcs] = useState<NpcInfo[]>([]);
   const [pendingBlueprints, setPendingBlueprints] = useState<Set<string>>(new Set());
+  const [completedResearch, setCompletedResearch] = useState<string[]>([]);
+  const [pendingResearch, setPendingResearch] = useState<Set<string>>(new Set());
   const [editReputations, setEditReputations] = useState<Map<string, number>>(new Map());
   const [editStationCargo, setEditStationCargo] = useState<Map<string, Map<string, number>>>(new Map());
   const [editShipNames, setEditShipNames] = useState<Map<string, string>>(new Map());
@@ -52,6 +54,7 @@ export function useSaveEditor(defaultSaveDir: string) {
     setEditNpcs(d.npcs.map(n => ({ ...n })));
     setEditStationCargo(new Map());
     setEditShipNames(new Map());
+    setPendingResearch(new Set());
   }, []);
 
   const closeFile = useCallback(() => {
@@ -65,6 +68,8 @@ export function useSaveEditor(defaultSaveDir: string) {
     setEditModified(false);
     setEditInventory([]);
     setPendingBlueprints(new Set());
+    setCompletedResearch([]);
+    setPendingResearch(new Set());
     setEditReputations(new Map());
     setEditNpcs([]);
     setBlueprintSearch("");
@@ -97,8 +102,13 @@ export function useSaveEditor(defaultSaveDir: string) {
       setProgress(e.payload.pct)
     );
     try {
-      const result = await invoke<PlayerBasics>("parse_save_basics", { path: p });
+      const [result, research] = await Promise.all([
+        invoke<PlayerBasics>("parse_save_basics", { path: p }),
+        invoke<string[]>("parse_player_research", { path: p }),
+      ]);
       setData(result);
+      setCompletedResearch(research);
+      setPendingResearch(new Set());
       initEditState(result);
     } catch (e) {
       setError(String(e));
@@ -214,6 +224,7 @@ export function useSaveEditor(defaultSaveDir: string) {
           inventory: editInventory,
           blueprints_add,
           blueprints_remove,
+          research_unlock: [...pendingResearch].filter(id => !completedResearch.includes(id)),
           reputation_edits,
           npc_skills,
           ship_names,
@@ -223,6 +234,8 @@ export function useSaveEditor(defaultSaveDir: string) {
       });
       unlisten();
       setSaveMsg("Save written successfully.");
+      setCompletedResearch(prev => [...new Set([...prev, ...pendingResearch])]);
+      setPendingResearch(new Set());
       setProgress(0);
       const unlisten2 = await listen<{ pct: number }>("progress", e =>
         setProgress(e.payload.pct)
@@ -238,7 +251,7 @@ export function useSaveEditor(defaultSaveDir: string) {
       setProgress(null);
       setSaving(false);
     }
-  }, [data, path, editName, editMoney, editModified, editInventory, pendingBlueprints, editReputations, editNpcs, editShipNames, editStationCargo, initEditState]);
+  }, [data, path, editName, editMoney, editModified, editInventory, pendingBlueprints, pendingResearch, completedResearch, editReputations, editNpcs, editShipNames, editStationCargo, initEditState]);
 
   const toggleBlueprint = useCallback((ware: string) => {
     setPendingBlueprints(prev => {
@@ -299,6 +312,27 @@ export function useSaveEditor(defaultSaveDir: string) {
     });
   }, []);
 
+  const toggleResearch = useCallback((id: string) => {
+    setPendingResearch(prev => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
+  }, []);
+
+  const addResearchMaterials = useCallback((materials: { ware: string; amount: number }[]) => {
+    setEditInventory(prev => {
+      const next = [...prev];
+      for (const mat of materials) {
+        const idx = next.findIndex(i => i.ware === mat.ware);
+        if (idx >= 0) next[idx] = { ...next[idx], amount: next[idx].amount + mat.amount };
+        else next.push({ ware: mat.ware, amount: mat.amount });
+      }
+      return next;
+    });
+  }, []);
+
   const busy = loading || saving;
 
   return {
@@ -349,5 +383,9 @@ export function useSaveEditor(defaultSaveDir: string) {
     updateStationWare,
     editShipNames,
     updateShipName,
+    completedResearch,
+    pendingResearch,
+    toggleResearch,
+    addResearchMaterials,
   };
 }

@@ -1186,6 +1186,8 @@ pub struct EditRequest {
     pub inventory: Vec<InventoryEdit>,
     pub blueprints_add: Vec<String>,
     pub blueprints_remove: Vec<String>,
+    #[serde(default)]
+    pub research_unlock: Vec<String>,
     pub reputation_edits: Vec<ReputationEdit>,
     #[serde(default)]
     pub npc_skills: Vec<NpcSkillsEdit>,
@@ -1566,6 +1568,7 @@ fn write_edits<R: BufRead, W: Write>(
         .collect();
     let bp_add: HashSet<&str> = edits.blueprints_add.iter().map(|s| s.as_str()).collect();
     let bp_remove: HashSet<&str> = edits.blueprints_remove.iter().map(|s| s.as_str()).collect();
+    let research_unlock: HashSet<&str> = edits.research_unlock.iter().map(|s| s.as_str()).collect();
     let rep_map: HashMap<String, f64> = edits.reputation_edits.iter()
         .map(|e| (e.faction_id.clone(), e.relation))
         .collect();
@@ -1590,7 +1593,10 @@ fn write_edits<R: BufRead, W: Write>(
     let mut in_player_component  = false;
     let mut player_depth: u32    = 0;
     let mut in_player_inventory  = false;
-    let mut in_blueprints        = false;
+    let mut in_blueprints             = false;
+    let mut in_player_research_block  = false;
+    let mut in_researchables          = false;
+    let mut researchables_seen: HashSet<String> = HashSet::new();
     let mut stat_done            = false;
     let mut inv_seen: HashSet<String> = HashSet::new();
 
@@ -1756,6 +1762,7 @@ fn write_edits<R: BufRead, W: Write>(
                     in_player_component = false;
                     in_player_inventory = false;
                     in_blueprints = false;
+                    in_player_research_block = false;
                 }
             } else if trimmed.starts_with("<inventory>") && player_depth == 1 {
                 in_player_inventory = true;
@@ -1791,6 +1798,49 @@ fn write_edits<R: BufRead, W: Write>(
                         skip = true;
                     }
                 }
+            } else if in_player_component && player_depth == 1 && trimmed == "<research>" {
+                in_player_research_block = true;
+            } else if in_player_component && player_depth == 1 && trimmed == "<research/>" {
+                // Bloc vide — on développe si des unlocks sont demandés
+                if !research_unlock.is_empty() {
+                    let indent: String = line.chars().take_while(|c| c.is_whitespace()).collect();
+                    let item_indent = format!("{}  ", indent);
+                    writeln!(writer, "{}<research>", indent).map_err(|e| format!("Erreur écriture : {e}"))?;
+                    for id in &research_unlock {
+                        writeln!(writer, "{}<research ware=\"{}\" method=\"research\"/>", item_indent, id)
+                            .map_err(|e| format!("Erreur écriture : {e}"))?;
+                    }
+                    writeln!(writer, "{}</research>", indent).map_err(|e| format!("Erreur écriture : {e}"))?;
+                    skip = true;
+                }
+            } else if in_player_research_block && trimmed.starts_with("</research>") {
+                // Injecter les nouvelles recherches avant la fermeture
+                if !research_unlock.is_empty() {
+                    let indent: String = line.chars().take_while(|c| c.is_whitespace()).collect();
+                    let item_indent = format!("{}  ", indent);
+                    for id in &research_unlock {
+                        writeln!(writer, "{}<research ware=\"{}\" method=\"research\"/>", item_indent, id)
+                            .map_err(|e| format!("Erreur écriture : {e}"))?;
+                    }
+                }
+                in_player_research_block = false;
+            } else if !research_unlock.is_empty() && trimmed.starts_with("<entries ") && trimmed.contains("type=\"researchables\"") {
+                in_researchables = true;
+            } else if in_researchables && trimmed.starts_with("<entry ") {
+                if let Some(id) = extract_attr(&line, "id") {
+                    researchables_seen.insert(id);
+                }
+            } else if in_researchables && trimmed.starts_with("</entries>") {
+                // Injecter les entrées manquantes avant la fermeture
+                let indent: String = line.chars().take_while(|c| c.is_whitespace()).collect();
+                let item_indent = format!("{}  ", indent);
+                for id in &research_unlock {
+                    if !researchables_seen.contains(*id) {
+                        writeln!(writer, "{}<entry id=\"{}\" read=\"0\"/>", item_indent, id)
+                            .map_err(|e| format!("Erreur écriture : {e}"))?;
+                    }
+                }
+                in_researchables = false;
             } else if trimmed.starts_with("</inventory>") && in_player_inventory {
                 // Injecter les nouveaux items (pas encore vus dans le XML)
                 let indent: String = line.chars().take_while(|c| c.is_whitespace()).collect();
@@ -2281,6 +2331,50 @@ fn parse_player_messages(path: String) -> Result<Vec<MessageEntry>, String> {
         parse_messages_section(BufReader::new(GzDecoder::new(BufReader::new(file))))
     } else {
         parse_messages_section(BufReader::new(file))
+    }
+}
+
+// ── Parser recherches complétées ─────────────────────────────────────────────
+// Scan dédié : cherche tous les éléments <research ware="..." method="research"/>
+// dans le fichier. L'attribut method="research" est unique à ce bloc dans la save.
+
+fn parse_research_section<R: std::io::BufRead>(reader: R) -> Result<Vec<String>, String> {
+    let mut xml = Reader::from_reader(reader);
+    xml.config_mut().trim_text(true);
+    let mut completed: Vec<String> = Vec::new();
+    let mut buf = Vec::new();
+
+    loop {
+        match xml.read_event_into(&mut buf) {
+            Ok(Event::Empty(ref e)) => {
+                if e.name().as_ref() == b"research" {
+                    let attrs = collect_attrs(e.attributes());
+                    if get(&attrs, "method").as_deref() == Some("research") {
+                        if let Some(ware) = get(&attrs, "ware") {
+                            completed.push(ware);
+                        }
+                    }
+                }
+            }
+            Ok(Event::Eof) => break,
+            Err(e) => return Err(format!("XML parse error: {e}")),
+            _ => {}
+        }
+        buf.clear();
+    }
+
+    Ok(completed)
+}
+
+#[tauri::command]
+fn parse_player_research(path: String) -> Result<Vec<String>, String> {
+    validate_save_path(&path)?;
+    let file = File::open(&path).map_err(|e| format!("Cannot open file: {e}"))?;
+
+    if path.ends_with(".gz") {
+        parse_research_section(BufReader::new(GzDecoder::new(BufReader::new(file))))
+    } else {
+        parse_research_section(BufReader::new(file))
     }
 }
 
@@ -2878,6 +2972,21 @@ fn get_mod_recipes(app: tauri::AppHandle) -> Result<serde_json::Value, String> {
         .map_err(|e| format!("Parse mod_recipes.json : {e}"))
 }
 
+#[tauri::command]
+fn get_research_catalog(app: tauri::AppHandle) -> Result<serde_json::Value, String> {
+    let path = app.path().resource_dir()
+        .map_err(|e| format!("resource_dir: {e}"))?
+        .join("resources")
+        .join("catalog")
+        .join("research.json");
+
+    let content = fs::read_to_string(&path)
+        .map_err(|e| format!("Lecture research.json : {e}"))?;
+
+    serde_json::from_str(&content)
+        .map_err(|e| format!("Parse research.json : {e}"))
+}
+
 /// Retourne le catalogue complet des items d'inventaire depuis x4_data.db,
 /// avec les noms résolus depuis la table strings (résolution applicative).
 #[tauri::command]
@@ -3327,7 +3436,7 @@ pub fn run() {
             Ok(())
         })
         .invoke_handler(tauri::generate_handler![ping, parse_save_basics, parse_player_stats, parse_player_messages, get_ware_labels, get_blueprint_labels, get_faction_names, get_ship_labels, get_sector_names, apply_edits, extract_player_ship_xml, inspect_player_ship, get_inventory_catalog, get_ships_catalog, get_equipment_catalog, open_dictionaries, get_sectors_catalog, get_highways_catalog, get_gates_catalog, get_stations_catalog,
-            list_ship_templates, inject_ships, get_module_cargo_index, get_ware_cargo_info, get_template_loadout, save_fitting, load_fitting_from_path, get_mod_stats, get_mod_recipes, ensure_fittings_dir])
+            list_ship_templates, inject_ships, get_module_cargo_index, get_ware_cargo_info, get_template_loadout, save_fitting, load_fitting_from_path, get_mod_stats, get_mod_recipes, ensure_fittings_dir, parse_player_research, get_research_catalog])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }

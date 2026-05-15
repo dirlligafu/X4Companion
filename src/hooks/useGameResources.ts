@@ -1,6 +1,6 @@
 import { invoke } from "@tauri-apps/api/core";
 import { useEffect, useState } from "react";
-import type { BlueprintInfo, EquipmentCatalog, HighwaysCatalog, InventoryCatalogItem, ModuleCargoInfo, ModRecipesData, ModStat, ShipCatalogItem, SectorsCatalog, WareCargoInfo } from "@/types/save";
+import type { BlueprintInfo, EquipmentCatalog, HighwaysCatalog, InventoryCatalogItem, ModuleCargoInfo, ModRecipesData, ModStat, ResearchEntry, ShipCatalogItem, SectorsCatalog, WareCargoInfo } from "@/types/save";
 
 const EMPTY_EQUIPMENT: EquipmentCatalog = { weapons: [], engines: [], shields: [], thrusters: [] };
 
@@ -19,6 +19,7 @@ export function useGameResources() {
   const [modRecipes, setModRecipes] = useState<ModRecipesData | null>(null);
   const [sectorsCatalog, setSectorsCatalog] = useState<SectorsCatalog | null>(null);
   const [highwaysCatalog, setHighwaysCatalog] = useState<HighwaysCatalog | null>(null);
+  const [researchCatalog, setResearchCatalog] = useState<ResearchEntry[]>([]);
 
   useEffect(() => {
     invoke<Record<string, ModuleCargoInfo>>("get_module_cargo_index")
@@ -63,7 +64,10 @@ export function useGameResources() {
     invoke<HighwaysCatalog>("get_highways_catalog")
       .then(setHighwaysCatalog)
       .catch(e => console.error("Impossible de charger highways catalog :", e));
+    invoke<ResearchEntry[]>("get_research_catalog")
+      .then(setResearchCatalog)
+      .catch(e => console.error("Impossible de charger research catalog :", e));
   }, []);
 
-  return { moduleCargoIndex, wareCargoInfo, wareLabels, blueprintInfos, factionNames, shipLabels, sectorNames, inventoryCatalog, shipsCatalog, equipmentCatalog, modStats, modRecipes, sectorsCatalog, highwaysCatalog };
+  return { moduleCargoIndex, wareCargoInfo, wareLabels, blueprintInfos, factionNames, shipLabels, sectorNames, inventoryCatalog, shipsCatalog, equipmentCatalog, modStats, modRecipes, sectorsCatalog, highwaysCatalog, researchCatalog };
 }

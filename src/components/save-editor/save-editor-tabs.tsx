@@ -2,9 +2,10 @@ import { useState, useMemo } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
-import type { BlueprintInfo, EquipmentCatalog, InventoryCatalogItem, ModRecipesData, ModStat, ModuleCargoInfo, NpcInfo, PlayerBasics, WareCargoInfo } from "@/types/save";
+import type { BlueprintInfo, EquipmentCatalog, InventoryCatalogItem, ModRecipesData, ModStat, ModuleCargoInfo, NpcInfo, PlayerBasics, ResearchEntry, WareCargoInfo } from "@/types/save";
 import type { NpcTraitKey } from "@/hooks/useSaveEditor";
 import { BlueprintsTab } from "./blueprints-tab";
+import { ResearchTab } from "./research-tab";
 import { EmployeesTab } from "./employees-tab";
 import { FleetTab } from "./fleet-tab";
 import { InventoryTab } from "./inventory-tab";
@@ -68,6 +69,11 @@ type SaveEditorTabsProps = {
   modStats: ModStat[];
   modRecipes: ModRecipesData | null;
   sectorsCatalog: SectorsCatalog | null;
+  researchCatalog: ResearchEntry[];
+  completedResearch: string[];
+  pendingResearch: Set<string>;
+  toggleResearch: (id: string) => void;
+  addResearchMaterials: (materials: { ware: string; amount: number }[]) => void;
 };
 
 export function SaveEditorTabs(props: SaveEditorTabsProps) {
@@ -143,6 +149,10 @@ export function SaveEditorTabs(props: SaveEditorTabsProps) {
           Inventory
           <Badge variant="secondary" className="ml-1.5 tabular-nums">{editInventory.length}</Badge>
         </TabsTrigger>
+        <TabsTrigger value="research" className="flex-1 min-w-22">
+          Research
+          <Badge variant="secondary" className="ml-1.5 tabular-nums">{props.completedResearch.length + props.pendingResearch.size}</Badge>
+        </TabsTrigger>
         <TabsTrigger value="blueprints" className="flex-1 min-w-22">
           Blueprints
           <Badge variant="secondary" className="ml-1.5 tabular-nums">{data.blueprints.length}</Badge>
@@ -203,6 +213,17 @@ export function SaveEditorTabs(props: SaveEditorTabsProps) {
           modRecipes={modRecipes}
           inventorySearch={inventorySearch}
           setInventorySearch={setInventorySearch}
+        />
+      </TabsContent>
+
+      <TabsContent value="research" className={cn(panelClass)}>
+        <ResearchTab
+          researchCatalog={props.researchCatalog}
+          completedResearch={props.completedResearch}
+          pendingResearch={props.pendingResearch}
+          toggleResearch={props.toggleResearch}
+          addResearchMaterials={props.addResearchMaterials}
+          wareLabels={props.wareLabels}
         />
       </TabsContent>
 
