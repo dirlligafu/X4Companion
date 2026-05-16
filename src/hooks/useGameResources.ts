@@ -1,8 +1,6 @@
 import { invoke } from "@tauri-apps/api/core";
 import { useEffect, useState } from "react";
-import type { BlueprintInfo, EquipmentCatalog, HighwaysCatalog, InventoryCatalogItem, ModuleCargoInfo, ModRecipesData, ModStat, ResearchEntry, ShipCatalogItem, SectorsCatalog, WareCargoInfo } from "@/types/save";
-
-const EMPTY_EQUIPMENT: EquipmentCatalog = { weapons: [], engines: [], shields: [], thrusters: [] };
+import type { BlueprintInfo, CatalogMetadata, HighwaysCatalog, InventoryCatalogItem, ModuleCargoInfo, ModRecipesData, ModStat, ResearchEntry, SectorsCatalog, WareCargoInfo } from "@/types/save";
 
 export function useGameResources() {
   const [moduleCargoIndex, setModuleCargoIndex] = useState<Record<string, ModuleCargoInfo>>({});
@@ -13,13 +11,12 @@ export function useGameResources() {
   const [shipLabels, setShipLabels] = useState<Record<string, string>>({});
   const [sectorNames, setSectorNames] = useState<Record<string, string>>({});
   const [inventoryCatalog, setInventoryCatalog] = useState<InventoryCatalogItem[]>([]);
-  const [shipsCatalog, setShipsCatalog] = useState<ShipCatalogItem[]>([]);
-  const [equipmentCatalog, setEquipmentCatalog] = useState<EquipmentCatalog>(EMPTY_EQUIPMENT);
   const [modStats, setModStats] = useState<ModStat[]>([]);
   const [modRecipes, setModRecipes] = useState<ModRecipesData | null>(null);
   const [sectorsCatalog, setSectorsCatalog] = useState<SectorsCatalog | null>(null);
   const [highwaysCatalog, setHighwaysCatalog] = useState<HighwaysCatalog | null>(null);
   const [researchCatalog, setResearchCatalog] = useState<ResearchEntry[]>([]);
+  const [catalogMetadata, setCatalogMetadata] = useState<CatalogMetadata | null>(null);
 
   useEffect(() => {
     invoke<Record<string, ModuleCargoInfo>>("get_module_cargo_index")
@@ -46,12 +43,6 @@ export function useGameResources() {
     invoke<InventoryCatalogItem[]>("get_inventory_catalog")
       .then(setInventoryCatalog)
       .catch(e => console.error("Impossible de charger inventory catalog :", e));
-    invoke<ShipCatalogItem[]>("get_ships_catalog")
-      .then(setShipsCatalog)
-      .catch(e => console.error("Impossible de charger ships catalog :", e));
-    invoke<EquipmentCatalog>("get_equipment_catalog")
-      .then(setEquipmentCatalog)
-      .catch(e => console.error("Impossible de charger equipment catalog :", e));
     invoke<ModStat[]>("get_mod_stats")
       .then(setModStats)
       .catch(e => console.error("Impossible de charger mod stats :", e));
@@ -67,7 +58,10 @@ export function useGameResources() {
     invoke<ResearchEntry[]>("get_research_catalog")
       .then(setResearchCatalog)
       .catch(e => console.error("Impossible de charger research catalog :", e));
+    invoke<CatalogMetadata>("get_catalog_metadata")
+      .then(setCatalogMetadata)
+      .catch(e => console.error("Impossible de charger catalog metadata :", e));
   }, []);
 
-  return { moduleCargoIndex, wareCargoInfo, wareLabels, blueprintInfos, factionNames, shipLabels, sectorNames, inventoryCatalog, shipsCatalog, equipmentCatalog, modStats, modRecipes, sectorsCatalog, highwaysCatalog, researchCatalog };
+  return { moduleCargoIndex, wareCargoInfo, wareLabels, blueprintInfos, factionNames, shipLabels, sectorNames, inventoryCatalog, modStats, modRecipes, sectorsCatalog, highwaysCatalog, researchCatalog, catalogMetadata };
 }

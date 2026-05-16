@@ -19,7 +19,7 @@ function cleanName(name: string | null): string {
 
 type ResearchTabProps = {
   researchCatalog: ResearchEntry[];
-  completedResearch: string[];
+  completedResearch: Set<string>;
   pendingResearch: Set<string>;
   toggleResearch: (id: string) => void;
   addResearchMaterials: (materials: { ware: string; amount: number }[]) => void;
@@ -96,8 +96,6 @@ export function ResearchTab({
   const [filter, setFilter] = useState<Filter>("all");
   const [search, setSearch] = useState("");
 
-  const completedSet = useMemo(() => new Set(completedResearch), [completedResearch]);
-
   const allUnlocked = useMemo(
     () => new Set([...completedResearch, ...pendingResearch]),
     [completedResearch, pendingResearch]
@@ -109,7 +107,7 @@ export function ResearchTab({
   );
 
   function status(e: ResearchEntry): "completed" | "pending" | "available" | "locked" {
-    if (completedSet.has(e.id)) return "completed";
+    if (completedResearch.has(e.id)) return "completed";
     if (pendingResearch.has(e.id)) return "pending";
     const blocking = e.prerequisites.filter(p => !catalogMap.get(p)?.missiononly);
     if (blocking.every(p => allUnlocked.has(p))) return "available";
@@ -137,7 +135,7 @@ export function ResearchTab({
     }
 
     return map;
-  }, [researchCatalog, filter, search, allUnlocked, completedSet, pendingResearch]);
+  }, [researchCatalog, filter, search, allUnlocked, completedResearch, pendingResearch]);
 
   const totalVisible = useMemo(
     () => Object.values(groups).reduce((s, v) => s + v.length, 0),
@@ -145,8 +143,8 @@ export function ResearchTab({
   );
 
   const completedCount = useMemo(
-    () => researchCatalog.filter(e => completedSet.has(e.id) || pendingResearch.has(e.id)).length,
-    [researchCatalog, completedSet, pendingResearch]
+    () => researchCatalog.filter(e => completedResearch.has(e.id) || pendingResearch.has(e.id)).length,
+    [researchCatalog, completedResearch, pendingResearch]
   );
 
   const CATEGORY_ORDER = ["Teleportation", "Station Modules", "Equipment Mods", "Agents & Diplomacy", "Ships", "Xenon", "System"];

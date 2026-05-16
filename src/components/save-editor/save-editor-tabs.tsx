@@ -2,7 +2,7 @@ import { useState, useMemo } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
-import type { BlueprintInfo, EquipmentCatalog, InventoryCatalogItem, ModRecipesData, ModStat, ModuleCargoInfo, NpcInfo, PlayerBasics, ResearchEntry, WareCargoInfo } from "@/types/save";
+import type { BlueprintInfo, InventoryCatalogItem, ModRecipesData, ModStat, ModuleCargoInfo, NpcInfo, PlayerBasics, ResearchEntry, WareCargoInfo } from "@/types/save";
 import type { NpcTraitKey } from "@/hooks/useSaveEditor";
 import { BlueprintsTab } from "./blueprints-tab";
 import { ResearchTab } from "./research-tab";
@@ -35,14 +35,10 @@ type SaveEditorTabsProps = {
   wareLabels: Record<string, string>;
   wareCargoInfo: Record<string, WareCargoInfo>;
   moduleCargoIndex: Record<string, ModuleCargoInfo>;
-  blueprintSearch: string;
-  setBlueprintSearch: (v: string) => void;
   blueprintInfos: Record<string, BlueprintInfo>;
   pendingBlueprints: Set<string>;
   toggleBlueprint: (ware: string) => void;
   toggleBlueprintCategory: (wares: string[], setOwned: boolean) => void;
-  repSearch: string;
-  setRepSearch: (v: string) => void;
   factionNames: Record<string, string>;
   editReputations: Map<string, number>;
   updateReputation: (factionId: string, rank: number) => void;
@@ -50,27 +46,16 @@ type SaveEditorTabsProps = {
   updateNpcTrait: (code: string, key: NpcTraitKey, value: number) => void;
   editStationCargo: Map<string, Map<string, number>>;
   updateStationWare: (stationCode: string, wareId: string, amount: number) => void;
-  fleetSearch: string;
-  setFleetSearch: (v: string) => void;
   editShipNames: Map<string, string>;
   updateShipName: (code: string, name: string) => void;
   shipLabels: Record<string, string>;
   sectorNames: Record<string, string>;
-  employeeSearch: string;
-  setEmployeeSearch: (v: string) => void;
-  stationSearch: string;
-  setStationSearch: (v: string) => void;
-  inventorySearch: string;
-  setInventorySearch: (v: string) => void;
-  deployableSearch: string;
-  setDeployableSearch: (v: string) => void;
   savePath: string;
-  equipmentCatalog: EquipmentCatalog;
   modStats: ModStat[];
   modRecipes: ModRecipesData | null;
   sectorsCatalog: SectorsCatalog | null;
   researchCatalog: ResearchEntry[];
-  completedResearch: string[];
+  completedResearch: Set<string>;
   pendingResearch: Set<string>;
   toggleResearch: (id: string) => void;
   addResearchMaterials: (materials: { ware: string; amount: number }[]) => void;
@@ -84,32 +69,16 @@ export function SaveEditorTabs(props: SaveEditorTabsProps) {
     editModified, setEditModified,
     editInventory, updateWareAmount, addInventoryItem, inventoryCatalog,
     wareLabels, wareCargoInfo, moduleCargoIndex,
-    blueprintSearch, setBlueprintSearch, blueprintInfos, pendingBlueprints, toggleBlueprint, toggleBlueprintCategory,
-    repSearch, setRepSearch,     factionNames, editReputations, updateReputation,
+    blueprintInfos, pendingBlueprints, toggleBlueprint, toggleBlueprintCategory,
+    factionNames, editReputations, updateReputation,
     editNpcs, updateNpcTrait,
     editStationCargo, updateStationWare,
-    fleetSearch, setFleetSearch, editShipNames, updateShipName, shipLabels, sectorNames,
-    employeeSearch, setEmployeeSearch,
-    stationSearch, setStationSearch,
-    inventorySearch, setInventorySearch,
-    deployableSearch, setDeployableSearch,
+    editShipNames, updateShipName, shipLabels, sectorNames,
     savePath,
-    equipmentCatalog,
     modStats,
     modRecipes,
     sectorsCatalog,
   } = props;
-
-  const equipIndex = useMemo(() => {
-    const idx: Record<string, string> = {};
-    const cats = [equipmentCatalog.weapons, equipmentCatalog.engines, equipmentCatalog.shields, equipmentCatalog.thrusters];
-    for (const cat of cats) {
-      for (const item of cat) {
-        idx[item.macro_id.replace(/_macro$/, "")] = item.name;
-      }
-    }
-    return idx;
-  }, [equipmentCatalog]);
 
   const modIndex = useMemo(() => {
     const idx: Record<string, { name: string | null; quality: number }> = {};
@@ -120,6 +89,9 @@ export function SaveEditorTabs(props: SaveEditorTabsProps) {
   }, [modStats]);
 
   const [activeTab, setActiveTab] = useState("overview");
+  const [fleetSearch, setFleetSearch] = useState("");
+  const [employeeSearch, setEmployeeSearch] = useState("");
+  const [stationSearch, setStationSearch] = useState("");
   const panelClass = "mt-4 flex min-h-0 flex-1 flex-col overflow-hidden";
 
   // Navigation croisée Fleet ↔ Employees ↔ Stations
@@ -151,7 +123,7 @@ export function SaveEditorTabs(props: SaveEditorTabsProps) {
         </TabsTrigger>
         <TabsTrigger value="research" className="flex-1 min-w-22">
           Research
-          <Badge variant="secondary" className="ml-1.5 tabular-nums">{props.completedResearch.length + props.pendingResearch.size}</Badge>
+          <Badge variant="secondary" className="ml-1.5 tabular-nums">{props.completedResearch.size + props.pendingResearch.size}</Badge>
         </TabsTrigger>
         <TabsTrigger value="blueprints" className="flex-1 min-w-22">
           Blueprints
@@ -211,8 +183,6 @@ export function SaveEditorTabs(props: SaveEditorTabsProps) {
           onAddItem={addInventoryItem}
           inventoryCatalog={inventoryCatalog}
           modRecipes={modRecipes}
-          inventorySearch={inventorySearch}
-          setInventorySearch={setInventorySearch}
         />
       </TabsContent>
 
@@ -228,15 +198,13 @@ export function SaveEditorTabs(props: SaveEditorTabsProps) {
       </TabsContent>
 
       <TabsContent value="blueprints" className={cn(panelClass)}>
-        <BlueprintsTab data={data} blueprintSearch={blueprintSearch}
-          setBlueprintSearch={setBlueprintSearch} blueprintInfos={blueprintInfos}
+        <BlueprintsTab data={data} blueprintInfos={blueprintInfos}
           pendingBlueprints={pendingBlueprints} toggleBlueprint={toggleBlueprint}
           toggleBlueprintCategory={toggleBlueprintCategory} />
       </TabsContent>
 
       <TabsContent value="reputations" className={cn(panelClass)}>
-        <ReputationsTab data={data} repSearch={repSearch}
-          setRepSearch={setRepSearch} factionNames={factionNames}
+        <ReputationsTab data={data} factionNames={factionNames}
           editReputations={editReputations} updateReputation={updateReputation}
           busy={busy} />
       </TabsContent>
@@ -252,8 +220,6 @@ export function SaveEditorTabs(props: SaveEditorTabsProps) {
           sectorNames={sectorNames}
           savePath={savePath}
           onSelectEmployee={goToEmployee}
-          equipIndex={equipIndex}
-          equipmentCatalog={equipmentCatalog}
           modIndex={modIndex}
         />
       </TabsContent>
@@ -283,8 +249,7 @@ export function SaveEditorTabs(props: SaveEditorTabsProps) {
       </TabsContent>
 
       <TabsContent value="deployables" className={cn(panelClass)}>
-        <DeployablesTab data={data} deployableSearch={deployableSearch}
-          setDeployableSearch={setDeployableSearch} sectorNames={sectorNames} />
+        <DeployablesTab data={data} sectorNames={sectorNames} />
       </TabsContent>
 
       <TabsContent value="stats" className={cn(panelClass)}>

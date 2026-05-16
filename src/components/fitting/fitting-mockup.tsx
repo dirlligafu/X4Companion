@@ -18,11 +18,8 @@ import type {
   ThrusterCatalogItem,
   WeaponCatalogItem,
 } from "@/types/save";
-
-type Props = {
-  ships:     ShipCatalogItem[];
-  equipment: EquipmentCatalog;
-};
+import { useShipsCatalog }     from "@/hooks/useShipsCatalog";
+import { useEquipmentCatalog } from "@/hooks/useEquipmentCatalog";
 
 // ── helpers ─────────────────────────────────────────────────────────────────
 
@@ -567,7 +564,9 @@ function EquipPicker({ slot, equipment, selectedMacroId, onSelect }: {
 
 // ── root component ───────────────────────────────────────────────────────────
 
-export function FittingMockup({ ships, equipment }: Props) {
+export function FittingMockup() {
+  const ships     = useShipsCatalog();
+  const equipment = useEquipmentCatalog();
   const [selectedShip,   setSelectedShip]   = useState<ShipCatalogItem | null>(null);
   const [activeSlot,     setActiveSlot]     = useState<ActiveSlot | null>(null);
   const [loadout,        setLoadout]        = useState<Record<string, string>>({});
@@ -691,6 +690,8 @@ export function FittingMockup({ ships, equipment }: Props) {
       macroName: ship.macro_id,
     }).then(l => { setLoadout(l); setDefaultLoadout(l); }).catch(() => { setLoadout({}); setDefaultLoadout({}); });
   }
+
+  if (ships.length === 0) return <p className="text-sm text-muted-foreground">Loading catalog…</p>;
 
   return (
     <div className="flex min-h-0 flex-1 gap-4 overflow-hidden">

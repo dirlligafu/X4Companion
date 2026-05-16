@@ -11,8 +11,6 @@ type Filter = "owned" | "missing" | "all";
 
 type BlueprintsTabProps = {
   data: PlayerBasics;
-  blueprintSearch: string;
-  setBlueprintSearch: (v: string) => void;
   blueprintInfos: Record<string, BlueprintInfo>;
   pendingBlueprints: Set<string>;
   toggleBlueprint: (ware: string) => void;
@@ -21,13 +19,12 @@ type BlueprintsTabProps = {
 
 export function BlueprintsTab({
   data,
-  blueprintSearch,
-  setBlueprintSearch,
   blueprintInfos,
   pendingBlueprints,
   toggleBlueprint,
   toggleBlueprintCategory,
 }: BlueprintsTabProps) {
+  const [blueprintSearch, setBlueprintSearch] = useState("");
   const [filter, setFilter] = useState<Filter>("owned");
 
   const originalSet = useMemo(() => new Set(data.blueprints), [data.blueprints]);

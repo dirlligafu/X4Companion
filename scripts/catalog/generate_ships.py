@@ -443,7 +443,7 @@ def parse_ship_macro(macro_path: Path) -> dict | None:
                     break
 
     return {
-        "macro":             macro_name,
+        "macro_id":          macro_name,
         "class":             cls,
         "component_ref":     component_ref,
         "name_ref":          name_ref,
@@ -776,7 +776,7 @@ def generate(xml_root: Path, db_path: Path, out_dir: Path) -> None:
             skipped += 1
             continue
 
-        macro_name = raw["macro"]
+        macro_name = raw["macro_id"]
 
         # The component XML is in the parent folder of /macros/
         # e.g. macros/ship_arg_s_fighter_01_a_macro.xml → ../ship_arg_s_fighter_01.xml
@@ -812,7 +812,7 @@ def generate(xml_root: Path, db_path: Path, out_dir: Path) -> None:
         size = raw["class"].replace("ship_", "") if raw["class"].startswith("ship_") else None
 
         ship: dict[str, Any] = {
-            "macro":             macro_name,
+            "macro_id":          macro_name,
             "name":              name,
             "basename":          basename,
             "description":       description,

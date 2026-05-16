@@ -15,7 +15,7 @@ import { ShipComparator } from "@/components/fitting/ship-comparator";
 type AppView = "editor" | "dictionaries" | "map" | "fitting" | "compare";
 
 export default function App() {
-  const { moduleCargoIndex, wareCargoInfo, wareLabels, blueprintInfos, factionNames, shipLabels, sectorNames, inventoryCatalog, shipsCatalog, equipmentCatalog, modStats, modRecipes, sectorsCatalog, researchCatalog } = useGameResources();
+  const { moduleCargoIndex, wareCargoInfo, wareLabels, blueprintInfos, factionNames, shipLabels, sectorNames, inventoryCatalog, modStats, modRecipes, sectorsCatalog, researchCatalog } = useGameResources();
   const prefs = usePreferences();
   const editor = useSaveEditor(prefs.defaultSaveDir);
 
@@ -42,7 +42,7 @@ export default function App() {
 
         {view === "dictionaries" ? (
           <div className="flex min-h-0 flex-1 flex-col overflow-hidden">
-            <DictionariesView shipsCatalog={shipsCatalog} equipmentCatalog={equipmentCatalog} modStats={modStats} modRecipes={modRecipes} />
+            <DictionariesView modStats={modStats} modRecipes={modRecipes} />
           </div>
         ) : view === "map" ? (
           <div className="flex min-h-0 flex-1 flex-col overflow-hidden">
@@ -53,17 +53,11 @@ export default function App() {
           </div>
         ) : view === "fitting" ? (
           <div className="flex min-h-0 flex-1 overflow-hidden">
-            {shipsCatalog.length === 0
-              ? <p className="text-sm text-muted-foreground">Loading catalog…</p>
-              : <FittingMockup ships={shipsCatalog} equipment={equipmentCatalog} />
-            }
+            <FittingMockup />
           </div>
         ) : view === "compare" ? (
           <div className="flex min-h-0 flex-1 overflow-hidden">
-            {shipsCatalog.length === 0
-              ? <p className="text-sm text-muted-foreground">Loading catalog…</p>
-              : <ShipComparator ships={shipsCatalog} equipment={equipmentCatalog} />
-            }
+            <ShipComparator />
           </div>
         ) : (
           <>
@@ -114,14 +108,10 @@ export default function App() {
                   wareLabels={wareLabels}
                   wareCargoInfo={wareCargoInfo}
                   moduleCargoIndex={moduleCargoIndex}
-                  blueprintSearch={editor.blueprintSearch}
-                  setBlueprintSearch={editor.setBlueprintSearch}
                   blueprintInfos={blueprintInfos}
                   pendingBlueprints={editor.pendingBlueprints}
                   toggleBlueprint={editor.toggleBlueprint}
                   toggleBlueprintCategory={editor.toggleBlueprintCategory}
-                  repSearch={editor.repSearch}
-                  setRepSearch={editor.setRepSearch}
                   factionNames={factionNames}
                   editReputations={editor.editReputations}
                   updateReputation={editor.updateReputation}
@@ -129,22 +119,11 @@ export default function App() {
                   updateNpcTrait={editor.updateNpcTrait}
                   editStationCargo={editor.editStationCargo}
                   updateStationWare={editor.updateStationWare}
-                  fleetSearch={editor.fleetSearch}
-                  setFleetSearch={editor.setFleetSearch}
                   editShipNames={editor.editShipNames}
                   updateShipName={editor.updateShipName}
                   shipLabels={shipLabels}
                   sectorNames={sectorNames}
-                  employeeSearch={editor.employeeSearch}
-                  setEmployeeSearch={editor.setEmployeeSearch}
-                  stationSearch={editor.stationSearch}
-                  setStationSearch={editor.setStationSearch}
-                  inventorySearch={editor.inventorySearch}
-                  setInventorySearch={editor.setInventorySearch}
-                  deployableSearch={editor.deployableSearch}
-                  setDeployableSearch={editor.setDeployableSearch}
                   savePath={editor.path}
-                  equipmentCatalog={equipmentCatalog}
                   modStats={modStats}
                   modRecipes={modRecipes}
                   sectorsCatalog={sectorsCatalog}

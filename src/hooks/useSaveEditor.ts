@@ -5,7 +5,8 @@ import { useCallback, useState } from "react";
 import type { InventoryItem, NpcInfo, PlayerBasics } from "@/types/save";
 
 export type NpcTraitKey = "piloting" | "management" | "morale" | "engineering" | "boarding";
-import { repRank, rankToWriteValue } from "@/lib/reputation";
+import { computeBlueprintDiff, computeNpcDiff, computeReputationDiff, computeShipNameDiff } from "@/lib/edit-diff";
+import { repRank } from "@/lib/reputation";
 
 export function useSaveEditor(defaultSaveDir: string) {
   const [path, setPath] = useState("");
@@ -22,18 +23,11 @@ export function useSaveEditor(defaultSaveDir: string) {
   const [editInventory, setEditInventory] = useState<InventoryItem[]>([]);
   const [editNpcs, setEditNpcs] = useState<NpcInfo[]>([]);
   const [pendingBlueprints, setPendingBlueprints] = useState<Set<string>>(new Set());
-  const [completedResearch, setCompletedResearch] = useState<string[]>([]);
+  const [completedResearch, setCompletedResearch] = useState<Set<string>>(new Set());
   const [pendingResearch, setPendingResearch] = useState<Set<string>>(new Set());
   const [editReputations, setEditReputations] = useState<Map<string, number>>(new Map());
   const [editStationCargo, setEditStationCargo] = useState<Map<string, Map<string, number>>>(new Map());
   const [editShipNames, setEditShipNames] = useState<Map<string, string>>(new Map());
-  const [blueprintSearch, setBlueprintSearch] = useState("");
-  const [repSearch, setRepSearch] = useState("");
-  const [fleetSearch, setFleetSearch] = useState("");
-  const [employeeSearch, setEmployeeSearch] = useState("");
-  const [stationSearch, setStationSearch] = useState("");
-  const [inventorySearch, setInventorySearch] = useState("");
-  const [deployableSearch, setDeployableSearch] = useState("");
 
   const initEditState = useCallback((d: PlayerBasics) => {
     setEditName(d.summary.player_name);
@@ -68,17 +62,10 @@ export function useSaveEditor(defaultSaveDir: string) {
     setEditModified(false);
     setEditInventory([]);
     setPendingBlueprints(new Set());
-    setCompletedResearch([]);
+    setCompletedResearch(new Set());
     setPendingResearch(new Set());
     setEditReputations(new Map());
     setEditNpcs([]);
-    setBlueprintSearch("");
-    setRepSearch("");
-    setFleetSearch("");
-    setEmployeeSearch("");
-    setStationSearch("");
-    setInventorySearch("");
-    setDeployableSearch("");
   }, []);
 
   const pickFile = useCallback(async () => {
@@ -107,7 +94,7 @@ export function useSaveEditor(defaultSaveDir: string) {
         invoke<string[]>("parse_player_research", { path: p }),
       ]);
       setData(result);
-      setCompletedResearch(research);
+      setCompletedResearch(new Set(research));
       setPendingResearch(new Set());
       initEditState(result);
     } catch (e) {
@@ -126,52 +113,10 @@ export function useSaveEditor(defaultSaveDir: string) {
   const applyEdits = useCallback(async () => {
     if (!data) return;
     const p = path.trim();
-    const originalBps = new Set(data.blueprints);
-    const blueprints_add    = [...pendingBlueprints].filter(w => !originalBps.has(w));
-    const blueprints_remove = [...originalBps].filter(w => !pendingBlueprints.has(w));
-
-    // Reputation edits: only send factions whose rank changed from original
-    const origSums = new Map<string, number>();
-    for (const r of data.reputations) {
-      origSums.set(r.faction_id, (origSums.get(r.faction_id) ?? 0) + r.relation);
-    }
-    const reputation_edits: Array<{ faction_id: string; relation: number }> = [];
-    for (const [fid, targetRank] of editReputations) {
-      const origRank = repRank(origSums.get(fid) ?? 0);
-      if (targetRank !== origRank) {
-        reputation_edits.push({ faction_id: fid, relation: rankToWriteValue(targetRank, origRank) });
-      }
-    }
-
-    const origNpcByCode = new Map(data.npcs.map(n => [n.code, n]));
-    const npc_skills: Array<{
-      code: string;
-      piloting: number;
-      management: number;
-      morale: number;
-      engineering: number;
-      boarding: number;
-    }> = [];
-    for (const n of editNpcs) {
-      const o = origNpcByCode.get(n.code);
-      if (!o) continue;
-      if (
-        n.piloting !== o.piloting ||
-        n.management !== o.management ||
-        n.morale !== o.morale ||
-        n.engineering !== o.engineering ||
-        n.boarding !== o.boarding
-      ) {
-        npc_skills.push({
-          code: n.code,
-          piloting: Math.min(15, Math.max(0, Math.round(n.piloting))),
-          management: Math.min(15, Math.max(0, Math.round(n.management))),
-          morale: Math.min(15, Math.max(0, Math.round(n.morale))),
-          engineering: Math.min(15, Math.max(0, Math.round(n.engineering))),
-          boarding: Math.min(15, Math.max(0, Math.round(n.boarding))),
-        });
-      }
-    }
+    const { add: blueprints_add, remove: blueprints_remove } =
+      computeBlueprintDiff(data.blueprints, pendingBlueprints);
+    const reputation_edits = computeReputationDiff(data.reputations, editReputations);
+    const npc_skills       = computeNpcDiff(data.npcs, editNpcs);
     const station_cargo = [...editStationCargo.entries()].map(([station_code, wareMap]) => ({
       station_code,
       wares: [...wareMap.entries()].map(([ware, amount]) => ({ ware, amount })),
@@ -187,10 +132,7 @@ export function useSaveEditor(defaultSaveDir: string) {
         }
       }
     }
-    const origShipNames = new Map(data.ships.map(s => [s.code, s.name ?? ""]));
-    const ship_names = [...editShipNames.entries()]
-      .filter(([code, name]) => name !== (origShipNames.get(code) ?? ""))
-      .map(([code, name]) => ({ code, name }));
+    const ship_names = computeShipNameDiff(data.ships, editShipNames);
 
     const station_storage_layout =
       station_cargo.length === 0
@@ -224,7 +166,7 @@ export function useSaveEditor(defaultSaveDir: string) {
           inventory: editInventory,
           blueprints_add,
           blueprints_remove,
-          research_unlock: [...pendingResearch].filter(id => !completedResearch.includes(id)),
+          research_unlock: [...pendingResearch].filter(id => !completedResearch.has(id)),
           reputation_edits,
           npc_skills,
           ship_names,
@@ -234,7 +176,7 @@ export function useSaveEditor(defaultSaveDir: string) {
       });
       unlisten();
       setSaveMsg("Save written successfully.");
-      setCompletedResearch(prev => [...new Set([...prev, ...pendingResearch])]);
+      setCompletedResearch(prev => new Set([...prev, ...pendingResearch]));
       setPendingResearch(new Set());
       setProgress(0);
       const unlisten2 = await listen<{ pct: number }>("progress", e =>
@@ -352,20 +294,6 @@ export function useSaveEditor(defaultSaveDir: string) {
     editModified,
     setEditModified,
     editInventory,
-    blueprintSearch,
-    setBlueprintSearch,
-    repSearch,
-    setRepSearch,
-    fleetSearch,
-    setFleetSearch,
-    employeeSearch,
-    setEmployeeSearch,
-    stationSearch,
-    setStationSearch,
-    inventorySearch,
-    setInventorySearch,
-    deployableSearch,
-    setDeployableSearch,
     loadSave,
     applyEdits,
     closeFile,

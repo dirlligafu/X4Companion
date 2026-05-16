@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button";
 import { ShipDetailDialog } from "@/components/save-editor/ship-detail";
 import { FLEET_SIZE_ORDER, shipSizeBadgeClass } from "@/lib/fleet-styles";
 import { groupEquip, softwareLabel } from "@/lib/ship-display";
+import { useEquipmentCatalog } from "@/hooks/useEquipmentCatalog";
 import type { EquipmentCatalog, NpcInfo, PlayerBasics, ShipInfo, ShipMod } from "@/types/save";
 
 type ModEntry = { name: string | null; quality: number };
@@ -29,8 +30,6 @@ type FleetTabProps = {
   sectorNames: Record<string, string>;
   savePath: string;
   onSelectEmployee?: (name: string) => void;
-  equipIndex?: Record<string, string>;
-  equipmentCatalog?: EquipmentCatalog;
   modIndex?: ModIndex;
 };
 
@@ -315,10 +314,17 @@ export function FleetTab({
   sectorNames,
   savePath,
   onSelectEmployee,
-  equipIndex,
-  equipmentCatalog,
   modIndex,
 }: FleetTabProps) {
+  const equipmentCatalog = useEquipmentCatalog();
+  const equipIndex = useMemo(() => {
+    const idx: Record<string, string> = {};
+    for (const cat of [equipmentCatalog.weapons, equipmentCatalog.engines, equipmentCatalog.shields, equipmentCatalog.thrusters]) {
+      for (const item of cat) idx[item.macro_id.replace(/_macro$/, "")] = item.name;
+    }
+    return idx;
+  }, [equipmentCatalog]);
+
   const [expandedCode, setExpandedCode] = useState<string | null>(null);
   const [detailShip, setDetailShip] = useState<{ code: string; label: string } | null>(null);
 

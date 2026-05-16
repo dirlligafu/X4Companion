@@ -22,8 +22,6 @@ type InventoryTabProps = {
   onAddItem: (ware: string, amount: number) => void;
   inventoryCatalog: InventoryCatalogItem[];
   modRecipes?: ModRecipesData | null;
-  inventorySearch: string;
-  setInventorySearch: (v: string) => void;
 };
 
 const GROUP_LABELS: Record<string, string> = {
@@ -55,9 +53,8 @@ export function InventoryTab({
   onAddItem,
   inventoryCatalog,
   modRecipes,
-  inventorySearch,
-  setInventorySearch,
 }: InventoryTabProps) {
+  const [inventorySearch, setInventorySearch] = useState("");
   // ── Lookup group_id par ware ───────────────────────────────────────────────
   const wareGroupId = useMemo(() => {
     const m: Record<string, string> = {};

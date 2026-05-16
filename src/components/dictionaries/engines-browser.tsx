@@ -164,13 +164,14 @@ export function EnginesBrowser({ engines }: Props) {
   }
 
   const sizes = useMemo(() => {
-    const set = new Set(engines.map(e => e.size).filter((s): s is string => s !== null));
+    const set = new Set(engines.map(e => e.size).filter((s): s is string => s !== null && s !== "xs"));
     return [...set].sort((a, b) => (SIZE_ORDER[a] ?? 99) - (SIZE_ORDER[b] ?? 99));
   }, [engines]);
 
   const filtered = useMemo(() => {
     const q = search.toLowerCase();
     return engines.filter(e => {
+      if (e.size === "xs") return false;
       if (sizeFilter && e.size !== sizeFilter) return false;
       if (!q) return true;
       return (

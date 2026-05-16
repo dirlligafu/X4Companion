@@ -5,7 +5,18 @@ Tested on v8 saves (vanilla + all DLCs), not tested on V9 yet.
 
 > Unofficial tool, not affiliated with Egosoft. Use at your own risk.
 
-**Current release: v1.34.0**
+**Current release: v1.35.0** — *Major internal refactoring — architecture, stability, and correctness*
+ *This release is a structural overhaul driven by a full code audit. No new user-facing features, but the codebase is significantly more solid.*
+  
+- **Architecture:** Rust backend split from one 3 400-line monolith into 5 focused modules (types, parser, writer, station, catalog)
+- **Architecture:** TypeScript types now auto-generated from Rust structs via ts-rs — eliminates silent type-mismatch bugs between Rust and frontend
+- **Architecture:** Rust test suite added covering save parsing and write round-trips
+- **Architecture:** Catalog data fully migrated from SQLite to JSON (final migration: mod stats)
+- **Architecture:** Ships and equipment catalog lazy-loaded on first use instead of unconditionally at startup
+- **Architecture:** Catalog read cache — disk reads happen once per session regardless of how many views request the data
+- **Dictionaries:** XS-size ships, weapons, and engines excluded from all catalog browsers (NPC-only items not relevant to the player)
+
+~~Current release: v1.34.0~~
 - **New:** Research module added to the player save (table mode and flow mode)
 - **New:** Research entries are hierarchically linked, following the game's prerequisite chain
 - **New:** Players can now unlock research technologies and inject them into their save
@@ -147,8 +158,8 @@ Side-by-side comparison of multiple ships across all catalog stats (hull, cargo,
 
 Download the latest installer from the Releases page:
 
-- `X4Companion_1.34.0_x64-setup.exe` — NSIS installer (recommended)
-- `X4Companion_1.34.0_x64_en-US.msi` — MSI package
+- `X4Companion_1.35.0_x64-setup.exe` — NSIS installer (recommended)
+- `X4Companion_1.35.0_x64_en-US.msi` — MSI package
 
 No dependencies required. Windows 10/11 with WebView2 (included by default since Windows 11).
 

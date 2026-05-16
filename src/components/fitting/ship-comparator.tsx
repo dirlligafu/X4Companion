@@ -10,14 +10,11 @@ import {
 } from "@/lib/ship-stats";
 import type { SpeedStats, ShieldStats, ManoStats, DpsStats } from "@/lib/ship-stats";
 import type {
-  ShipCatalogItem, EquipmentCatalog,
+  ShipCatalogItem,
   EngineCatalogItem, ShieldCatalogItem, ThrusterCatalogItem,
 } from "@/types/save";
-
-type Props = {
-  ships:     ShipCatalogItem[];
-  equipment: EquipmentCatalog;
-};
+import { useShipsCatalog }     from "@/hooks/useShipsCatalog";
+import { useEquipmentCatalog } from "@/hooks/useEquipmentCatalog";
 
 type CompareColumn = {
   ship:    ShipCatalogItem | null;
@@ -256,7 +253,9 @@ function BaseRow({ label, vals, unit = "", decimals = 0, higherIsBetter = true, 
 
 // ── Main component ────────────────────────────────────────────────────────────
 
-export function ShipComparator({ ships, equipment }: Props) {
+export function ShipComparator() {
+  const ships     = useShipsCatalog();
+  const equipment = useEquipmentCatalog();
   const [columns, setColumns] = useState<CompareColumn[]>([emptyCol(), emptyCol()]);
   const [refIdx,  setRefIdx]  = useState(0);
 
@@ -325,6 +324,8 @@ export function ShipComparator({ ships, equipment }: Props) {
   const hasMano   = colStats.some(cs => cs?.mano.yaw        != null);
   const hasDps    = colStats.some(cs => cs?.dps.weaponDpsHull != null || cs?.dps.turretDpsHull != null);
   const hasDock   = hangarSizes.length > 0 || padSizes.length > 0;
+
+  if (ships.length === 0) return <p className="text-sm text-muted-foreground">Loading catalog…</p>;
 
   const rowProps = { colStats, refIdx };
   const colSpan  = columns.length + 1;  // label + N data columns

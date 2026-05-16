@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { SearchField } from "@/components/ui/search-field";
 import {
@@ -13,8 +13,6 @@ import type { PlayerBasics } from "@/types/save";
 
 type DeployablesTabProps = {
   data: PlayerBasics;
-  deployableSearch: string;
-  setDeployableSearch: (v: string) => void;
   sectorNames: Record<string, string>;
 };
 
@@ -42,7 +40,8 @@ function formatSector(macro: string | null, sectorNames: Record<string, string>)
   return macro;
 }
 
-export function DeployablesTab({ data, deployableSearch, setDeployableSearch, sectorNames }: DeployablesTabProps) {
+export function DeployablesTab({ data, sectorNames }: DeployablesTabProps) {
+  const [deployableSearch, setDeployableSearch] = useState("");
   const list = useMemo(() => {
     const q = deployableSearch.toLowerCase();
     return data.deployables

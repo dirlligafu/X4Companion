@@ -412,7 +412,6 @@ function SortHead({
 export function ShipsBrowser({ ships }: Props) {
   const [search, setSearch]         = useState("");
   const [sizeFilter, setSizeFilter] = useState<string | null>(null);
-  const [playerOnly, setPlayerOnly] = useState(false);
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const [sortCol, setSortCol]       = useState<SortCol>("name");
   const [sortDir, setSortDir]       = useState<SortDir>("asc");
@@ -429,14 +428,14 @@ export function ShipsBrowser({ ships }: Props) {
 
   const sizes = useMemo(() => {
     const set = new Set(ships.map(s => s.size ?? ""));
-    return [...set].filter(Boolean).sort((a, b) => (SIZE_ORDER[a] ?? 99) - (SIZE_ORDER[b] ?? 99));
+    return [...set].filter(sz => sz && sz !== "xs").sort((a, b) => (SIZE_ORDER[a] ?? 99) - (SIZE_ORDER[b] ?? 99));
   }, [ships]);
 
   const filtered = useMemo(() => {
     const q = search.toLowerCase();
     return ships.filter(s => {
+      if (s.size === "xs") return false;
       if (sizeFilter && s.size !== sizeFilter) return false;
-      if (playerOnly && !s.player_usable) return false;
       if (!q) return true;
       return (
         s.name.toLowerCase().includes(q) ||
@@ -446,7 +445,7 @@ export function ShipsBrowser({ ships }: Props) {
         (s.ship_type ? (TYPE_LABELS[s.ship_type] ?? s.ship_type).toLowerCase().includes(q) : false)
       );
     });
-  }, [ships, search, sizeFilter, playerOnly]);
+  }, [ships, search, sizeFilter]);
 
   const grouped = useMemo(() => {
     const g: Record<string, ShipCatalogItem[]> = {};
@@ -486,15 +485,6 @@ export function ShipsBrowser({ ships }: Props) {
             onValueChange={setSearch}
             className="flex-1 min-w-48"
           />
-
-          {/* Player-only toggle */}
-          <Badge
-            variant={playerOnly ? "default" : "outline"}
-            className="cursor-pointer select-none"
-            onClick={() => setPlayerOnly(v => !v)}
-          >
-            Playable ships
-          </Badge>
 
           {/* Size filter */}
           <div className="flex gap-1">

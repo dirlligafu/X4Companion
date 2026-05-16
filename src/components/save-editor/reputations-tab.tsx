@@ -14,8 +14,6 @@ import type { PlayerBasics } from "@/types/save";
 
 type ReputationsTabProps = {
   data: PlayerBasics;
-  repSearch: string;
-  setRepSearch: (v: string) => void;
   factionNames: Record<string, string>;
   editReputations: Map<string, number>;
   updateReputation: (factionId: string, rank: number) => void;
@@ -53,13 +51,12 @@ const NOTABLE = new Set([
 
 export function ReputationsTab({
   data,
-  repSearch,
-  setRepSearch,
   factionNames,
   editReputations,
   updateReputation,
   busy,
 }: ReputationsTabProps) {
+  const [repSearch, setRepSearch] = useState("");
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
   // Factions that have an existing relation in the save (can be edited)

@@ -186,13 +186,14 @@ export function WeaponCatalogBrowser({ items }: WeaponCatalogBrowserProps) {
   }
 
   const sizes = useMemo(() => {
-    const set = new Set(items.map(w => w.size).filter((s): s is string => s !== null));
+    const set = new Set(items.map(w => w.size).filter((s): s is string => s !== null && s !== "xs"));
     return [...set].sort((a, b) => (SIZE_ORDER[a] ?? 99) - (SIZE_ORDER[b] ?? 99));
   }, [items]);
 
   const filtered = useMemo(() => {
     const q = search.toLowerCase();
     return items.filter(w => {
+      if (w.size === "xs") return false;
       if (sizeFilter && w.size !== sizeFilter) return false;
       if (!q) return true;
       return (

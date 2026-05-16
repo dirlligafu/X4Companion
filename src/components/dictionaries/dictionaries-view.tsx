@@ -7,13 +7,13 @@ import { EnginesBrowser }   from "./engines-browser";
 import { ShieldsBrowser }   from "./shields-browser";
 import { ThrustersBrowser } from "./thrusters-browser";
 import { ModsBrowser }     from "./mods-browser";
-import type { EquipmentCatalog, ModRecipesData, ModStat, ShipCatalogItem } from "@/types/save";
+import { useShipsCatalog }     from "@/hooks/useShipsCatalog";
+import { useEquipmentCatalog } from "@/hooks/useEquipmentCatalog";
+import type { ModRecipesData, ModStat } from "@/types/save";
 
 type Props = {
-  shipsCatalog:     ShipCatalogItem[];
-  equipmentCatalog: EquipmentCatalog;
-  modStats:         ModStat[];
-  modRecipes:       ModRecipesData | null;
+  modStats:   ModStat[];
+  modRecipes: ModRecipesData | null;
 };
 
 function CountBadge({ count }: { count: number }) {
@@ -25,7 +25,9 @@ function CountBadge({ count }: { count: number }) {
   );
 }
 
-export function DictionariesView({ shipsCatalog, equipmentCatalog, modStats, modRecipes }: Props) {
+export function DictionariesView({ modStats, modRecipes }: Props) {
+  const shipsCatalog    = useShipsCatalog();
+  const equipmentCatalog = useEquipmentCatalog();
   const { weapons, engines, shields, thrusters } = equipmentCatalog;
 
   const fixedWeapons = useMemo(
@@ -37,20 +39,24 @@ export function DictionariesView({ shipsCatalog, equipmentCatalog, modStats, mod
     [weapons],
   );
 
+  const shipsCount   = useMemo(() => shipsCatalog.filter(s => s.size !== "xs").length, [shipsCatalog]);
+  const weaponsCount = useMemo(() => fixedWeapons.filter(w => w.size !== "xs").length, [fixedWeapons]);
+  const enginesCount = useMemo(() => engines.filter(e => e.size !== "xs").length, [engines]);
+
   return (
     <Tabs defaultValue="ships" className="flex min-h-0 flex-1 flex-col overflow-hidden">
       <TabsList className="shrink-0 w-fit">
         <TabsTrigger value="ships">
-          Ships <CountBadge count={shipsCatalog.length} />
+          Ships <CountBadge count={shipsCount} />
         </TabsTrigger>
         <TabsTrigger value="weapons">
-          Weapons <CountBadge count={fixedWeapons.length} />
+          Weapons <CountBadge count={weaponsCount} />
         </TabsTrigger>
         <TabsTrigger value="turrets">
           Turrets <CountBadge count={turretWeapons.length} />
         </TabsTrigger>
         <TabsTrigger value="engines">
-          Engines <CountBadge count={engines.length} />
+          Engines <CountBadge count={enginesCount} />
         </TabsTrigger>
         <TabsTrigger value="shields">
           Shields <CountBadge count={shields.length} />

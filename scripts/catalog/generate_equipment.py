@@ -438,7 +438,7 @@ def parse_engine_macro(path: Path) -> dict | None:
         thrust = {k: float_attr(thrust_el, k) for k in ("forward", "reverse") if float_attr(thrust_el, k) is not None}
 
     return {
-        "macro":       macro_name,
+        "macro_id":    macro_name,
         "name_ref":    parse_ident(props, "name"),
         "basename_ref": parse_ident(props, "basename"),
         "faction":     parse_ident(props, "makerrace"),
@@ -481,7 +481,7 @@ def parse_thruster_macro(path: Path) -> dict | None:
         angular = {k: float_attr(angular_el, k) for k in ("roll", "pitch") if float_attr(angular_el, k) is not None}
 
     return {
-        "macro":        macro_name,
+        "macro_id":     macro_name,
         "name_ref":     parse_ident(props, "name"),
         "basename_ref": parse_ident(props, "basename"),
         "faction":      parse_ident(props, "makerrace"),  # usually None for thrusters
@@ -519,7 +519,7 @@ def parse_shield_macro(path: Path) -> dict | None:
         }
 
     return {
-        "macro":        macro_name,
+        "macro_id":     macro_name,
         "name_ref":     parse_ident(props, "name"),
         "basename_ref": parse_ident(props, "basename"),
         "faction":      parse_ident(props, "makerrace"),
@@ -558,7 +558,7 @@ def parse_weapon_macro(path: Path, is_turret: bool) -> dict | None:
     bullet_class = bullet_el.get("class") if bullet_el is not None else None
 
     return {
-        "macro":          macro_name,
+        "macro_id":       macro_name,
         "name_ref":       parse_ident(props, "name"),
         "basename_ref":   parse_ident(props, "basename"),
         "faction":        parse_ident(props, "makerrace"),
@@ -578,14 +578,14 @@ def parse_weapon_macro(path: Path, is_turret: bool) -> dict | None:
 
 def assemble_base(raw: dict, wares: dict, strings: dict) -> dict:
     """Common fields shared by all equipment categories."""
-    macro_name = raw["macro"]
+    macro_name = raw["macro_id"]
     ware       = wares.get(macro_name, {})
 
     name_ref    = raw.get("name_ref") or ware.get("name_ref")
     desc_ref    = ware.get("description_ref")
 
     return {
-        "macro":        macro_name,
+        "macro_id":     macro_name,
         "name":         resolve(name_ref, strings) or macro_name,
         "basename":     resolve(raw.get("basename_ref"), strings),
         "description":  resolve(desc_ref, strings),
@@ -797,7 +797,7 @@ def generate(xml_root: Path, db_path: Path, out_dir: Path) -> None:
     print("=== Validation report ===")
     for cat, items in catalog.items():
         no_price   = count_missing(items, "price")
-        no_name    = sum(1 for i in items if i["name"] == i["macro"])
+        no_name    = sum(1 for i in items if i["name"] == i["macro_id"])
         player_cnt = count_player(items)
         print(f"  {cat:<12}: {len(items):3} items | player_usable: {player_cnt:3} | no price: {no_price:3} | unresolved name: {no_name}")
 

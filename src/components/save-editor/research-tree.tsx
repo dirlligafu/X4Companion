@@ -78,7 +78,7 @@ const nodeTypes = { research: ResearchNodeComponent };
 
 type Props = {
   researchCatalog: ResearchEntry[];
-  completedResearch: string[];
+  completedResearch: Set<string>;
   pendingResearch: Set<string>;
   toggleResearch: (id: string) => void;
 };
@@ -134,7 +134,7 @@ export function ResearchTreeView({ researchCatalog, completedResearch, pendingRe
   }, [visibleCatalog]);
 
   const nodes = useMemo((): ResearchFlowNode[] => {
-    const completedSet = new Set(completedResearch);
+    const completedSet = completedResearch;
     const allUnlocked = new Set([...completedResearch, ...pendingResearch]);
 
     function status(e: ResearchEntry): NodeStatus {
