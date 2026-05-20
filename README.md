@@ -5,7 +5,11 @@ Tested on v8 saves (vanilla + all DLCs), not tested on V9 yet.
 
 > Unofficial tool, not affiliated with Egosoft. Use at your own risk.
 
-**Current release: v1.35.0** — *Major internal refactoring — architecture, stability, and correctness*
+**Current release: v1.36.0**
+- **NEW:** The player can now add ALL missing items to his own inventory in one click
+- **NEW:** The player can now set a global quantity for all items in his inventory in one click 
+
+~~Current release: v1.35.0~~ — *Major internal refactoring — architecture, stability, and correctness*
  *This release is a structural overhaul driven by a full code audit. No new user-facing features, but the codebase is significantly more solid.*
   
 - **Architecture:** Rust backend split from one 3 400-line monolith into 5 focused modules (types, parser, writer, station, catalog)

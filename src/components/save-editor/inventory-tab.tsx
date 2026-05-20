@@ -81,6 +81,7 @@ export function InventoryTab({
   // ── État panneau d'ajout ───────────────────────────────────────────────────
   const [selectedId, setSelectedId] = useState("");
   const [addQty, setAddQty]         = useState(1);
+  const [setAllQty, setSetAllQty]   = useState(1);
 
   // ── État panneau craft mod ─────────────────────────────────────────────────
   const [craftModId, setCraftModId] = useState("");
@@ -139,15 +140,28 @@ export function InventoryTab({
     setAddQty(1);
   }
 
+  function handleAddAll() {
+    for (const items of Object.values(catalogByGroup)) {
+      for (const item of items) {
+        onAddItem(item.id, Math.max(1, addQty));
+      }
+    }
+  }
+
+  function handleSetAllQty() {
+    const qty = Math.max(1, setAllQty);
+    editInventory.forEach((_, index) => onUpdateWareAmount(index, qty));
+  }
+
   return (
     <Card className="flex min-h-0 flex-1 flex-col overflow-hidden">
-      <CardContent className="flex min-h-0 flex-1 flex-col gap-3 overflow-hidden pt-4">
+      <CardContent className="flex min-h-0 min-w-0 flex-1 flex-col gap-3 overflow-hidden pt-4">
 
-        {/* ── Panneaux d'ajout + craft mod côte à côte ── */}
-        <div className="flex shrink-0 flex-col gap-1.5">
-          <div className="flex items-center gap-2">
-            {/* Moitié gauche — ajout item */}
-            <div className="flex w-1/2 items-center gap-2">
+        {/* ── Trois tiers : ajout item | craft mod | filtre+set qty ── */}
+        <div className="flex w-full min-w-0 shrink-0 flex-col gap-1.5">
+          <div className="grid w-full min-w-0 grid-cols-3 gap-2 items-center">
+            {/* 1/3 — ajout item */}
+            <div className="flex min-w-0 items-center gap-2">
               <select
                 value={selectedId}
                 onChange={e => setSelectedId(e.target.value)}
@@ -171,16 +185,19 @@ export function InventoryTab({
                 value={addQty}
                 onChange={e => setAddQty(parseInt(e.target.value, 10) || 1)}
                 disabled={busy}
-                className="w-20 shrink-0 text-center font-mono"
+                className="w-16 shrink-0 text-center font-mono"
               />
               <Button onClick={handleAdd} disabled={busy || !selectedId} size="sm">
                 Add
               </Button>
+              <Button onClick={handleAddAll} disabled={busy || Object.keys(catalogByGroup).length === 0} size="sm" variant="secondary">
+                Add All
+              </Button>
             </div>
 
-            {/* Moitié droite — craft mod */}
-            {modRecipes && (
-              <div className="flex w-1/2 items-center gap-2">
+            {/* 1/3 — craft mod */}
+            {modRecipes ? (
+              <div className="flex min-w-0 items-center gap-2">
                 <select
                   value={craftModId}
                   onChange={e => setCraftModId(e.target.value)}
@@ -207,7 +224,28 @@ export function InventoryTab({
                   Add ingredients
                 </Button>
               </div>
-            )}
+            ) : <div className="min-w-0" />}
+
+            {/* 1/3 — filtre + set all qty */}
+            <div className="flex min-w-0 items-center gap-2">
+              <SearchField
+                className="min-w-0 flex-1"
+                placeholder="Filter…"
+                value={inventorySearch}
+                onValueChange={setInventorySearch}
+              />
+              <Input
+                type="number"
+                min={1}
+                value={setAllQty}
+                onChange={e => setSetAllQty(parseInt(e.target.value, 10) || 1)}
+                disabled={busy}
+                className="w-16 shrink-0 text-center font-mono"
+              />
+              <Button onClick={handleSetAllQty} disabled={busy || editInventory.length === 0} size="sm" variant="secondary">
+                Set All
+              </Button>
+            </div>
           </div>
 
           {/* Prévisualisation ingrédients */}
@@ -226,13 +264,6 @@ export function InventoryTab({
             </div>
           )}
         </div>
-
-        {/* ── Filtre inventaire ── */}
-        <SearchField
-          placeholder="Filter by item name or ware ID…"
-          value={inventorySearch}
-          onValueChange={setInventorySearch}
-        />
 
         {/* ── Table inventaire (overflow natif + stickyRoot : même schéma que ships-browser) ── */}
         <div className="min-h-0 min-w-0 flex-1 overflow-auto">
